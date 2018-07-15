@@ -91,14 +91,14 @@ try {
         
         
         // ajout tache todolist
-        elseif ($_GET['action'] == 'createTodo') {
-            if (!empty($_POST['todo']) {
-                $infos = new PostController();
-                $infos->creationTodo($_POST['todo']);
-            } else {
-                throw new Exception('Ajoutez une tâche');
-            }
-        }
+        // elseif ($_GET['action'] == 'createTodo') {
+        //    if (!empty($_POST['todo']) {
+        //        $infos = new PostController();
+        //        $infos->creationTodo($_POST['todo']);
+        //    } else {
+        //        throw new Exception('Ajoutez une tâche');
+        //    }
+        // }
         
         
         
