@@ -1,0 +1,42 @@
+/* Feuille de style 5Project */
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.body {
+    width: 100%;
+    background: #f1f1f1;
+}
+
+.footer {
+    width: 100%;
+    text-align: center;
+    background-color:  #7594ff;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.header {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background-color:  #7594ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    margin-top: 65px;
+}
+
+
+.fonct {
+    background-color: #b4c5ff;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    height: auto;
+}
+
+    
