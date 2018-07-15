@@ -23,25 +23,24 @@ else
 <div class=".container-fluid">
   <div class="row">
   <div class="col">
-  <div class="p-3 mb-2 bg-info text-white">Contacts</div>
+  <div class="p-3 mb-2 bg-info text-white"><h5>Contacts</h5></div>
   <div class="fonct">Contacts</div>
   </div>
  
   <div class="col">
-  <div class="p-3 mb-2 bg-info text-white">Bitcoin</div>
+  <div class="p-3 mb-2 bg-info text-white"><h5>Bitcoin</h5></div>
   <div class="fonct">Bitcoin</div>
   </div>
   
   <div class="w-100"></div>
   <div class="col">
-  <div class="p-3 mb-2 bg-info text-white">RSS</div>
+  <div class="p-3 mb-2 bg-info text-white"><h5>RSS</h5></div>
   <div class="fonct">Flux RSS</div>
   </div>
   
   <div class="col">
-  <div class="p-3 mb-2 bg-info text-white">ToDo</div>
+  <div class="p-3 mb-2 bg-info text-white"><h5>ToDo List</h5></div>
   <div class="fonct">
-  <p>ToDo List</p>
   
   <form action="index.php?action=createTodo" method="post">
         <div class="form-group">
@@ -53,20 +52,54 @@ else
             </div>
         </form>
   
+
+
+<table>
+      <tr>
+        <th>ID</th>
+        <th>Tâche</th>
+        <th>Date</th>
+        <th>Editer</th>
+        <th>Supprimer</th>
+</tr>
+
+<tr>
+        <?php
+         while ($data = $tasks->fetch()) {
+            ?>
+
+        <?php list($date, $time) = explode(" ", $data['datetodo']); ?>
+        <?php list($year, $month, $day) = explode("-", $date); ?>
+        <?php list($hour, $min, $sec) = explode(":", $time); ?>
+
+
+        <td><?php echo nl2br(htmlspecialchars($data['id'])); ?></td>
+        <td><?php echo htmlspecialchars($data['todo']); ?></td>
+        <td><?php echo $data['datetodo'] = "$day/$month/$year" . " - " . "$time"; ?></td>
+        <td><a href="../index.php?action=viewEditTask&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
+        <td><a href="../index.php?action=deletePost&amp;id=<?php echo $data['id']; ?>">Supprimer</a></td>
+   </tr>     
+
+        <?php
+        }
+        $tasks->closeCursor();
+        ?>
+
+    </table>
+
   
   </div>
   </div>
   
   <div class="w-100"></div>
   <div class="col">
-  <div class="p-3 mb-2 bg-info text-white">Carte</div>
+  <div class="p-3 mb-2 bg-info text-white"><h5>Carte</h5></div>
   <div class="fonct">Cartographie</div>
   </div>
   
   <div class="col">
-  <div class="p-3 mb-2 bg-info text-white">Fichiers</div>
+  <div class="p-3 mb-2 bg-info text-white"><h5>Fichiers</h5></div>
   <div class="fonct">
-  <p>Vos fichiers</p>
   
   <form enctype="multipart/form-data" action="?action=upload" method="post">
       <input type="hidden" name="MAX_FILE_SIZE" value="7340032" />

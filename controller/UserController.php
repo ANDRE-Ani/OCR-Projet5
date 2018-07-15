@@ -3,9 +3,8 @@
 namespace controller;
 
 use Exception;
-use model\ComManager;
-use model\FrontManager;
 use model\UserManager;
+use model\TodoManager;
 
 // Controler user
 
@@ -44,8 +43,6 @@ class UserController extends Controller
     // envoie vers la page de connection pour l'admin
     public function connectionAdmin()
     {
-        $FrontManager = new FrontManager();
-        $ComManager = new ComManager();
         $UserManager = new UserManager();
         require('view/loginView.php');
     }

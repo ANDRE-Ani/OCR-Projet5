@@ -8,17 +8,18 @@
 use controller\Controller;
 use controller\FileController;
 use controller\UserController;
+use controller\TodoController;
 
 // Appel des différents controlers
 require_once './controller/Controller.php';
 require_once './controller/UserController.php';
 require_once './controller/FileController.php';
+require_once './controller/TodoController.php';
 
 // appel des model
 require_once "model/Manager.php";
-require_once "model/FrontManager.php";
 require_once "model/UserManager.php";
-require_once "model/ComManager.php";
+require_once "model/TodoManager.php";
 
 // Routes des actions et requêtes
 
@@ -46,7 +47,6 @@ try {
         // suppression de fichiers
         elseif ($_GET['action'] == 'deleteF') {        
         if (isset($_GET['fichier']) && $_GET['fichier'] > 0) {
-        
             $infos = new FileController();
             $infos->deleteFile();
             }
@@ -54,7 +54,6 @@ try {
             echo 'error fichier';
             }
         } 
-        
         
         // envoie vers la page d'accueil
         elseif ($_GET['action'] == 'homePage') {
@@ -64,8 +63,10 @@ try {
 
         // envoie vers la page d'informations
         elseif ($_GET['action'] == 'infos') {
-            $infos = new Controller();
-            $infos->infosB();
+            $infos = new TodoController();
+            $infos->allTodo();
+            //$infos = new Controller();
+            //$infos->infosB();
         } 
         
 
@@ -89,29 +90,46 @@ try {
             }
         }
         
-        
         // ajout tache todolist
-        // elseif ($_GET['action'] == 'createTodo') {
-        //    if (!empty($_POST['todo']) {
-        //        $infos = new PostController();
-        //        $infos->creationTodo($_POST['todo']);
-        //    } else {
-        //        throw new Exception('Ajoutez une tâche');
-        //    }
-        // }
-        
-        
-        
+        elseif ($_GET['action'] == 'createTodo') {
+            if (!empty($_POST['todo'])) {
+                $infos = new TodoController();
+                $infos->creationTodo($_POST['todo']);
+            } else {
+                throw new Exception('Erreur, ajoutez une tâche');
+            }
+         }
+
+         // page for editing a task
+        elseif ($_GET['action'] == 'viewEditTask') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $infos = new TodoController();
+                $infos->viewEditTodo($_GET['id']);
+            } else {
+                throw new Exception('Aucun identifiant de tâche envoyé');
+            }
+        }
+
+        // editing a task
+        elseif ($_GET['action'] == 'editTodo') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['todo'])) {
+                    $infos = new TodoController();
+                    $infos->editTodoBack($_POST['todo'], $_GET['id']);
+                } else {
+                    throw new Exception('Tous les champs ne sont pas remplis pour l\'édition');
+                }
+            } else {
+                throw new Exception('Aucun identifiant de tache envoyé');
+            }
+        }
+
         
         // envoie vers la page d'administration
         elseif ($_GET['action'] == 'administration') {
-            //if (isset($_COOKIE["cookie"])) {
                 $infos = new Controller();
                 $infos = new UserController();
                 $infos->administration();
-            //} else {
-            //    header('Location: index.php?action=connection');
-            //}
         }
         
         // envoie vers la page de connection

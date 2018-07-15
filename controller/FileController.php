@@ -3,9 +3,9 @@
 namespace controller;
 
 use Exception;
-use model\ComManager;
 use model\FrontManager;
 use model\UserManager;
+use model\TodoManager;
 
 // Controler file
 
