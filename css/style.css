@@ -12,7 +12,7 @@
 .footer {
     width: 100%;
     text-align: center;
-    background-color:  #7594ff;
+    background-color: #7594ff;
     padding: 20px;
     margin-top: 10px;
 }
@@ -22,13 +22,12 @@
     margin-right: auto;
     margin-left: auto;
     text-align: center;
-    background-color:  #7594ff;
+    background-color: #7594ff;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 10px;
     margin-top: 65px;
 }
-
 
 .fonct {
     background-color: #b4c5ff;
@@ -39,4 +38,6 @@
     height: auto;
 }
 
-    
+#map {
+    height: 300px;
+}

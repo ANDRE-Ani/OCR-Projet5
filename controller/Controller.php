@@ -18,15 +18,6 @@ class Controller
         require 'view/loginView.php';
     }
     
-    // envoie vers la page d'informations
-    /* public function infosB()
-    {
-        $UserManager = new UserManager();
-        $TodoManager = new TodoManager();
-        $Manager = new TodoManager();
-        require 'view/homeView.php';
-    } */
-
     // page d'erreur
     public function error404()
     {

@@ -1,0 +1,8 @@
+
+api key, openweather map :
+
+8af0f894920fd7fcf2e0dc3b48605453
+
+
+https://api.openweathermap.org/data/2.5/weather?q=Paris&units=metric&lang=fr&APPID=8af0f894920fd7fcf2e0dc3b48605453
+

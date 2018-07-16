@@ -27,8 +27,7 @@ if (!(in_array($extensionFichier, $extensionsAutorisees))) {
     $nomDestination = $nomOrigine . "-" . date("d-m-Y") . "." . $extensionFichier;
 
     if (move_uploaded_file($_FILES["monfichier"]["tmp_name"], $repertoireDestination.$nomDestination)) {
-        // echo "Le fichier temporaire ".$_FILES["monfichier"]["tmp_name"]." a été déplacé vers ".$repertoireDestination.$nomDestination;
-        
+       
     header('Location: index.php?action=infos');
     } else {
         echo "Le fichier n'a pas été uploadé (".$fileSize.") ou ".
@@ -40,14 +39,8 @@ if (!(in_array($extensionFichier, $extensionsAutorisees))) {
 
 
 public function deleteFile() {
-// if (isset($_GET['fichier']) && $_GET['fichier'] > 0) {
      unlink('fichier');
      header('Location: index.php?action=infos');
-     
-     // } else { 
-     // echo "erreur...";
-     // }
-
 }
 
 

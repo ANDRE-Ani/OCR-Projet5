@@ -10,3 +10,4 @@
     define('SITE_NAME', '5Project');
     define('AUTEUR', 'Patrice Andreani');
     define('UPLOAD_DIR', '/home/boutique/public_html/dev/p5ocr/uploads/');
+    
