@@ -9,8 +9,8 @@
 
         <form action="index.php?action=createUser" method="post">
         <div class="form-group">
-            <p>Identifiant : <input type="text" name="login" placeholder="identifiant" required /></p>
-            <p>Mail : <input type="text" name="mail" placeholder="email" required /></p>
+            <p>Identifiant : <input type="text" name="login" placeholder="identifiant" maxlenght="50" required /></p>
+            <p>Mail : <input type="text" name="mail" placeholder="email" required maxlenght="50" /></p>
             <p>Mot de passe : <input type="password" name="pass" placeholder="mot de passe" required /></p>
             <p>Retapper le<br>mot de passe : <input type="password" name="pass2" placeholder="mot de passe" required /></p>
             </div>

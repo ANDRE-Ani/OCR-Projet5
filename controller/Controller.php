@@ -25,4 +25,22 @@ class Controller
     }
 
 
+// function RSS
+function rss()
+{
+    $rss_feed = simplexml_load_file(FLUX_RSS);
+    if (!empty($rss_feed)) {
+        $i = 0;
+        foreach ($rss_feed->channel->item as $feed_item) {
+            $datetime = date_create($item->pubDate);
+            $date = date_format($datetime, 'd M Y, H\hi');
+            if ($i >= FLUX) {
+                break;
+            }
+            //require 'homeView.php';
+        }
+    }
 }
+
+}
+    

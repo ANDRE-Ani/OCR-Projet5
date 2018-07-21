@@ -20,6 +20,9 @@
    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
    crossorigin=""></script>
 
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
 </head>
 <body>
     
@@ -39,7 +42,6 @@
     <!--  JS script -->
     <script src="js/date.js"></script>
     <script src="js/map.js"></script>
-    <script src="js/position.js"></script>
 
 </body>
 </html>

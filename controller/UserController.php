@@ -50,16 +50,38 @@ class UserController extends Controller
     // création de compte
     public function creationUser($login, $mail, $pass)
     {
+
+        $mail = $_POST['mail'];
+        $pass = $_POST['pass'];
+        $login = $_POST['login'];
+
+        // lenght pass verification
+        if (strlen($pass) < 8) {
+            throw new Exception('Mot de passe trop court');
+          }
+
+          // mail verification
+          $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
+          if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Mail invalide');
+          }
+
+          if (!preg_match("/^[a-zA-Z ]*$/",$login)) {
+            throw new Exception('Identifiant invalide');
+            }
+
         $UserManager = new UserManager();
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
         if ($affectedLines === false) {
             throw new Exception('Impossible de créer le compte');
         } else {
-            header('Location: index.php?action=connection');
+            header('Location: index.php?action=administration');
         }
+
     }
     
+
     // affiche les utilisateurs
     public function allUsers()
     {

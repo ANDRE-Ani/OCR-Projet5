@@ -29,12 +29,14 @@ try {
         if ($_GET['action'] == '') {
             $infos = new Controller();
             $infos->home();
+            $infos->rss();
         }
 
         // envoie vers la page d'accueil
         elseif ($_GET['action'] == '/') {
             $infos = new Controller();
             $infos->home();
+            $infos->rss();
         } 
         
         // upload de fichiers
@@ -65,8 +67,8 @@ try {
         elseif ($_GET['action'] == 'infos') {
             $infos = new TodoController();
             $infos->allTodo();
-            //$infos = new Controller();
-            //$infos->infosB();
+            $infos = new Controller();
+            $infos->rss();
         } 
         
 
@@ -83,16 +85,19 @@ try {
         // création de compte
         elseif ($_GET['action'] == 'createUser') {
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
-                $infos = new UserController();
-                $infos->creationUser($_POST['login'], $_POST['mail'], $_POST['pass']);
-            } else {
+                
+            $infos = new UserController();
+            $infos->creationUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
+            } 
+            else {
                 throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
             }
         }
-        
+    
+
         // ajout tache todolist
         elseif ($_GET['action'] == 'createTodo') {
-            if (!empty($_POST['todo'])) {
+            if (!empty(htmlspecialchars($_POST['todo']))) {
                 $infos = new TodoController();
                 $infos->creationTodo($_POST['todo']);
             } else {
@@ -113,7 +118,7 @@ try {
         // editing a task
         elseif ($_GET['action'] == 'editTodo') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['todo'])) {
+                if (!empty(htmlspecialchars($_POST['todo']))) {
                     $infos = new TodoController();
                     $infos->editTodoBack($_POST['todo'], $_GET['id']);
                 } else {
