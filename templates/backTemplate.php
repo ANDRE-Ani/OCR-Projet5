@@ -49,6 +49,7 @@ if (isset($_SESSION['login'])) {
     <!--  JS script -->
     <script src="js/date.js"></script>
     <script src="js/browser.js"></script>
+    <script src="js/weather.js"></script>
     
 </body>
 </html>

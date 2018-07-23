@@ -16,6 +16,14 @@
             <a class="nav-link" href="index.php?action=administration">Administration</a>
           </li>
           
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?action=legal">Mentions légales</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="index.php?action=about">A propos</a>
+          </li>
+
         </ul>
         
       </div>

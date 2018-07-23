@@ -5,7 +5,7 @@
 <div class="formulaireLogin">
 
 <!-- Formulaire de connexion à l'administration -->
-<p>Veuillez entrer vos identifiants pour vous connecter sur l'administartion du site :</p>
+<p>Veuillez entrer vos identifiants pour vous connecter :</p>
 
         <form action="index.php?action=logAdminB" method="post">
         <div class="form-group">

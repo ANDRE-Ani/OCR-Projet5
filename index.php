@@ -44,17 +44,30 @@ try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == '') {
             $infos = new Controller();
-            $infos->home();
             $infos->rss();
+            $infos->home();
+            
         }
 
         // envoie vers la page d'accueil
         elseif ($_GET['action'] == '/') {
             $infos = new Controller();
-            $infos->home();
             $infos->rss();
+            $infos->home();
         } 
         
+        // go to mentions
+        elseif ($_GET['action'] == 'legal') {
+            $infos = new Controller();
+            $infos->legalM();
+        }
+
+        // go to about
+        elseif ($_GET['action'] == 'about') {
+            $infos = new Controller();
+            $infos->aboutP();
+        } 
+
         // upload de fichiers
         elseif ($_GET['action'] == 'upload') {
             $infos = new FileController();
@@ -63,10 +76,12 @@ try {
                
         
         // suppression de fichiers
-        elseif ($_GET['action'] == 'deleteF') {        
-        if (isset($_GET['fichier']) && $_GET['fichier'] > 0) {
+        elseif ($_GET['action'] == 'deleteF') {     
+        if (isset($_GET[$fichier]) && $_GET[$fichier] > 0) {
+            var_dump($_GET[$fichier]);
+            die();
             $infos = new FileController();
-            $infos->deleteFile();
+            $infos->deleteFile($fileD);
             }
             else {
             echo 'error fichier';
