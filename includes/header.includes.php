@@ -28,10 +28,15 @@
   <div class="row">
       
     <div class="col-6">     
-        <h1>5Project</h1>
-        <h2>/\ Votre portail web personnel /\</h2>
+
+<div class="title">
+<h1>5Project</h1>
+</div>
+
       </div>  
       
+
+
       <div class="col-6">
       <p><div id="dateJ">
         </div>

@@ -45,4 +45,12 @@ public function editTodoL($todo, $id) {
     return $taskE;
 }
 
+// delete a task
+public function deleteTodo() {
+    $bdd = $this->dbConnect();
+    $todoD = $bdd->prepare("DELETE FROM todolist WHERE id=".$_GET['id']);
+    $affectedLines = $todoD->execute(array($id));
+    return $affectedLines;
+}
+
 }

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %} {{ title }} {% endblock %}</title>
+    </head>
+    <body>
+        <div id="sidebar">
+
+        <h1>{{ text }}</h1>
+
+        hello {{name}}, what are you doing here?
+        
+            {% block sidebar %}
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                </ul>
+            {% endblock %}
+        </div>
+        
+        {{ "now"|date("m/d/Y") }}
+
+        <div id="content">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

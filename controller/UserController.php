@@ -66,6 +66,7 @@ class UserController extends Controller
             throw new Exception('Mail invalide');
           }
 
+          // login with only letters
           if (!preg_match("/^[a-zA-Z ]*$/",$login)) {
             throw new Exception('Identifiant invalide');
             }
@@ -138,6 +139,14 @@ class UserController extends Controller
     }
     
     
+
+    // envoie vers la page de test
+    public function testT()
+    {
+        $UserController = new UserController();
+        require 'view/template.html.twig';
+    }
+
     
 
 }

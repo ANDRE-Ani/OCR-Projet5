@@ -21,7 +21,23 @@ require_once "model/Manager.php";
 require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
+
 // Routes des actions et requêtes
+
+
+
+/* require_once 'twig/vendor/autoload.php';
+$loader = new Twig_Loader_Filesystem(templates);
+$twig = new Twig_Environment($loader);
+echo $twig->render('template.html.twig', array(
+    'name' => 'Patrice',
+    'title' => 'Ze Titre'
+)); */
+
+
+
+
+
 
 try {
     // page d'accueil
@@ -85,7 +101,6 @@ try {
         // création de compte
         elseif ($_GET['action'] == 'createUser') {
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
-                
             $infos = new UserController();
             $infos->creationUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
             } 
@@ -129,6 +144,16 @@ try {
             }
         }
 
+        // delete a todo
+        elseif ($_GET['action'] == 'deleteTodo') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $infos = new TodoController();
+                $infos->suprTodo();
+            } else {
+                throw new Exception('Aucun identifiant de toto');
+            }
+        }
+
         
         // envoie vers la page d'administration
         elseif ($_GET['action'] == 'administration') {
@@ -143,6 +168,17 @@ try {
             $infos->connectionAdmin();
         }
         
+
+
+// envoie vers la page de TEST
+elseif ($_GET['action'] == 'test') {
+    $infos = new UserController();
+    $infos->testT();
+}
+
+
+
+
         
         // deconnection
         elseif ($_GET['action'] == 'logout') {

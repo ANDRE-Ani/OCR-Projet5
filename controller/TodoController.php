@@ -52,4 +52,16 @@ public function editTodoBack($todo, $id)
     }
 }
 
+// delete a task
+public function suprTodo()
+{
+    $TodoManager = new TodoManager();
+    $affectedLines = $TodoManager->deleteTodo();
+    if ($affectedLines === false) {
+        throw new Exception('Impossible de supprimer la tache');
+    } else {
+        header('Location: index.php?action=infos');
+    }
+}
+
 }

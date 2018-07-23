@@ -1,31 +1,40 @@
 <div class="p-3 mb-2 bg-info text-white"><h5>Météo</h5></div>
 <div class="fonct">
 
-<?php
-// get weather info from openweathermap
-$url = "https://api.openweathermap.org/data/2.5/weather?q=Bourges&units=metric&lang=fr&APPID=8af0f894920fd7fcf2e0dc3b48605453";
 
-// $url = "https://api.openweathermap.org/data/2.5/weather?lat=latPos&lon=lngPos&units=metric&lang=fr&APPID=8af0f894920fd7fcf2e0dc3b48605453";
 
-$contents = file_get_contents($url);
-$weatherU=json_decode($contents);
+<script type='text/javascript'>
 
-$temp_temp = $weatherU->main->temp;
-$temp_hum = $weatherU->main->humidity;
-$temp_press=$weatherU->main->pressure;
-$temp_wind=$weatherU->wind->speed;
-$temp_desc=$weatherU->weather[0]->description;
-$icon=$weatherU->weather[0]->icon.".png";
+var openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
+if (window.navigator && window.navigator.geolocation) {
+    window.navigator.geolocation.getCurrentPosition(function(position) {
+        $.getJSON(openWeatherMap, {
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+            units: 'metric',
+            lang: 'fr',
+            APPID: '8af0f894920fd7fcf2e0dc3b48605453'
+        }).done(function(weather) {
+            console.log(weather)
+            var town = weather.name;
+        var tempL = weather.main.temp;
+        var humL = weather.main.humidity;
+        var pressL = weather.main.pressure;
+        var speedL = weather.wind.speed;
+        var desc = weather.weather[0].description;
+        document.getElementById("weather").innerHTML = "Ville : " + town + "<br>" + " Conditions actuelles : " + desc + "<br>" + "Température : " + tempL + "°" + " Humidité : " + humL + "%" + "<br>" + "Pression : " + pressL + "°" + " Vent : " + speedL;
+    
+        })
+    })
+}
 
-$cityname = $weatherU->name;
 
-echo $cityname . "<br>";
+</script>
 
-echo "<img src='http://openweathermap.org/img/w/" . $icon ."'/ >" . $temp_desc . "<br>";
-echo "Température : " . $temp_temp . "°C" . " - Humidité : " . $temp_hum . "%" . "<br>";
-echo "Pression : " . $temp_press . "°" . " - Vent : " . $temp_wind ."<br>";
 
-?>
 
+<div id="weather">
 </div>
+</div>
+
 </div>

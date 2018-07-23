@@ -36,7 +36,7 @@
       <td><?php echo htmlspecialchars($data['todo']); ?></td>
       <td><?php echo $data['datetodo'] = "$day/$month/$year" . " - " . "$time"; ?></td>
       <td><a href="../index.php?action=viewEditTask&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
-      <td><a href="../index.php?action=deletePost&amp;id=<?php echo $data['id']; ?>">Supprimer</a></td>
+      <td><a href="../index.php?action=deleteTodo&amp;id=<?php echo $data['id']; ?>">Supprimer</a></td>
  </tr>
 
       <?php
