@@ -107,9 +107,10 @@ try {
             $infos = new TodoController();
             $infos->allTodo();
             $infos = new Controller();
-            $infos->rss();
+            // $allRss = $infos->rss();
 
             echo $twig->render('homeView.html.twig', array(
+                'allRss' => $infos->rss()
             ));
         } 
         
