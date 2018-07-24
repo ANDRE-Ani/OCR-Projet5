@@ -22,22 +22,16 @@ require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
 
-// Routes des actions et requêtes
 
 
 
-/* require_once 'twig/vendor/autoload.php';
+// Twig integration
+require_once 'twig/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem(templates);
 $twig = new Twig_Environment($loader);
-echo $twig->render('template.html.twig', array(
-    'name' => 'Patrice',
-    'title' => 'Ze Titre'
-)); */
 
 
-
-
-
+// Routes des actions et requêtes
 
 try {
     // page d'accueil
@@ -46,7 +40,9 @@ try {
             $infos = new Controller();
             $infos->rss();
             $infos->home();
-            
+
+            echo $twig->render('homeView.html.twig', array(
+            ));
         }
 
         // envoie vers la page d'accueil
@@ -54,28 +50,37 @@ try {
             $infos = new Controller();
             $infos->rss();
             $infos->home();
+
+            echo $twig->render('homeView.html.twig', array(
+            ));
         } 
         
         // go to mentions
         elseif ($_GET['action'] == 'legal') {
             $infos = new Controller();
             $infos->legalM();
+
+            echo $twig->render('legalView.html.twig', array(
+            ));
         }
 
         // go to about
         elseif ($_GET['action'] == 'about') {
             $infos = new Controller();
             $infos->aboutP();
+
+            echo $twig->render('aboutView.html.twig', array(
+            ));
         } 
 
-        // upload de fichiers
+        // upload file
         elseif ($_GET['action'] == 'upload') {
             $infos = new FileController();
             $infos->uploadF();
         } 
                
         
-        // suppression de fichiers
+        // delete file
         elseif ($_GET['action'] == 'deleteF') {     
         if (isset($_GET[$fichier]) && $_GET[$fichier] > 0) {
             var_dump($_GET[$fichier]);
@@ -88,10 +93,13 @@ try {
             }
         } 
         
-        // envoie vers la page d'accueil
+        // go to home
         elseif ($_GET['action'] == 'homePage') {
             $infos = new Controller();
             $infos->home();
+
+            echo $twig->render('homeView.html.twig', array(
+            ));
         } 
 
         // envoie vers la page d'informations
@@ -100,6 +108,9 @@ try {
             $infos->allTodo();
             $infos = new Controller();
             $infos->rss();
+
+            echo $twig->render('homeView.html.twig', array(
+            ));
         } 
         
 
@@ -118,7 +129,11 @@ try {
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
             $infos = new UserController();
             $infos->creationUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
-            } 
+            
+            echo $twig->render('loginCreateView.html.twig', array(
+            ));
+        
+        } 
             else {
                 throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
             }
@@ -175,25 +190,20 @@ try {
                 $infos = new Controller();
                 $infos = new UserController();
                 $infos->administration();
+
+                echo $twig->render('administrationView.html.twig', array(
+                ));
         }
         
         // envoie vers la page de connection
         elseif ($_GET['action'] == 'connection') {
             $infos = new UserController();
             $infos->connectionAdmin();
+
+            echo $twig->render('loginView.html.twig', array(
+            ));
         }
         
-
-
-// envoie vers la page de TEST
-elseif ($_GET['action'] == 'test') {
-    $infos = new UserController();
-    $infos->testT();
-}
-
-
-
-
         
         // deconnection
         elseif ($_GET['action'] == 'logout') {
@@ -211,12 +221,18 @@ elseif ($_GET['action'] == 'test') {
         elseif ($_GET['action'] == 'creationUser') {
             $infos = new UserController();
             $infos->createUserView();
+
+            echo $twig->render('loginCreateView.html.twig', array(
+            ));
         }
         
         // envoie vers la page gestion des utilisateurs
         elseif ($_GET['action'] == 'gestionU') {
             $infos = new UserController();
             $infos->allUsers();
+
+            echo $twig->render('allUsersView.html.twig', array(
+            ));
         }
         
         // supprimer un utilisateur
@@ -258,6 +274,9 @@ elseif ($_GET['action'] == 'test') {
     } else {
         $infos = new Controller();
         $infos->home();
+
+        echo $twig->render('loginView.html.twig', array(
+        ));
     }
 
 } catch (Exception $e) {

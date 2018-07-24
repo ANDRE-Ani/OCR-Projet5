@@ -29,7 +29,7 @@ function creationTodo($todo) {
 function allTodo() {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
-    require('view/homeView.php');
+    //require('view/homeView.php');
 }
 
 // page for editing a task

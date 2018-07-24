@@ -44,7 +44,7 @@ class UserController extends Controller
     public function connectionAdmin()
     {
         $UserManager = new UserManager();
-        require('view/loginView.php');
+        // require('view/loginView.php');
     }
     
     // création de compte
@@ -88,7 +88,7 @@ class UserController extends Controller
     {
         $UserManager = new UserManager();
         $users = $UserManager->getUsers();
-        require('view/allUsersView.php');
+        // require('view/allUsersView.php');
     }
     
     // supprime un utilisateur
@@ -128,25 +128,17 @@ class UserController extends Controller
     public function createUserView()
     {
         $UserManager = new UserManager();
-        require('view/loginCreateView.php');
+        // require('view/loginCreateView.php');
     }
     
     // envoie vers la page d'administration
     public function administration()
     {
         $UserManager = new UserManager();
-        require 'view/administrationView.php';
+        // require 'view/administrationView.php';
     }
     
     
-
-    // envoie vers la page de test
-    public function testT()
-    {
-        $UserController = new UserController();
-        require 'view/template.html.twig';
-    }
-
     
 
 }

@@ -15,19 +15,19 @@ class Controller
 // page d'accueil/accueil
     public function home()
     {
-        require 'view/loginView.php';
+        // require 'view/loginView.php';
     }
     
     // mentions legales
     public function legalM()
     {
-        require 'view/legalView.php';
+        // require 'view/legalView.php';
     }
 
     // about
     public function aboutP()
     {
-        require 'view/aboutView.php';
+        // require 'view/aboutView.php';
     }
 
     // page d'erreur
@@ -46,10 +46,11 @@ $rss_feed = simplexml_load_file(FLUX_RSS);
         foreach ($rss_feed->channel->item as $feed_item) {
             $datetime = date_create($item->pubDate);
             $date = date_format($datetime, 'd M Y, H\hi');
+            $titleF = $feed_item->title;
+            $descF = $feed_item->description;
             if ($i >= FLUX) {
                 break;
             }
-            // require 'homeView.php';
         }
     }
 }

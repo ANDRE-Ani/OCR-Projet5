@@ -19,6 +19,7 @@
 
 .header {
     width: 100%;
+    height: 130px;
     margin-right: auto;
     margin-left: auto;
     text-align: center;
@@ -92,13 +93,13 @@ td {
 /* title effect */
 
 .title {
-    margin-top: 60px;
+    margin-top: 25px;
 }
 
 .title h1 {
     font-family: 'Audiowide';
-    font-size: 5em;
-    height: 75px;
+    font-size: 3.5em;
+    height: 50px;
     -webkit-animation: floating-text 2s ease alternate infinite;
     -moz-animation: floating-text 2s ease alternate infinite;
     -ms-animation: floating-text 2s ease alternate infinite;
@@ -108,15 +109,10 @@ td {
 
 .title p {
     color: rgba(255, 255, 255, .5);
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     bottom: 10em;
     font-weight: 300;
-}
-
-.title a {
-    text-decoration: none;
-    color: #fff;
 }
 
 @-webkit-keyframes floating-text {
