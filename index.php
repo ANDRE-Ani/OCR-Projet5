@@ -105,13 +105,14 @@ try {
         // envoie vers la page d'informations
         elseif ($_GET['action'] == 'infos') {
             $infos = new TodoController();
-            $infos->allTodo();
-            $infos = new Controller();
-            // $allRss = $infos->rss();
 
             echo $twig->render('homeView.html.twig', array(
-                'allRss' => $infos->rss()
+                'allRss' => $infos->rss(),
+                'allCrypto' => $infos->bitcoin(),
+                'todoList' => $infos->allTodo()
             ));
+
+            
         } 
         
 

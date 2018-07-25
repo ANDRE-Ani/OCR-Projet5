@@ -29,6 +29,18 @@ function creationTodo($todo) {
 function allTodo() {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
+
+    while ($data = $tasks->fetch()) {
+        list($date, $time) = explode(" ", $data['datetodo']);
+        list($year, $month, $day) = explode("-", $date);
+        list($hour, $min, $sec) = explode(":", $time);
+
+      $idT = nl2br(htmlspecialchars($data['id']));
+      $todoT = htmlspecialchars($data['todo']);
+      $dateT = $data['datetodo'] = "$day/$month/$year" . " - " . "$time";
+      }
+
+      return $data;
     //require('view/homeView.php');
 }
 

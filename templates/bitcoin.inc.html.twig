@@ -1,0 +1,15 @@
+<div class="p-3 mb-2 bg-info text-white"><h5>Bitcoin</h5></div>
+<div class="fonct">
+
+<ul>
+{% for bitcoin in allCrypto %}
+
+    <li>Un euro vaut : {{ bitcoin.priceEUR }}</li><br>
+    <li>Un dollar vaut : {{ bitcoin.priceUSD }}</li><br>
+
+{% endfor %}
+</ul>
+
+</div>
+
+</div>

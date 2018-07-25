@@ -3,9 +3,10 @@
 
 <ul>
 {% for rss in allRss %}
-<li>Titre : <a href="{{ loop.index }} - {{ rss.link }}">{{ loop.index }} - {{ rss.title }}</a></li>
-    Date : {{ loop.index }} - {{ rss.date }}<br>
-    Description : {{ loop.index }} - {{ rss.description|raw }}
+
+<li>Titre : <a href="{{ rss.link }}">{{ rss.title }}</a></li>
+    Date : {{ rss.date }}<br>
+    Description : {{ rss.description|raw }}
     <br><br>
 {% endfor %}
 </ul>

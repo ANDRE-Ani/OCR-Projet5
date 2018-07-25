@@ -23,4 +23,3 @@
 
     define('SITE_RSS', 'TooLinux');
     define('FLUX_RSS' , 'https://www.toolinux.com/spip.php?page=backend');
-    define('FLUX', 5);

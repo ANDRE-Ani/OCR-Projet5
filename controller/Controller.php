@@ -42,8 +42,7 @@ function rss()
 {
 $rss_feed = simplexml_load_file(FLUX_RSS);
     if (!empty($rss_feed)) {
-        $i = 0;
-
+        
         $feed = array();
 
         foreach ($rss_feed->channel->item as $feed_item) {
@@ -54,19 +53,36 @@ $rss_feed = simplexml_load_file(FLUX_RSS);
             $item['link'] = $feed_item->link;
             $item['description'] = $feed_item->description;
 
-            if ($i >= 5) {
-                break;
+
+            if (strlen($item['description']) > 150) {
+                $stringCut = substr($item['description'], 0, 150);
+                $item['description'] = substr($stringCut, 0, strrpos($stringCut, ' ')).'...'; 
             }
 
             array_push($feed, $item);
-
-            
-
         }
-        
     }
     return $feed;
 }
+
+
+// get bitcoin informations
+function bitcoin() {
+    $api_url='https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=EUR,USD';
+    $cryptocurrency = json_decode(file_get_contents($api_url));
+    
+    $crypto = array();
+
+    foreach($cryptocurrency as $key => $value)
+    {
+        $value = array();
+        $value['priceUSD'] = (float) $cryptocurrency->$key->EUR;
+        $value['priceEUR'] = (float) $cryptocurrency->$key->USD;
+    
+        array_push($crypto, $value);
+    }
+    return $crypto;
+} 
 
 }
     
