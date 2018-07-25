@@ -8,6 +8,10 @@ use model\FrontManager;
 use model\UserManager;
 use model\Manager;
 
+// Twig init
+require_once('bootstrap.php');
+
+
 // Controler todolist
 
 class TodoController extends Controller
@@ -26,7 +30,7 @@ function creationTodo($todo) {
 }
 
 // todo list
-function allTodo() {
+function allTodo($twig) {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
 
@@ -41,8 +45,8 @@ function allTodo() {
       }
 
       echo $twig->render('homeView.html.twig', array(
-      'todoList' => $affectedLines
-       ));
+        'todoL' => $data,
+      ));
 
      // return $data;
     //require('view/homeView.php');

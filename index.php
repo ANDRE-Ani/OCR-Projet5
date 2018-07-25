@@ -80,8 +80,7 @@ try {
         // delete file
         elseif ($_GET['action'] == 'deleteF') {     
         if (isset($_GET[$fichier]) && $_GET[$fichier] > 0) {
-            var_dump($_GET[$fichier]);
-            die();
+            
             $infos = new FileController();
             $infos->deleteFile($fileD);
             }
@@ -102,11 +101,12 @@ try {
         // envoie vers la page d'informations
         elseif ($_GET['action'] == 'infos') {
             $infos = new TodoController();
-
+            $infos->rss();
             echo $twig->render('homeView.html.twig', array(
                 'allRss' => $infos->rss(),
                 'allCrypto' => $infos->bitcoin(),
-                'todoList' => $infos->allTodo()
+                
+                // 'todoList' => $infos->allTodo()
             )); 
         } 
         
@@ -189,6 +189,11 @@ try {
                 $infos->administration();
 
                 echo $twig->render('administrationView.html.twig', array(
+                    'allRss' => $infos->rss(),
+                    'allCrypto' => $infos->bitcoin(),
+                    //'todoList' => $infos->allTodo(),
+                    'infoAdm' => $infos->administration(),
+                    'sys' => php_uname(n)
                 ));
         }
         

@@ -6,6 +6,10 @@ use Exception;
 use model\UserManager;
 use model\TodoManager;
 
+// Twig init
+require_once('bootstrap.php');
+
+
 // Controler user
 
 class UserController extends Controller
@@ -135,6 +139,19 @@ class UserController extends Controller
     public function administration()
     {
         $UserManager = new UserManager();
+        
+        $infoSys = array();
+        $infoSys['sysT'] = php_uname(s);
+        $infoSys['host'] = php_uname(n);
+        $infoSys['arch'] = php_uname(m);
+        $infoSys['phpV'] = phpversion();
+        $infoSys['adminM'] = $_SERVER['SERVER_ADMIN'];
+        $infoSys['addServ'] =  $_SERVER['SERVER_ADDR'];
+        $infoSys['domain'] =  $_SERVER['HTTP_HOST'];
+
+        $system = php_uname(s);
+
+        return $infoSys;
         // require 'view/administrationView.php';
     }
     
