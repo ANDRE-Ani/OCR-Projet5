@@ -22,9 +22,6 @@ require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
 
-
-
-
 // Twig integration
 require_once 'twig/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem(templates);
@@ -110,9 +107,7 @@ try {
                 'allRss' => $infos->rss(),
                 'allCrypto' => $infos->bitcoin(),
                 'todoList' => $infos->allTodo()
-            ));
-
-            
+            )); 
         } 
         
 

@@ -19,11 +19,16 @@ public function writeTask($todo) {
     return $affectedLines;
 }
 
-// read all atsks
+// read all tasks
 public function getTasks() {
-    $db = $this->dbConnect();
+    /* $db = $this->dbConnect();
     $req = $db->query('SELECT * FROM todolist ORDER BY datetodo DESC');  
     $req->execute();
+    return $req; */
+    
+    $db = $this->dbConnect();
+    $req = $db->prepare('SELECT * FROM todolist ORDER BY datetodo DESC');
+    $affectedLines = $req->execute(array());
     return $req;
 }
 

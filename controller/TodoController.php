@@ -40,7 +40,11 @@ function allTodo() {
       $dateT = $data['datetodo'] = "$day/$month/$year" . " - " . "$time";
       }
 
-      return $data;
+      echo $twig->render('homeView.html.twig', array(
+      'todoList' => $affectedLines
+       ));
+
+     // return $data;
     //require('view/homeView.php');
 }
 
@@ -48,7 +52,7 @@ function allTodo() {
 public function viewEditTodo($todoId)
 {
     $TodoManager = new TodoManager();
-    $todoE = $TodoManager->getTodo($todoId);
+    $todoList = $TodoManager->getTodo($todoId);
     require('view/editTodoView.php');
 }
 
