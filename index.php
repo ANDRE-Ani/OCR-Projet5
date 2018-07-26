@@ -1,19 +1,14 @@
 <?php
 
+// Twig init
 require_once __DIR__ . '/vendor/autoload.php';
-
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader, array('debug' => true));
 $twig->addExtension(new Twig_Extension_Debug());
+$twig->addGlobal("login", $_SESSION);
 
 
-
-
-
-// Routeur de l'application
-
-// Redirige toutes les requêtes utilisateur vers les
-// bonnes pages et actions
+// Redirige les requêtes utilisateur vers les actions
 
 use controller\Controller;
 use controller\FileController;
@@ -31,45 +26,31 @@ require_once "model/Manager.php";
 require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
-// require_once('bootstrap.php');
  
 $controller = new controller();
-
-
-// Twig integration
-//require_once 'twig/vendor/autoload.php';
-//$loader = new Twig_Loader_Filesystem(templates);
-//$twig = new Twig_Environment($loader);
-
 
 // Routes des actions et requêtes
 
 try {
-    // page d'accueil
+    // home/login page
     if (isset($_GET['action'])) {
         if ($_GET['action'] == '') {
-            $infos = new Controller();
-            $infos->rss();
-            $infos->home($twig);
-
-            //echo $twig->render('homeView.html.twig', array(
-            //));
+            $controller->home($twig);
         }
 
-        // envoie vers la page d'accueil
+        // home/login page
         elseif ($_GET['action'] == '/') {
-            $infos = new Controller();
-            $infos->rss();
-            $infos->home($twig);
-
-            echo $twig->render('homeView.html.twig', array(
-            ));
+            $controller->home($twig);
         } 
         
-        // go to mentions
+        // home/login page
+        elseif ($_GET['action'] == 'homePage') {
+            $controller->home($twig);
+        }
+
+
+        // go to legal mentions
         elseif ($_GET['action'] == 'legal') {
-            /* $infos = new Controller();
-            $infos->legalM(); */
             $controller->legalM($twig);
         }
 
@@ -99,29 +80,15 @@ try {
             }
         } 
         
-        // go to home
-        elseif ($_GET['action'] == 'homePage') {
-            $infos = new Controller();
-            $infos->home($twig);
 
-            //echo $twig->render('homeView.html.twig', array(
-            //));
-        } 
-
-        // envoie vers la page d'informations
+        // main page/informations
         elseif ($_GET['action'] == 'infos') {
-            $infos = new TodoController();
-            $infos->rss();
-            /* echo $twig->render('homeView.html.twig', array(
-                'allRss' => $infos->rss(),
-                'allCrypto' => $infos->bitcoin(),
-                
-                'todoList' => $infos->allTodo()
-            )); */ 
+            $infos = new Controller();
+            $infos->rss($twig);
         } 
         
 
-        // connection à l'admin
+        // admin connection
         elseif ($_GET['action'] == 'logAdminB') {
             if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))) {
                 $infos = new UserController();
@@ -131,7 +98,7 @@ try {
             }
         }
         
-        // création de compte
+        // user creation
         elseif ($_GET['action'] == 'createUser') {
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
             $infos = new UserController();
@@ -147,7 +114,7 @@ try {
         }
     
 
-        // ajout tache todolist
+        // add todo
         elseif ($_GET['action'] == 'createTodo') {
             if (!empty(htmlspecialchars($_POST['todo']))) {
                 $infos = new TodoController();
@@ -157,11 +124,11 @@ try {
             }
          }
 
-         // page for editing a task
+         // page for task edition
         elseif ($_GET['action'] == 'viewEditTask') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new TodoController();
-                $infos->viewEditTodo($_GET['id']);
+                $infos->viewEditTodo($_GET['id'], $twig);
             } else {
                 throw new Exception('Aucun identifiant de tâche envoyé');
             }
@@ -196,24 +163,13 @@ try {
         elseif ($_GET['action'] == 'administration') {
                 $infos = new Controller();
                 $infos = new UserController();
-                $infos->administration();
-
-                /* echo $twig->render('administrationView.html.twig', array(
-                    'allRss' => $infos->rss(),
-                    'allCrypto' => $infos->bitcoin(),
-                    'todoList' => $infos->allTodo(),
-                    'infoAdm' => $infos->administration(),
-                    'sys' => php_uname(n)
-                )); */
+                $infos->administration($twig);
         }
         
         // envoie vers la page de connection
         elseif ($_GET['action'] == 'connection') {
             $infos = new UserController();
-            $infos->connectionAdmin();
-
-            //echo $twig->render('loginView.html.twig', array(
-            //));
+            $infos->connectionAdmin($twig);
         }
         
         
@@ -232,10 +188,7 @@ try {
         // envoie vers la page de création de compte
         elseif ($_GET['action'] == 'creationUser') {
             $infos = new UserController();
-            $infos->createUserView();
-
-            //echo $twig->render('loginCreateView.html.twig', array(
-            //));
+            $infos->createUserView($twig);
         }
         
         // envoie vers la page gestion des utilisateurs
@@ -284,11 +237,7 @@ try {
 
     // page d'accueil
     } else {
-        $infos = new Controller();
-        $infos->home();
-
-        //echo $twig->render('loginView.html.twig', array(
-        //));
+        $controller->home($twig);
     }
 
 } catch (Exception $e) {

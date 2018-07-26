@@ -6,16 +6,13 @@ use Exception;
 use model\UserManager;
 use model\TodoManager;
 
-// Twig init
-//require_once('bootstrap.php');
-
 
 // Controler user
 
 class UserController extends Controller
 {
 
-// connection à l'admin
+// admin connection
     public function logAdmin()
     {
         if (isset($_POST["login"]) && isset($_POST["pass"])) {
@@ -45,10 +42,9 @@ class UserController extends Controller
     }
 
     // envoie vers la page de connection pour l'admin
-    public function connectionAdmin()
+    public function connectionAdmin($twig)
     {
-        $UserManager = new UserManager();
-        // require('view/loginView.php');
+        echo $twig->render('loginView.html.twig');
     }
     
     // création de compte
@@ -129,29 +125,41 @@ class UserController extends Controller
     
     
     // envoie vers la page de création de compte
-    public function createUserView()
+    public function createUserView($twig)
     {
         $UserManager = new UserManager();
-        // require('view/loginCreateView.php');
+        echo $twig->render('loginCreateView.html.twig');
     }
     
     // envoie vers la page d'administration
-    public function administration()
+    public function administration($twig)
     {
         $UserManager = new UserManager();
-        
-        $infoSys['sysT'] = php_uname(s);
-        $infoSys['host'] = php_uname(n);
-        $infoSys['arch'] = php_uname(m);
-        $infoSys['phpV'] = phpversion();
-        $infoSys['adminM'] = $_SERVER['SERVER_ADMIN'];
-        $infoSys['addServ'] =  $_SERVER['SERVER_ADDR'];
-        $infoSys['domain'] =  $_SERVER['HTTP_HOST'];
 
         $system = php_uname(s);
+        $host = php_uname(n);
+        $arch = php_uname(m);
+        $phpversion  = phpversion();
+        $mailAdmin = $_SERVER['SERVER_ADMIN'];
+        $servAdd = $_SERVER['SERVER_ADDR'];
+        $servHost = $_SERVER['HTTP_HOST'];
+        $visitorLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
-        return $infoSys;
-        require 'view/administrationView.html.twig';
+        session_start();
+        $_SESSION['login'];
+
+        echo $twig->render('administrationView.html.twig', array(
+            'sys' => $system,
+            'host' => $host,
+            'arch' => $arch,
+            'php' => $phpversion,
+            'mail' => $mailAdmin,
+            'servAdd' => $servAdd,
+            'servHost' => $servHost,
+            'visitorLang' => $visitorLang,
+            'login' => $_SESSION
+
+        ));
     }
     
     

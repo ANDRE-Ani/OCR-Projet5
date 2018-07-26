@@ -8,9 +8,6 @@ use model\FrontManager;
 use model\UserManager;
 use model\Manager;
 
-// Twig init
-//require_once('bootstrap.php');
-
 
 // Controler todolist
 
@@ -53,11 +50,11 @@ function allTodo($twig) {
 }
 
 // page for editing a task
-public function viewEditTodo($todoId)
+public function viewEditTodo($todoId, $twig)
 {
     $TodoManager = new TodoManager();
     $todoList = $TodoManager->getTodo($todoId);
-    require('view/editTodoView.php');
+    require('view/editTodoView.html.twig');
 }
 
 // edit a task

@@ -2,7 +2,7 @@
 <div class="fonct">
 
 <ul>
-{% for rss in allRss %}
+{% for rss in feed %}
 
 <li>Titre : <a href="{{ rss.link }}">{{ rss.title }}</a></li>
     Date : {{ rss.date }}<br>

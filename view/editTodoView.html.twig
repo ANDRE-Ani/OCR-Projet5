@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block importJS %}
+{% endblock %}
+
+{% block title %}5Project - Editer une tâche{% endblock %}
+
+{% block body %}
+
+<main role="main" class="container-fluid">
+    
+<div class="formulaireEditTask">
+
+<form action="index.php?action=editTodo&id=<?php echo $todoE['id'] ?>" method="post">
+        <div class="form-group">
+            <p>Tâche : <input type="text" name="todo" value="<?php echo $todoE['todo']; ?>" /></p>
+            
+            </div>
+            <div class="form-check">
+            <p><input type="submit" value="Valider" /></p>
+            </div>
+        </form>
+</div>
+
+</main>
+
+{% block js %}
+    <script src="js/date.js"></script>
+    <script src="js/browser.js"></script>
+{% endblock %}
+
+  </div>
+  </div>
+    
+{% endblock %}

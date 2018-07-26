@@ -8,27 +8,20 @@ use model\TodoManager;
 use model\Manager;
 
 
-// Twig init
-// require_once('bootstrap.php');
-
 // Controler principal
 
 class Controller
 {
 
-// page d'accueil/accueil
+// home/connection
     public function home($twig)
     {
-        //require 'templates/loginView.html.twig';
-        echo $twig->render('loginView.html.twig', array(
-            
-        ));
+        echo $twig->render('loginView.html.twig');
     }
     
     // mentions legales
     public function legalM($twig)
     {
-        // require 'view/legalView.html.twig';
         echo $twig->render('legalView.html.twig');
     }
 
@@ -45,10 +38,10 @@ class Controller
     }
 
 
-// function RSS
-function rss()
+// RSS function
+function rss($twig)
 {
-$rss_feed = simplexml_load_file(FLUX_RSS);
+$rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend');
     if (!empty($rss_feed)) {
         $feed = array();
         foreach ($rss_feed->channel->item as $feed_item) {
@@ -66,7 +59,6 @@ $rss_feed = simplexml_load_file(FLUX_RSS);
             array_push($feed, $item);
         }
     }
-    // return $feed;
     echo $twig->render('homeView.html.twig', array(
         'rss' => $feed
     ));
