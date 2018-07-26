@@ -1,0 +1,7 @@
+{
+    "name": "projet5",
+    "description": "dernier projet",
+    "require": {
+        "twig/twig": "^2.0"
+    }
+}

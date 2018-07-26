@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+{% extends 'base.html.twig' %}
 
-  <title>{% block title %}5Project - Connexion{% endblock %}</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-</head>
-<body>
+{% block body %}
 
 <main role="main" class="container-fluid">
 
-{% include 'header.html.twig' %}
 
-<?php include 'config.php'; ?>
-    
-<main role="main" class="container-fluid">  
     
 <div class="formulaireLogin">
 
@@ -48,9 +31,8 @@
 </div>
 </div>
     
-    {% include 'footer.html.twig' %}
+    
 
     </main>
 
-</body>
-</html>
+{% endblock %}

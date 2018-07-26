@@ -1,5 +1,15 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+$loader = new Twig_Loader_Filesystem('templates');
+$twig = new Twig_Environment($loader, array('debug' => true));
+$twig->addExtension(new Twig_Extension_Debug());
+
+
+
+
+
 // Routeur de l'application
 
 // Redirige toutes les requêtes utilisateur vers les
@@ -21,6 +31,10 @@ require_once "model/Manager.php";
 require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
+// require_once('bootstrap.php');
+ 
+$controller = new controller();
+
 
 // Twig integration
 //require_once 'twig/vendor/autoload.php';
@@ -36,7 +50,7 @@ try {
         if ($_GET['action'] == '') {
             $infos = new Controller();
             $infos->rss();
-            $infos->home();
+            $infos->home($twig);
 
             //echo $twig->render('homeView.html.twig', array(
             //));
@@ -46,29 +60,25 @@ try {
         elseif ($_GET['action'] == '/') {
             $infos = new Controller();
             $infos->rss();
-            $infos->home();
+            $infos->home($twig);
 
-            //echo $twig->render('homeView.html.twig', array(
-            //));
+            echo $twig->render('homeView.html.twig', array(
+            ));
         } 
         
         // go to mentions
         elseif ($_GET['action'] == 'legal') {
-            $infos = new Controller();
-            $infos->legalM();
-
-            //echo $twig->render('legalView.html.twig', array(
-            //));
+            /* $infos = new Controller();
+            $infos->legalM(); */
+            $controller->legalM($twig);
         }
+
 
         // go to about
         elseif ($_GET['action'] == 'about') {
-            $infos = new Controller();
-            $infos->aboutP();
-
-            //echo $twig->render('aboutView.html.twig', array(
-            //));
+            $controller->aboutP($twig);
         } 
+
 
         // upload file
         elseif ($_GET['action'] == 'upload') {
@@ -92,7 +102,7 @@ try {
         // go to home
         elseif ($_GET['action'] == 'homePage') {
             $infos = new Controller();
-            $infos->home();
+            $infos->home($twig);
 
             //echo $twig->render('homeView.html.twig', array(
             //));

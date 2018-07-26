@@ -9,7 +9,7 @@ use model\Manager;
 
 
 // Twig init
-require_once('bootstrap.php');
+// require_once('bootstrap.php');
 
 // Controler principal
 
@@ -17,25 +17,25 @@ class Controller
 {
 
 // page d'accueil/accueil
-    public function home()
+    public function home($twig)
     {
-        require 'view/loginView.php';
-        //echo $twig->render('homeView.html.twig', array(
+        //require 'templates/loginView.html.twig';
+        echo $twig->render('loginView.html.twig', array(
             
-        //));
+        ));
     }
     
     // mentions legales
-    public function legalM()
+    public function legalM($twig)
     {
-        require 'view/legalView.html.twig';
-        
+        // require 'view/legalView.html.twig';
+        echo $twig->render('legalView.html.twig');
     }
 
     // about
-    public function aboutP()
+    public function aboutP($twig)
     {
-        require 'view/aboutView.html.twig';
+        echo $twig->render('aboutView.html.twig');
     }
 
     // page d'erreur
