@@ -23,9 +23,9 @@ require_once "model/TodoManager.php";
 
 
 // Twig integration
-require_once 'twig/vendor/autoload.php';
-$loader = new Twig_Loader_Filesystem(templates);
-$twig = new Twig_Environment($loader);
+//require_once 'twig/vendor/autoload.php';
+//$loader = new Twig_Loader_Filesystem(templates);
+//$twig = new Twig_Environment($loader);
 
 
 // Routes des actions et requêtes
@@ -38,8 +38,8 @@ try {
             $infos->rss();
             $infos->home();
 
-            echo $twig->render('homeView.html.twig', array(
-            ));
+            //echo $twig->render('homeView.html.twig', array(
+            //));
         }
 
         // envoie vers la page d'accueil
@@ -48,8 +48,8 @@ try {
             $infos->rss();
             $infos->home();
 
-            echo $twig->render('homeView.html.twig', array(
-            ));
+            //echo $twig->render('homeView.html.twig', array(
+            //));
         } 
         
         // go to mentions
@@ -57,8 +57,8 @@ try {
             $infos = new Controller();
             $infos->legalM();
 
-            echo $twig->render('legalView.html.twig', array(
-            ));
+            //echo $twig->render('legalView.html.twig', array(
+            //));
         }
 
         // go to about
@@ -66,8 +66,8 @@ try {
             $infos = new Controller();
             $infos->aboutP();
 
-            echo $twig->render('aboutView.html.twig', array(
-            ));
+            //echo $twig->render('aboutView.html.twig', array(
+            //));
         } 
 
         // upload file
@@ -94,20 +94,20 @@ try {
             $infos = new Controller();
             $infos->home();
 
-            echo $twig->render('homeView.html.twig', array(
-            ));
+            //echo $twig->render('homeView.html.twig', array(
+            //));
         } 
 
         // envoie vers la page d'informations
         elseif ($_GET['action'] == 'infos') {
             $infos = new TodoController();
             $infos->rss();
-            echo $twig->render('homeView.html.twig', array(
+            /* echo $twig->render('homeView.html.twig', array(
                 'allRss' => $infos->rss(),
                 'allCrypto' => $infos->bitcoin(),
                 
-                // 'todoList' => $infos->allTodo()
-            )); 
+                'todoList' => $infos->allTodo()
+            )); */ 
         } 
         
 
@@ -127,8 +127,8 @@ try {
             $infos = new UserController();
             $infos->creationUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
             
-            echo $twig->render('loginCreateView.html.twig', array(
-            ));
+            //echo $twig->render('loginCreateView.html.twig', array(
+            //));
         
         } 
             else {
@@ -188,13 +188,13 @@ try {
                 $infos = new UserController();
                 $infos->administration();
 
-                echo $twig->render('administrationView.html.twig', array(
+                /* echo $twig->render('administrationView.html.twig', array(
                     'allRss' => $infos->rss(),
                     'allCrypto' => $infos->bitcoin(),
-                    //'todoList' => $infos->allTodo(),
+                    'todoList' => $infos->allTodo(),
                     'infoAdm' => $infos->administration(),
                     'sys' => php_uname(n)
-                ));
+                )); */
         }
         
         // envoie vers la page de connection
@@ -202,8 +202,8 @@ try {
             $infos = new UserController();
             $infos->connectionAdmin();
 
-            echo $twig->render('loginView.html.twig', array(
-            ));
+            //echo $twig->render('loginView.html.twig', array(
+            //));
         }
         
         
@@ -224,8 +224,8 @@ try {
             $infos = new UserController();
             $infos->createUserView();
 
-            echo $twig->render('loginCreateView.html.twig', array(
-            ));
+            //echo $twig->render('loginCreateView.html.twig', array(
+            //));
         }
         
         // envoie vers la page gestion des utilisateurs
@@ -233,8 +233,8 @@ try {
             $infos = new UserController();
             $infos->allUsers();
 
-            echo $twig->render('allUsersView.html.twig', array(
-            ));
+            //echo $twig->render('allUsersView.html.twig', array(
+            //));
         }
         
         // supprimer un utilisateur
@@ -277,8 +277,8 @@ try {
         $infos = new Controller();
         $infos->home();
 
-        echo $twig->render('loginView.html.twig', array(
-        ));
+        //echo $twig->render('loginView.html.twig', array(
+        //));
     }
 
 } catch (Exception $e) {

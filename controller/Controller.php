@@ -19,19 +19,23 @@ class Controller
 // page d'accueil/accueil
     public function home()
     {
-        // require 'view/loginView.php';
+        require 'view/loginView.php';
+        //echo $twig->render('homeView.html.twig', array(
+            
+        //));
     }
     
     // mentions legales
     public function legalM()
     {
-        // require 'view/legalView.php';
+        require 'view/legalView.html.twig';
+        
     }
 
     // about
     public function aboutP()
     {
-        // require 'view/aboutView.php';
+        require 'view/aboutView.html.twig';
     }
 
     // page d'erreur
@@ -62,10 +66,10 @@ $rss_feed = simplexml_load_file(FLUX_RSS);
             array_push($feed, $item);
         }
     }
-    return $feed;
-    //echo $twig->render('homeView.html.twig', array(
-      //  'rss' => $feed,
-    //));
+    // return $feed;
+    echo $twig->render('homeView.html.twig', array(
+        'rss' => $feed
+    ));
 }
 
 
@@ -84,7 +88,10 @@ function bitcoin() {
     
         array_push($crypto, $value);
     }
-    return $crypto;
+    //return $crypto;
+    echo $twig->render('homeView.html.twig', array(
+        'allCrypto' => $infos->bitcoin()
+    ));
 } 
 
 }

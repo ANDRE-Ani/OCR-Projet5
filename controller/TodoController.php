@@ -9,7 +9,7 @@ use model\UserManager;
 use model\Manager;
 
 // Twig init
-require_once('bootstrap.php');
+//require_once('bootstrap.php');
 
 
 // Controler todolist

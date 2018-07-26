@@ -7,7 +7,7 @@ use model\UserManager;
 use model\TodoManager;
 
 // Twig init
-require_once('bootstrap.php');
+//require_once('bootstrap.php');
 
 
 // Controler user
@@ -140,7 +140,6 @@ class UserController extends Controller
     {
         $UserManager = new UserManager();
         
-        $infoSys = array();
         $infoSys['sysT'] = php_uname(s);
         $infoSys['host'] = php_uname(n);
         $infoSys['arch'] = php_uname(m);
@@ -152,7 +151,7 @@ class UserController extends Controller
         $system = php_uname(s);
 
         return $infoSys;
-        // require 'view/administrationView.php';
+        require 'view/administrationView.html.twig';
     }
     
     
