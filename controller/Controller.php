@@ -39,7 +39,7 @@ class Controller
 
 
 // RSS function
-function rss($twig)
+function rss()
 {
 $rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend');
     if (!empty($rss_feed)) {
@@ -59,32 +59,28 @@ $rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend'
             array_push($feed, $item);
         }
     }
-    echo $twig->render('homeView.html.twig', array(
-        'rss' => $feed
-    ));
+    //echo $twig->render('homeView.html.twig', array(
+    //    'rss' => $feed
+    //));
 }
 
 
 // get bitcoin informations
-function bitcoin() {
+function bitcoin($twig) {
     $api_url='https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=EUR,USD';
     $cryptocurrency = json_decode(file_get_contents($api_url));
-    
     $crypto = array();
-
     foreach($cryptocurrency as $key => $value)
     {
         $value = array();
         $value['priceUSD'] = (float) $cryptocurrency->$key->EUR;
         $value['priceEUR'] = (float) $cryptocurrency->$key->USD;
-    
         array_push($crypto, $value);
     }
-    //return $crypto;
     echo $twig->render('homeView.html.twig', array(
-        'allCrypto' => $infos->bitcoin()
+        'bitcoin' => $crypto
     ));
-} 
+}
 
 }
     

@@ -7,8 +7,8 @@ myPosition = document.getElementById("myPosition")
 function getCoords(position) {
     lat = position.coords.latitude
     lng = position.coords.longitude
-    pos = "Latitude : " + lat + "<br>";
-    pos += "Longitude: " + position.coords.longitude + "<br>";
+    pos = "- Latitude : " + lat + "<br>";
+    pos += "- Longitude: " + position.coords.longitude + "<br>";
     myPosition.innerHTML = pos;
     myPosition.className = "ok"
 

@@ -12,8 +12,17 @@ use model\TodoManager;
 class UserController extends Controller
 {
 
+
+    public function getGlobals() {
+        return array(
+            'session' => $_SESSION,
+            'cook' => $_COOKIE,
+        ) ;
+    }
+
+
 // admin connection
-    public function logAdmin()
+    public function logAdmin($twig)
     {
         if (isset($_POST["login"]) && isset($_POST["pass"])) {
             $UserManager = new UserManager();
@@ -30,7 +39,12 @@ class UserController extends Controller
                 setcookie($cookie_name, $cook, time() + 86400, "/", "p5ocr.andre-ani.fr", true, true);
                 $_SESSION['cook'] = $cook;
                 
-                header('Location: index.php?action=infos');
+                // header('Location: index.php?action=infos');
+                echo $twig->render('homeView.html.twig', array(
+                    'session' => $_SESSION,
+                    'cook' => $_COOKIE,
+                ));
+
             } else {
                 echo 'Login ou mot de passe incorrect';
                 echo '<br>';
@@ -50,7 +64,6 @@ class UserController extends Controller
     // création de compte
     public function creationUser($login, $mail, $pass)
     {
-
         $mail = $_POST['mail'];
         $pass = $_POST['pass'];
         $login = $_POST['login'];
@@ -59,18 +72,15 @@ class UserController extends Controller
         if (strlen($pass) < 8) {
             throw new Exception('Mot de passe trop court');
           }
-
           // mail verification
           $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
           if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Mail invalide');
           }
-
           // login with only letters
           if (!preg_match("/^[a-zA-Z ]*$/",$login)) {
             throw new Exception('Identifiant invalide');
             }
-
         $UserManager = new UserManager();
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
@@ -79,7 +89,6 @@ class UserController extends Controller
         } else {
             header('Location: index.php?action=administration');
         }
-
     }
     
 
@@ -133,7 +142,7 @@ class UserController extends Controller
     
     // envoie vers la page d'administration
     public function administration($twig)
-    {
+    {                
         $UserManager = new UserManager();
 
         $system = php_uname(s);
@@ -157,12 +166,11 @@ class UserController extends Controller
             'servAdd' => $servAdd,
             'servHost' => $servHost,
             'visitorLang' => $visitorLang,
-            'login' => $_SESSION
+            'session'   => $_SESSION,
 
         ));
+
     }
-    
-    
-    
+  
 
 }

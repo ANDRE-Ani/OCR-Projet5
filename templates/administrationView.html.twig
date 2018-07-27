@@ -13,11 +13,22 @@
   <div class="row">
     <div class="col-3">
       <div class="p-3 mb-2 bg-info text-white"><h2>Administration</h2></div>
-        <p><h4>Utilisateurs</h4></p>
-        <p><?php
-if (isset($_SESSION['login'])) {
-  echo 'Utilisateur : ' . $_SESSION['login'];
-}?></p>User : {{ login }} - {{ app.session.get('login') }}
+      <p><h4>Utilisateurs</h4></p>
+<p>
+{% if session.login is defined and session.login is not null%}
+Utilisateur : {{ session.login }}
+{% endif %}
+</p>
+
+
+<p>Test cookie :
+{{ session.cook }}
+{% if session.cook is defined and session.cook is not null %}
+  Y a un cookie.  {{ app.request.cookies.get('cook') }} 
+{% endif %}</p>
+
+
+
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
@@ -43,6 +54,10 @@ if (isset($_SESSION['login'])) {
     </div>
     </li>
     <li>Langue : {{ visitorLang }}</li>
+    <li>Position :<br>
+    <span id="myPosition">
+      </span>
+    </li>
     
 </ul>
     </div>
@@ -55,6 +70,7 @@ if (isset($_SESSION['login'])) {
 {% block js %}
     <script src="js/date.js"></script>
     <script src="js/browser.js"></script>
+    <script src="js/map.js"></script>
 {% endblock %}
 
   </div>

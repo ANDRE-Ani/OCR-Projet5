@@ -3,9 +3,14 @@
 // Twig init
 require_once __DIR__ . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
-$twig = new Twig_Environment($loader, array('debug' => true));
+$twig = new Twig_Environment($loader, array(
+    'debug' => true,
+    'globals' => array(
+        'session' => 'mon_user'),
+
+));
 $twig->addExtension(new Twig_Extension_Debug());
-$twig->addGlobal("login", $_SESSION);
+$twig->addGlobal("session", $_SESSION);
 
 
 // Redirige les requêtes utilisateur vers les actions
@@ -27,7 +32,7 @@ require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
  
-$controller = new controller();
+// $controller = new controller();
 
 // Routes des actions et requêtes
 
@@ -35,29 +40,34 @@ try {
     // home/login page
     if (isset($_GET['action'])) {
         if ($_GET['action'] == '') {
-            $controller->home($twig);
+            $infos = new Controller();
+            $infos->home($twig);
         }
 
         // home/login page
         elseif ($_GET['action'] == '/') {
-            $controller->home($twig);
+            $infos = new Controller();
+            $infos->home($twig);
         } 
         
         // home/login page
         elseif ($_GET['action'] == 'homePage') {
-            $controller->home($twig);
+            $infos = new Controller();
+            $infos->home($twig);
         }
 
 
         // go to legal mentions
         elseif ($_GET['action'] == 'legal') {
-            $controller->legalM($twig);
+            $infos = new Controller();
+            $infos->legalM($twig);
         }
 
 
         // go to about
         elseif ($_GET['action'] == 'about') {
-            $controller->aboutP($twig);
+            $infos = new Controller();
+            $infos->aboutP($twig);
         } 
 
 
@@ -84,7 +94,9 @@ try {
         // main page/informations
         elseif ($_GET['action'] == 'infos') {
             $infos = new Controller();
+            $infos = new UserController();
             $infos->rss($twig);
+            $infos->bitcoin($twig);
         } 
         
 
@@ -92,7 +104,7 @@ try {
         elseif ($_GET['action'] == 'logAdminB') {
             if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))) {
                 $infos = new UserController();
-                $infos->logAdmin();
+                $infos->logAdmin($twig);
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
@@ -237,7 +249,8 @@ try {
 
     // page d'accueil
     } else {
-        $controller->home($twig);
+        $infos = new Controller();
+        $infos->home($twig);
     }
 
 } catch (Exception $e) {

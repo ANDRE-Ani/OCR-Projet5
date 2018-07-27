@@ -24,6 +24,14 @@
   <div class="row">
   <div class="col">
 
+
+<p>
+<p>Test cookie :
+{{ app.request.cookies }}
+{% if app.request.cookies.has('cook') %}
+  Cookie 'cook' has been set.  {{ app.request.cookies.get('cook') }} 
+{% endif %}</p></p>
+
 <!-- weather fonct -->
     {% include 'weather.inc.html.twig' %}
 
@@ -65,7 +73,6 @@
 
 {% block js %}
     <script src="js/date.js"></script>
-    <script src="js/browser.js"></script>
     <script src="js/map.js"></script>
     <script src="js/weather.js"></script>
 {% endblock %}
