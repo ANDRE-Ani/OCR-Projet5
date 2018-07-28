@@ -60,7 +60,7 @@ $rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend'
         }
     }
     //echo $twig->render('homeView.html.twig', array(
-    //    'rss' => $feed
+    //   'rss' => $feed
     //));
 }
 

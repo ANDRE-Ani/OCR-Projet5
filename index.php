@@ -114,11 +114,8 @@ try {
         elseif ($_GET['action'] == 'createUser') {
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
             $infos = new UserController();
-            $infos->creationUser(htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
-            
-            //echo $twig->render('loginCreateView.html.twig', array(
-            //));
-        
+            $infos->creationUser($twig, htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
+                    
         } 
             else {
                 throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
@@ -206,10 +203,7 @@ try {
         // envoie vers la page gestion des utilisateurs
         elseif ($_GET['action'] == 'gestionU') {
             $infos = new UserController();
-            $infos->allUsers();
-
-            //echo $twig->render('allUsersView.html.twig', array(
-            //));
+            $infos->allUsers($twig);
         }
         
         // supprimer un utilisateur

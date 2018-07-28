@@ -62,7 +62,7 @@ class UserController extends Controller
     }
     
     // création de compte
-    public function creationUser($login, $mail, $pass)
+    public function creationUser($twig, $login, $mail, $pass)
     {
         $mail = $_POST['mail'];
         $pass = $_POST['pass'];
@@ -87,17 +87,46 @@ class UserController extends Controller
         if ($affectedLines === false) {
             throw new Exception('Impossible de créer le compte');
         } else {
-            header('Location: index.php?action=administration');
+            // header('Location: index.php?action=administration');
+
+        session_start();
+        $_SESSION['login'];
+
+        echo $twig->render('administrationView.html.twig', array(
+            'sys' => $system,
+            'host' => $host,
+            'arch' => $arch,
+            'php' => $phpversion,
+            'mail' => $mailAdmin,
+            'servAdd' => $servAdd,
+            'servHost' => $servHost,
+            'visitorLang' => $visitorLang,
+            'session'   => $_SESSION,
+
+        ));
+
+
+
+
+
+
         }
     }
     
 
     // affiche les utilisateurs
-    public function allUsers()
+    public function allUsers($twig)
     {
         $UserManager = new UserManager();
         $users = $UserManager->getUsers();
-        // require('view/allUsersView.php');
+        
+        session_start();
+        $_SESSION['login'];
+
+        echo $twig->render('allUsersView.html.twig', array(
+            'session'   => $_SESSION,
+
+        ));
     }
     
     // supprime un utilisateur
@@ -137,7 +166,15 @@ class UserController extends Controller
     public function createUserView($twig)
     {
         $UserManager = new UserManager();
-        echo $twig->render('loginCreateView.html.twig');
+        // echo $twig->render('loginCreateView.html.twig');
+
+        session_start();
+        $_SESSION['login'];
+
+        echo $twig->render('loginCreateView.html.twig', array(
+            'session' => $_SESSION,
+            'cook' => $_COOKIE,
+        ));
     }
     
     // envoie vers la page d'administration
