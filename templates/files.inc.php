@@ -1,4 +1,4 @@
-<div class="p-3 mb-2 bg-info text-white"><h5>Fichiers</h5></div>
+<div class="p-3 bg-info text-white"><h5>Fichiers</h5></div>
 <div class="fonct">
 
 <form enctype="multipart/form-data" action="?action=upload" method="post">

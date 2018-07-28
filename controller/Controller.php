@@ -7,6 +7,7 @@ use model\UserManager;
 use model\TodoManager;
 use model\Manager;
 
+require_once 'config.php';
 
 // Controler principal
 
@@ -59,9 +60,9 @@ $rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend'
             array_push($feed, $item);
         }
     }
-    //echo $twig->render('homeView.html.twig', array(
+    // echo $twig->render('homeView.html.twig', array(
     //   'rss' => $feed
-    //));
+    // ));
 }
 
 

@@ -5,14 +5,16 @@
 
 {% block title %}5Project - Administration{% endblock %}
 
-{% block body %}
+{% block content %}
 
 <main role="main" class="container-fluid">
 
   <div class=".container-fluid">
   <div class="row">
-    <div class="col-3">
-      <div class="p-3 mb-2 bg-info text-white"><h2>Administration</h2></div>
+ 
+      <div class="col-sm-4 p-3">
+      <div id="side">
+      <h2>Administration</h2>
       <p><h4>Utilisateurs</h4></p>
 <p>
 {% if session.login is defined and session.login is not null%}
@@ -20,22 +22,16 @@ Connecté : {{ session.login }}
 {% endif %}
 </p>
 
-
-<p>Test cookie :
-{{ session.cook }}
-{% if session.cook is defined and session.cook is not null %}
-  Y a un cookie.  {{ app.request.cookies.get('cook') }} 
-{% endif %}</p>
-
-
-
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
     </div>
+</div>
 
-    <div class="col-9">
-      <div class="p-3 mb-2 bg-info text-white"><h2>Informations</h2></div>
+
+      <div class="col-sm-8 p-3">
+      <div id="cont">
+      <h2>Informations</h2>
 
 <p><h4>Serveur</h4></p>
 <ul>
@@ -61,11 +57,8 @@ Connecté : {{ session.login }}
     
 </ul>
     </div>
-    
-   </div>
-   </div>
+    </div>
 
-</main>
 
 {% block js %}
     <script src="js/date.js"></script>
@@ -76,4 +69,6 @@ Connecté : {{ session.login }}
   </div>
   </div>
     
+  </main>
+
 {% endblock %}

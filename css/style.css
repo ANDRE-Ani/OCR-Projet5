@@ -4,9 +4,17 @@
     font-family: 'Ubuntu', sans-serif;
 }
 
-.body {
+#body {
     width: 100%;
     background: #f1f1f1;
+}
+
+#content {
+    display: flex;
+}
+
+#menu {
+    width: 100%;
 }
 
 .footer {
@@ -20,8 +28,6 @@
 .header {
     width: 100%;
     height: 130px;
-    margin-right: auto;
-    margin-left: auto;
     text-align: center;
     background-color: #7594ff;
     padding-top: 10px;
@@ -89,6 +95,28 @@ td {
     padding: 10px;
 }
 
+#side {
+    width: 100%;
+    background-color: #e3e3e3;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#cont {
+    width: 100%;
+    background-color: #e3e3e3;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#side h2 {
+    background-color: #b4c5ff;
+}
+
+#cont h2 {
+    background-color: #b4c5ff;
+}
+
 
 /* title effect */
 
@@ -109,7 +137,6 @@ td {
 
 .title p {
     color: rgba(255, 255, 255, .5);
-    /* position: absolute; */
     width: 100%;
     bottom: 10em;
     font-weight: 300;
@@ -162,5 +189,26 @@ td {
     }
     100% {
         text-shadow: 0 0 .5em rgba(255, 255, 255, .4), 0 0 .2em rgba(0, 0, 0, .3), 0 .5em .5em rgba(0, 0, 0, .3);
+    }
+}
+
+
+/* Responsive display */
+
+@media screen and (max-width: 700px) {
+    #content {
+        flex-direction: row;
+    }
+    #side h2 {
+        font-size: 1.2em;
+    }
+    #side h4 {
+        font-size: 1em;
+    }
+    #cont h2 {
+        font-size: 1.2em;
+    }
+    #cont h4 {
+        font-size: 1em;
     }
 }

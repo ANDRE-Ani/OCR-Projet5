@@ -15,53 +15,50 @@
 
 {% block title %}5Project - Votre portail web personnel{% endblock %}
 
-{% block body %}
+{% block content %}
 
 <main role="main" class="container-fluid">
 
 <div class=".container-fluid">
   <div class="row">
-  <div class="col">
 
 
+  <div class="col-sm p-3">
 <!-- weather fonct -->
     {% include 'weather.inc.html.twig' %}
 
-  <div class="col">
 
+  <div class="col-sm p-3">
 <!-- bitcoin fonct -->
 {% include 'bitcoin.inc.html.twig' %}
 
 
   <div class="w-100"></div>
-  <div class="col">
 
+  <div class="col-sm p-3">
     <!-- rss fonct -->
     {% include 'rss.inc.html.twig' %}
 
 
-  <div class="col">
-
+  <div class="col-sm p-3">
     <!-- todo fonct -->
     {% include 'todo.inc.html.twig' %}
 
 
   <div class="w-100"></div>
-  <div class="col">
 
+  <div class="col-sm p-3">
     <!-- map fonct -->
     {% include 'map.inc.html.twig' %}
 
 
-  <div class="col">
-
+  <div class="col-sm p-3">
     <!-- files fonct -->
     {% include 'files.inc.php' %}
 
    </div>
    </div>
-   
-</main>
+
 
 {% block js %}
     <script src="js/date.js"></script>
@@ -71,5 +68,7 @@
 
   </div>
   </div>
+
+  </main>
     
 {% endblock %}

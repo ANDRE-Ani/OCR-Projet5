@@ -185,12 +185,11 @@ try {
         // deconnection
         elseif ($_GET['action'] == 'logout') {
             $infos = new UserController();
-            $infos->connectionAdmin();
+            $infos->connectionAdmin($twig);
             session_start();
             session_unset();
             session_destroy();
             setcookie('admin', '', time());
-            header('Location: index.php');
         }
         
         
