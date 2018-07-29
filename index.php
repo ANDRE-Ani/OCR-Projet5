@@ -13,6 +13,10 @@ $twig->addExtension(new Twig_Extension_Debug());
 $twig->addGlobal("session", $_SESSION);
 
 
+// autoloader
+require_once("autoloader.php");
+
+
 // Redirige les requêtes utilisateur vers les actions
 
 use controller\Controller;
@@ -21,10 +25,10 @@ use controller\UserController;
 use controller\TodoController;
 
 // Appel des différents controlers
-require_once './controller/Controller.php';
-require_once './controller/UserController.php';
-require_once './controller/FileController.php';
-require_once './controller/TodoController.php';
+//require_once './controller/Controller.php';
+//require_once './controller/UserController.php';
+//require_once './controller/FileController.php';
+//require_once './controller/TodoController.php';
 
 // appel des model
 require_once "model/Manager.php";
