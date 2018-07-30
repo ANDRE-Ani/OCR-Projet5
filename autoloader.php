@@ -1,5 +1,7 @@
 <?php
 
+// autoloader for load all the different classes
+
 namespace controller;
 
 spl_autoload_register(function($class) {

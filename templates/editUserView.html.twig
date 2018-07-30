@@ -1,6 +1,13 @@
-<?php $titre = SITE_NAME . ' - Editer un utilisateur'; ?>
+{% extends 'base.html.twig' %}
 
-<?php ob_start(); ?> 
+{% block importJS %}
+{% endblock %}
+
+{% block title %}5Project - Editer un utilisateur{% endblock %}
+
+{% block body %}
+
+<main role="main" class="container-fluid">
    <div id="admin">
      
    <div class="envoie">
@@ -16,6 +23,14 @@
 
 </div>
 
- <?php $contenu = ob_get_clean(); ?>
+</main>
 
-<?php require 'templates/backTemplate.php'; ?>
+{% block js %}
+    <script src="js/date.js"></script>
+    <script src="js/browser.js"></script>
+{% endblock %}
+
+  </div>
+  </div>
+    
+{% endblock %}

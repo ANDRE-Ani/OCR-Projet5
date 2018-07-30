@@ -1,12 +1,12 @@
-<div class="p-3 bg-info text-white"><h5>Flux RSS : <?php echo SITE_RSS ?></h5></div>
+<div class="p-3 bg-info text-white"><h5>Flux RSS</h5></div>
 <div class="fonct">
 
 <ul>
-{% for rss in feed %}
+{% for feed in rss %}
 
-<li>Titre : <a href="{{ rss.link }}">{{ rss.title }}</a></li>
-    Date : {{ rss.date }}<br>
-    Description : {{ rss.description|raw }}
+<li>Titre : <a href="{{ feed.link }}">{{ feed.title }}</a></li>
+    Date : {{ feed.date }}<br>
+    Description : {{ feed.description|raw }}
     <br><br>
 {% endfor %}
 </ul>

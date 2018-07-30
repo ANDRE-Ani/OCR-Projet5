@@ -42,7 +42,8 @@ class Controller
 // RSS function
 function rss()
 {
-$rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend');
+// https://www.toolinux.com/spip.php?page=backend
+$rss_feed = simplexml_load_file(FLUX_RSS);
     if (!empty($rss_feed)) {
         $feed = array();
         foreach ($rss_feed->channel->item as $feed_item) {
@@ -61,7 +62,7 @@ $rss_feed = simplexml_load_file('https://www.toolinux.com/spip.php?page=backend'
         }
     }
     // echo $twig->render('homeView.html.twig', array(
-    //   'rss' => $feed
+    //  'rss' => $feed
     // ));
 }
 
@@ -79,8 +80,8 @@ function bitcoin($twig) {
         array_push($crypto, $value);
     }
     echo $twig->render('homeView.html.twig', array(
-        'bitcoin' => $crypto
-    ));
+         'bitcoin' => $crypto
+     ));
 }
 
 }

@@ -10,7 +10,10 @@ $twig = new Twig_Environment($loader, array(
 
 ));
 $twig->addExtension(new Twig_Extension_Debug());
+$twig->addExtension(new Twig_Extensions_Extension_I18n());
 $twig->addGlobal("session", $_SESSION);
+$twig->addGlobal("site_name", '5Project');
+$twig->addGlobal("site_author", 'Patrice Andreani');
 
 
 // autoloader

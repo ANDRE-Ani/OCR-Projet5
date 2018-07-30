@@ -2,10 +2,10 @@
 <div class="fonct">
 
 <ul>
-{% for bitcoin in allCrypto %}
+{% for crypto in bitcoin %}
 
-    <li>Un euro vaut : {{ bitcoin.priceEUR }}</li><br>
-    <li>Un dollar vaut : {{ bitcoin.priceUSD }}</li><br>
+    <li>Un euro vaut : {{ crypto.priceEUR }}</li><br>
+    <li>Un dollar vaut : {{ crypto.priceUSD }}</li><br>
 
 {% endfor %}
 </ul>
