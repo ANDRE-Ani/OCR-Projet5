@@ -13,12 +13,12 @@ class UserController extends Controller
 {
 
 
-    public function getGlobals() {
+    /* public function getGlobals() {
         return array(
             'session' => $_SESSION,
             'cook' => $_COOKIE,
         ) ;
-    }
+    } */
 
 
 // admin connection
@@ -39,7 +39,6 @@ class UserController extends Controller
                 setcookie($cookie_name, $cook, time() + 86400, "/", "p5ocr.andre-ani.fr", true, true);
                 $_SESSION['cook'] = $cook;
                 
-                // header('Location: index.php?action=infos');
                 echo $twig->render('homeView.html.twig', array(
                     'session' => $_SESSION,
                     'cook' => $_COOKIE,
@@ -55,13 +54,14 @@ class UserController extends Controller
         }
     }
 
-    // envoie vers la page de connection pour l'admin
+    // go to admin connection
     public function connectionAdmin($twig)
     {
         echo $twig->render('loginView.html.twig');
     }
     
-    // création de compte
+
+    // user creation
     public function creationUser($twig, $login, $mail, $pass)
     {
         $mail = $_POST['mail'];
@@ -102,14 +102,12 @@ class UserController extends Controller
             'servHost' => $servHost,
             'visitorLang' => $visitorLang,
             'session'   => $_SESSION,
-
         ));
-
         }
     }
     
 
-    // affiche les utilisateurs
+    // list the users
     public function allUsers($twig)
     {
         $UserManager = new UserManager();
@@ -124,7 +122,8 @@ class UserController extends Controller
         ));
     }
     
-    // supprime un utilisateur
+
+    // delete a user
     public function suprUser()
     {
         $UserManager = new UserManager();
@@ -136,7 +135,8 @@ class UserController extends Controller
         }
     }
     
-    // envoie vers la page d'édition d'un utilisateur
+
+    // go to edition user view
     public function viewEditUserB($userId)
     {
         $UserManager = new UserManager();
@@ -144,7 +144,8 @@ class UserController extends Controller
         require('view/editUserView.php');
     }
     
-    // édition d'un utilisateur
+
+    // edition user
     public function editUserBack($login, $mail, $id)
     {
         $UserManager = new UserManager();
@@ -157,11 +158,10 @@ class UserController extends Controller
     }
     
     
-    // envoie vers la page de création de compte
+    // go to creation user
     public function createUserView($twig)
     {
         $UserManager = new UserManager();
-        // echo $twig->render('loginCreateView.html.twig');
 
         session_start();
         $_SESSION['login'];
@@ -172,7 +172,8 @@ class UserController extends Controller
         ));
     }
     
-    // envoie vers la page d'administration
+
+    // go to admin
     public function administration($twig)
     {                
         $UserManager = new UserManager();

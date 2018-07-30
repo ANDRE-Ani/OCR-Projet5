@@ -31,18 +31,22 @@ function allTodo($twig) {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
 
+    $todo = array();
     while ($data = $tasks->fetch()) {
+        $task = array();
         list($date, $time) = explode(" ", $data['datetodo']);
         list($year, $month, $day) = explode("-", $date);
         list($hour, $min, $sec) = explode(":", $time);
 
-      $idT = nl2br(htmlspecialchars($data['id']));
-      $todoT = htmlspecialchars($data['todo']);
-      $dateT = $data['datetodo'] = "$day/$month/$year" . " - " . "$time";
-      }
+      $task['idT'] = nl2br(htmlspecialchars($data['id']));
+      $task['todoT'] = htmlspecialchars($data['todo']);
+      $task['dateT'] = $data['datetodo'] = "$day/$month/$year" . " - " . "$time";
+      
+      array_push($todo, $task);
+    }
 
       echo $twig->render('homeView.html.twig', array(
-        'todoL' => $data,
+        'todoL' => $todo,
       ));
 
      // return $data;
@@ -54,7 +58,11 @@ public function viewEditTodo($todoId, $twig)
 {
     $TodoManager = new TodoManager();
     $todoList = $TodoManager->getTodo($todoId);
-    require('view/editTodoView.html.twig');
+
+    echo $twig->render('editTodoView.html.twig', array(
+        'todoL' => $todo,
+        'todoEd' => $todoList,
+      ));
 }
 
 // edit a task
@@ -70,10 +78,10 @@ public function editTodoBack($todo, $id)
 }
 
 // delete a task
-public function suprTodo()
+public function suprTodo($id)
 {
     $TodoManager = new TodoManager();
-    $affectedLines = $TodoManager->deleteTodo();
+    $affectedLines = $TodoManager->deleteTodo($id);
     if ($affectedLines === false) {
         throw new Exception('Impossible de supprimer la tache');
     } else {

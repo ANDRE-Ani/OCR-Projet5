@@ -5,35 +5,17 @@ require_once __DIR__ . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader, array(
     'debug' => true,
-    'globals' => array(
-        'session' => 'mon_user'),
+    //'globals' => array(
+    //    'session' => 'mon_user'),
 
 ));
 $twig->addExtension(new Twig_Extension_Debug());
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
-$twig->addGlobal("session", $_SESSION);
+//$twig->addGlobal("session", $_SESSION);
 $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
 
-// languages
-/* $availableLanguages = array(
-    'fr' => 'fr_FR',
-    'en' => 'en_US',
-    'default' => 'en_US'
-);
-$locale = array_key_exists($_GET['lang'], $availableLanguages) ? $availableLanguages[$_GET['lang']] : $availableLanguages['default'];
-putenv('LC_ALL='.$locale);
-setlocale(LC_ALL, $locale);
-bindtextdomain('5Project', '/includes/locale/');
-bind_textdomain_codeset('5Project', 'UTF-8');
-textdomain('5Project'); */
-
-putenv('LC_ALL=en_US');
-setlocale(LC_ALL, 'en_US');
-bindtextdomain('5Project', '/includes/locale/');
-bind_textdomain_codeset('5Project', 'UTF-8');
-textdomain('5Project');
 
 
 
@@ -124,15 +106,18 @@ try {
 
         // main page/informations
         elseif ($_GET['action'] == 'infos') {
+            
             $infos = new Controller();
             $infos = new UserController();
+            $infos = new TodoController();
             $infos->rss($twig);
             $infos->bitcoin($twig);
-        } 
-        
+            $infos->allTodo($twig);
+    }
 
         // admin connection
         elseif ($_GET['action'] == 'logAdminB') {
+            session_start();
             if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))) {
                 $infos = new UserController();
                 $infos->logAdmin($twig);
@@ -192,7 +177,7 @@ try {
         elseif ($_GET['action'] == 'deleteTodo') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new TodoController();
-                $infos->suprTodo();
+                $infos->suprTodo($_GET['id']);
             } else {
                 throw new Exception('Aucun identifiant de toto');
             }
@@ -201,9 +186,34 @@ try {
         
         // envoie vers la page d'administration
         elseif ($_GET['action'] == 'administration') {
+            
+            var_dump($_COOKIE['cook']);
+            var_dump($_SESSION['cook']);
+            //die();
+
+            session_start();
+            if ((isset($_COOKIE['cook']) && !empty($_COOKIE['cook'])) && (isset($_SESSION['cook']) && !empty($_SESSION['cook']))) {
+
+            $cook = session_id().microtime().rand(0,9999999999);
+            $cook = hash('sha512', $cook);
+            $_COOKIE['cook'] = $cook;
+            $_SESSION['cook'] = $cook;
+
                 $infos = new Controller();
                 $infos = new UserController();
                 $infos->administration($twig);
+
+
+            }
+            else {
+                $_SESSION = array();
+                session_destroy();
+                header('Location: index.php?action=connection');
+            }
+
+
+
+
         }
         
         // envoie vers la page de connection
@@ -220,7 +230,7 @@ try {
             session_start();
             session_unset();
             session_destroy();
-            setcookie('admin', '', time());
+            setcookie('cook', '', time()-42000);
         }
         
         

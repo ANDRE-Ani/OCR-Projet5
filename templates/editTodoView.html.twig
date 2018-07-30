@@ -3,17 +3,17 @@
 {% block importJS %}
 {% endblock %}
 
-{% block title %}5Project - Editer une t‚che{% endblock %}
+{% block title %}5Project - Editer une t√¢che{% endblock %}
 
-{% block body %}
+{% block content %}
 
 <main role="main" class="container-fluid">
     
 <div class="formulaireEditTask">
 
-<form action="index.php?action=editTodo&id=<?php echo $todoE['id'] ?>" method="post">
+<form action="index.php?action=editTodo&amp;id={{ todoEd['id'] }}" method="post">
         <div class="form-group">
-            <p>T‚che : <input type="text" name="todo" value="<?php echo $todoE['todo']; ?>" /></p>
+            <p>T√¢che : <input type="text" name="todo" value="{{ todoEd['todo'] }}" /></p>
             
             </div>
             <div class="form-check">

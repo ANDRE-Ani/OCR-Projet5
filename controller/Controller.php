@@ -63,12 +63,12 @@ $rss_feed = simplexml_load_file(FLUX_RSS);
     }
     // echo $twig->render('homeView.html.twig', array(
     //  'rss' => $feed
-    // ));
+    //));
 }
 
 
 // get bitcoin informations
-function bitcoin($twig) {
+function bitcoin() {
     $api_url='https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=EUR,USD';
     $cryptocurrency = json_decode(file_get_contents($api_url));
     $crypto = array();
@@ -79,9 +79,9 @@ function bitcoin($twig) {
         $value['priceEUR'] = (float) $cryptocurrency->$key->USD;
         array_push($crypto, $value);
     }
-    echo $twig->render('homeView.html.twig', array(
-         'bitcoin' => $crypto
-     ));
+    // echo $twig->render('homeView.html.twig', array(
+    //     'bitcoin' => $crypto
+    // ));
 }
 
 }
