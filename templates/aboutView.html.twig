@@ -10,11 +10,13 @@
 
   <div class="about">
 
-<h2>A propos de 5Project</h2>
+{% trans "C'est un texte à traduire" %}
+
+<h2>{% trans %}A propos de 5Project {% endtrans %}</h2>
 <br>
 <h3>Usage</h3>
-<p><strong>5Project</strong> est un portail web personnel permettant à un utilisateur d'accéder à diverses informations.
-Il utilise majoritairement des services libres et permet donc à l'utilisateur un contrôle total de ses données personnelles.</p>
+<p>{% trans %}<strong>5Project</strong> est un portail web personnel permettant à un utilisateur d'accéder à diverses informations.
+Il utilise majoritairement des services libres et permet donc à l'utilisateur un contrôle total de ses données personnelles.{% endtrans %}</p>
 <br>
 <h3>Technique</h3>
 <p>Techniquement, il est construit en HTML, CSS, JS, PHP et utilise le framework CSS Bootstrap. Il nécessite une base de données MySQL.

@@ -16,11 +16,35 @@ $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
 
+// languages
+/* $availableLanguages = array(
+    'fr' => 'fr_FR',
+    'en' => 'en_US',
+    'default' => 'en_US'
+);
+$locale = array_key_exists($_GET['lang'], $availableLanguages) ? $availableLanguages[$_GET['lang']] : $availableLanguages['default'];
+putenv('LC_ALL='.$locale);
+setlocale(LC_ALL, $locale);
+bindtextdomain('5Project', '/includes/locale/');
+bind_textdomain_codeset('5Project', 'UTF-8');
+textdomain('5Project'); */
+
+putenv('LC_ALL=en_US');
+setlocale(LC_ALL, 'en_US');
+bindtextdomain('5Project', '/includes/locale/');
+bind_textdomain_codeset('5Project', 'UTF-8');
+textdomain('5Project');
+
+
+
+
+
+
 // autoloader
 require_once("autoloader.php");
 
 
-// Redirige les requêtes utilisateur vers les actions
+// Use of needed controller
 
 use controller\Controller;
 use controller\FileController;
@@ -33,7 +57,7 @@ use controller\TodoController;
 //require_once './controller/FileController.php';
 //require_once './controller/TodoController.php';
 
-// appel des model
+// call to models
 require_once "model/Manager.php";
 require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
@@ -41,7 +65,7 @@ require_once "model/TodoManager.php";
  
 // $controller = new controller();
 
-// Routes des actions et requêtes
+// routing for actions
 
 try {
     // home/login page
