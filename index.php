@@ -92,16 +92,11 @@ try {
                
         
         // delete file
-        elseif ($_GET['action'] == 'deleteF') {     
-        if (isset($_GET[$fichier]) && $_GET[$fichier] > 0) {
-            
+        elseif ($_GET['action'] == 'deleteF') {
+            $fichier = $_GET['file'];
             $infos = new FileController();
-            $infos->deleteFile($fileD);
+            $infos->deleteFile($fichier);
             }
-            else {
-            echo 'error fichier';
-            }
-        } 
         
 
         // main page/informations
@@ -110,9 +105,11 @@ try {
             $infos = new Controller();
             $infos = new UserController();
             $infos = new TodoController();
+            $infos = new FileController();
             $infos->rss($twig);
             $infos->bitcoin($twig);
-            $infos->allTodo($twig);
+            //$infos->allTodo($twig);
+            $infos->listFile($twig);
     }
 
         // admin connection

@@ -51,6 +51,20 @@
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
+.fileUp {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.fileList {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+tr:hover {
+    background-color: #bfdfff;
+}
+
 .task {
     background-color: #e8e8e8;
     padding: 5px;

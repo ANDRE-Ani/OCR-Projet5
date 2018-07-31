@@ -45,7 +45,7 @@ function allTodo($twig) {
       array_push($todo, $task);
     }
 
-      echo $twig->render('homeView.html.twig', array(
+       echo $twig->render('homeView.html.twig', array(
         'todoL' => $todo,
       ));
 

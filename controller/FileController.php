@@ -3,9 +3,10 @@
 namespace controller;
 
 use Exception;
-use model\FrontManager;
-use model\UserManager;
+use DirectoryIterator;
 use model\TodoManager;
+use model\UserManager;
+use model\FrontManager;
 
 
 // Controler file
@@ -46,12 +47,39 @@ public function uploadF() {
 
 }
 
+// list all files
+public function listFile($twig) {
 
-public function deleteFile($fileD) {
+    $dir_path = UPLOAD_DIR;
+    $filesAll = array();
+    foreach (new \DirectoryIterator($dir_path) as $file) {
+        if (preg_match('#\.(txt|pdf|jpg|jpeg|png|gif)$#i', $file->getFilename())) {
+            $list = array();
+            $list['path'] = $file->getPathname();
+            $list['name'] = $file->getFilename();
+            $list['size'] = $file->getSize();
+
+            array_push($filesAll, $list);
+        }
+    }
+    echo $twig->render('homeView.html.twig', array(
+        'fileL' => $filesAll,
+      ));
+           
+
+}
+
+
+public function deleteFile($fichier) {
     
-     (unlink('uploads/'.$fileD));
+    if (file_exists($fichier)) {
+        unlink($fichier);
+        header('Location: index.php?action=infos');
+      } else {
+        echo 'Could not delete '.$fichier.', file does not exist';
+      }
 
-     header('Location: index.php?action=infos');
+    
 }
 
 
