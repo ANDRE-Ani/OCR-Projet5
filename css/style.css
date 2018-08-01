@@ -91,21 +91,37 @@ tr:hover {
     border-radius: 10px;
 }
 
+.error {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #b4c5ff;
+}
+
 .footer a {
     color: #212529;
     text-decoration: underline;
 }
 
 .formulaireLogin {
-    width: 65%;
-    height: 250px;
-    padding: 10px;
+    width: 75%;
+    height: 280px;
+    padding: 20px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
     background-color: #b4c5ff;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.formulaireCreation {
+    width: 75%;
+    border-radius: 10px;
+    background-color: #b4c5ff;
+    padding: 20px;
 }
 
 #map {

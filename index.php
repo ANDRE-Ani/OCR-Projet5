@@ -16,28 +16,16 @@ $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
 
-
-
-
-
-
-
 // autoloader
 require_once("autoloader.php");
 
 
 // Use of needed controller
-
 use controller\Controller;
 use controller\FileController;
 use controller\UserController;
 use controller\TodoController;
 
-// Appel des différents controlers
-//require_once './controller/Controller.php';
-//require_once './controller/UserController.php';
-//require_once './controller/FileController.php';
-//require_once './controller/TodoController.php';
 
 // call to models
 require_once "model/Manager.php";
@@ -72,20 +60,27 @@ try {
 
         // go to legal mentions
         elseif ($_GET['action'] == 'legal') {
+            session_start();
             $infos = new Controller();
             $infos->legalM($twig);
+
+        
         }
 
 
         // go to about
         elseif ($_GET['action'] == 'about') {
+            session_start();
             $infos = new Controller();
             $infos->aboutP($twig);
+
+
         } 
 
 
         // upload file
         elseif ($_GET['action'] == 'upload') {
+            session_start();
             $infos = new FileController();
             $infos->uploadF();
         } 
@@ -93,6 +88,7 @@ try {
         
         // delete file
         elseif ($_GET['action'] == 'deleteF') {
+            session_start();
             $fichier = $_GET['file'];
             $infos = new FileController();
             $infos->deleteFile($fichier);
@@ -101,15 +97,30 @@ try {
 
         // main page/informations
         elseif ($_GET['action'] == 'infos') {
-            
+            session_start();
+            /* session_start();
+            if ($_COOKIE['cook'] == $_SESSION['cook']) {
+            $cook = session_id().microtime().rand(0,9999999999);
+            $cook = hash('sha512', $cook);
+            $_COOKIE['cook'] = $cook;
+            $_SESSION['cook'] = $cook; */
+
             $infos = new Controller();
             $infos = new UserController();
             $infos = new TodoController();
             $infos = new FileController();
-            $infos->rss($twig);
-            $infos->bitcoin($twig);
+            //$infos->rss($twig);
+            // $infos->bitcoin($twig);
             //$infos->allTodo($twig);
             $infos->listFile($twig);
+
+        /* }
+        else {
+            $_SESSION = array();
+            session_destroy();
+            header('Location: index.php?action=connection');
+        } */
+
     }
 
         // admin connection
@@ -125,6 +136,7 @@ try {
         
         // user creation
         elseif ($_GET['action'] == 'createUser') {
+            session_start();
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
             $infos = new UserController();
             $infos->creationUser($twig, htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
@@ -138,6 +150,7 @@ try {
 
         // add todo
         elseif ($_GET['action'] == 'createTodo') {
+            session_start();
             if (!empty(htmlspecialchars($_POST['todo']))) {
                 $infos = new TodoController();
                 $infos->creationTodo($_POST['todo']);
@@ -148,6 +161,7 @@ try {
 
          // page for task edition
         elseif ($_GET['action'] == 'viewEditTask') {
+            session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new TodoController();
                 $infos->viewEditTodo($_GET['id'], $twig);
@@ -158,6 +172,7 @@ try {
 
         // editing a task
         elseif ($_GET['action'] == 'editTodo') {
+            session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty(htmlspecialchars($_POST['todo']))) {
                     $infos = new TodoController();
@@ -172,6 +187,7 @@ try {
 
         // delete a todo
         elseif ($_GET['action'] == 'deleteTodo') {
+            session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new TodoController();
                 $infos->suprTodo($_GET['id']);
@@ -183,34 +199,25 @@ try {
         
         // envoie vers la page d'administration
         elseif ($_GET['action'] == 'administration') {
-            
-            var_dump($_COOKIE['cook']);
-            var_dump($_SESSION['cook']);
-            //die();
-
             session_start();
-            if ((isset($_COOKIE['cook']) && !empty($_COOKIE['cook'])) && (isset($_SESSION['cook']) && !empty($_SESSION['cook']))) {
+            /* session_start();
+            if ($_COOKIE['cook'] == $_SESSION['cook']) {
 
             $cook = session_id().microtime().rand(0,9999999999);
             $cook = hash('sha512', $cook);
             $_COOKIE['cook'] = $cook;
-            $_SESSION['cook'] = $cook;
+            $_SESSION['cook'] = $cook; */
 
                 $infos = new Controller();
                 $infos = new UserController();
                 $infos->administration($twig);
 
-
-            }
+            /* }
             else {
                 $_SESSION = array();
                 session_destroy();
                 header('Location: index.php?action=connection');
-            }
-
-
-
-
+            } */
         }
         
         // envoie vers la page de connection
@@ -233,18 +240,21 @@ try {
         
         // envoie vers la page de création de compte
         elseif ($_GET['action'] == 'creationUser') {
+            session_start();
             $infos = new UserController();
             $infos->createUserView($twig);
         }
         
         // envoie vers la page gestion des utilisateurs
         elseif ($_GET['action'] == 'gestionU') {
+            session_start();
             $infos = new UserController();
             $infos->allUsers($twig);
         }
         
         // supprimer un utilisateur
         elseif ($_GET['action'] == 'deleteUser') {
+            session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new UserController();
                 $infos->suprUser();
@@ -255,9 +265,10 @@ try {
         
         // envoie vers la page d'édition d'un utilisateur
         elseif ($_GET['action'] == 'viewEditUser') {
+            session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new UserController();
-                $infos->viewEditUserB($_GET['id']);
+                $infos->viewEditUserB($_GET['id'], $twig);
             } else {
                 throw new Exception('Aucun identifiant d\'utilisateur envoyé');
             }
@@ -265,6 +276,8 @@ try {
         
         // édition d'un utilisateur
         elseif ($_GET['action'] == 'editUserL') {
+            session_start();
+
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_GET['id']) && !empty($_POST['login'] && !empty($_POST['mail']))) {
                     $infos = new UserController();

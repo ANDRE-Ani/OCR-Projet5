@@ -13,14 +13,16 @@
 <table>
 <tr>
     <th>Nom du fichier</th>
-    <th>Taille (octets)</th>
+    <th>Taille (kilo-octets)</th>
+    <th>Date d'ajout</th>
     <th>Supprimer</th>
     </tr>
 {% for list in fileL %}
     
     <tr>
         <td>{{ list.name }}</td>
-        <td>{{ list.size }}</td>
+        <td>{{ list.sizeF }}</td>
+        <td>{{ list.time }}</td>
         <td><a href="index.php?action=deleteF&amp;file={{ list.path }}">Supprimer</a></td>
     </tr>
 {% endfor %}

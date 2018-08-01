@@ -36,7 +36,7 @@ class UserController extends Controller
                 $cookie_name = "cook";
                 $cook = session_id().microtime().rand(0,9999999999);
                 $cook = hash('sha512', $cook);
-                setcookie($cookie_name, $cook, time() + 86400, "/", "p5ocr.andre-ani.fr", true, true);
+                setcookie($cookie_name, $cook, time() + (60 * 20), "/", "p5ocr.andre-ani.fr", true, true);
                 $_SESSION['cook'] = $cook;
                 
                 echo $twig->render('homeView.html.twig', array(
@@ -89,8 +89,8 @@ class UserController extends Controller
         } else {
             // header('Location: index.php?action=administration');
 
-        session_start();
-        $_SESSION['login'];
+        // session_start();
+        // $_SESSION['login'];
 
         echo $twig->render('administrationView.html.twig', array(
             'sys' => $system,
@@ -113,11 +113,21 @@ class UserController extends Controller
         $UserManager = new UserManager();
         $users = $UserManager->getUsers();
         
-        session_start();
-        $_SESSION['login'];
+        $user = array();
+        while ($usersL = $users->fetch()) {
+            $userList = array();
+            $userList['idU'] = $usersL['id'];
+            $userList['loginU'] = $usersL['login'];
+            $userList['mailU'] = $usersL['mail'];
+            $userList['creationU'] = $usersL['creation'];
+
+            array_push($user, $userList);
+
+        }
 
         echo $twig->render('allUsersView.html.twig', array(
             'session'   => $_SESSION,
+            'usersAll' => $user,
 
         ));
     }
@@ -137,11 +147,16 @@ class UserController extends Controller
     
 
     // go to edition user view
-    public function viewEditUserB($userId)
+    public function viewEditUserB($userId, $twig)
     {
         $UserManager = new UserManager();
         $userE = $UserManager->getUser($userId);
-        require('view/editUserView.php');
+        // require('view/editUserView.php');
+
+        echo $twig->render('editUserView.html.twig', array(
+            'userEd' => $userE,
+            'userL' => $user,
+        ));
     }
     
 
@@ -163,8 +178,8 @@ class UserController extends Controller
     {
         $UserManager = new UserManager();
 
-        session_start();
-        $_SESSION['login'];
+        // session_start();
+        // $_SESSION['login'];
 
         echo $twig->render('loginCreateView.html.twig', array(
             'session' => $_SESSION,
@@ -187,8 +202,8 @@ class UserController extends Controller
         $servHost = $_SERVER['HTTP_HOST'];
         $visitorLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
-        session_start();
-        $_SESSION['login'];
+        // session_start();
+        // $_SESSION['login'];
 
         echo $twig->render('administrationView.html.twig', array(
             'sys' => $system,
@@ -200,7 +215,6 @@ class UserController extends Controller
             'servHost' => $servHost,
             'visitorLang' => $visitorLang,
             'session'   => $_SESSION,
-
         ));
 
     }

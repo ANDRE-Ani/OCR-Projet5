@@ -3,14 +3,17 @@
 {% block importJS %}
 {% endblock %}
 
-{% block title %}5Project - Gestion des utilisateur{% endblock %}
+{% block title %}5Project - Edition d'un utilisateur{% endblock %}
 
 {% block content %}
 
 <main role="main" class="container-fluid">
 
+</div>
+</div>
+</div>
 
-<div class=".container-fluid">
+  <div class=".container-fluid">
   <div class="row">
     <div class="col-3">
       <div class="p-3 bg-info text-white"><h2>Administration</h2></div>
@@ -28,8 +31,7 @@ Connecté : {{ session.login }}
     <div class="col-9">
       <div class="p-3 mb-2 bg-info text-white"><h2>Informations</h2></div>
 
-
-<div id="list">
+<div class="formulaireCreation">
         <h2>Liste des utilisateurs</h2>
 
         <!-- Récupération des informations des utilisateurs -->
@@ -37,35 +39,33 @@ Connecté : {{ session.login }}
 <table>
       <tr>
         <th>ID</th>
-        <th>Identifiant</th>
+        <th>Nom</th>
         <th>Mail</th>
         <th>Date de création de compte</th>
         <th>Editer</th>
         <th>Supprimer</th>
 </tr>
 
+{% for userList in usersAll %}
 <tr>
-<?php
-        while ($data = $users->fetch()) {
-            ?>
 
-        <td><?php echo nl2br(htmlspecialchars($data['id'])); ?></td>
-        <td><?php echo nl2br(htmlspecialchars($data['login'])); ?></td>
-        <td><?php echo htmlspecialchars($data['mail']); ?></td>
-        <td><?php echo htmlspecialchars($data['creation']); ?></td>
-        <td><a href="../index.php?action=viewEditUser&amp;id=<?php echo $data['id']; ?>">Editer</a></td>
-        <td><a href="../index.php?action=deleteUser&amp;id=<?php echo $data['id']; ?>">Supprimer</a></td>
+        <td>{{ userList.idU }}</td>
+        <td>{{ userList.loginU }}</td>
+        <td>{{ userList.mailU }}</td>
+        <td>{{ userList.creationU }}</td>
+        <td><a href="../index.php?action=viewEditUser&amp;id={{ userList.idU }}">Editer</a></td>
+        <td><a href="../index.php?action=deleteUser&amp;id={{ userList.idU }}">Supprimer</a></td>
    </tr>     
-
-        <?php
-        }
-        $users->closeCursor();
-        ?>
-
+{% endfor %}
     </table>
 
       </div>
-
+</div>
+  </div>
+  
+  <div class=".container-fluid">
+  <div class="row">
+    
 </div>
 </div>
     

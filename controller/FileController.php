@@ -57,7 +57,17 @@ public function listFile($twig) {
             $list = array();
             $list['path'] = $file->getPathname();
             $list['name'] = $file->getFilename();
-            $list['size'] = $file->getSize();
+            $list['sizeM'] = $file->getSize();
+
+            // convert to kilo and 2 decimal
+            $list['sizeF'] = $list['sizeM'] / 1024;
+            $list['sizeF'] = number_format((float)$list['sizeF'], 2, '.', '');
+
+            $list['timeT'] = $file->getMTime();
+
+            //date convertion from timestamp
+            $dateA = date('m/d/Y H:i:s', $list['timeT']);
+            $list['time'] = $dateA;
 
             array_push($filesAll, $list);
         }

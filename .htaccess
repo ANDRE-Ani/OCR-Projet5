@@ -1,0 +1,9 @@
+Options -Indexes
+
+ErrorDocument 404 /templates/errorView.html
+ErrorDocument 403 /templates/forbiddenView.html
+
+<files config.php>
+order allow,deny
+deny from all
+</files>
