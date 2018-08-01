@@ -20,16 +20,39 @@ public function writeTask($todo) {
 }
 
 // read all tasks
-public function getTasks() {
+public function getTasks() {  
     /* $db = $this->dbConnect();
-    $req = $db->query('SELECT * FROM todolist ORDER BY datetodo DESC');  
-    $req->execute();
-    return $req; */
-    
-    $db = $this->dbConnect();
     $req = $db->prepare('SELECT * FROM todo ORDER BY datetodo DESC');
     $affectedLines = $req->execute(array());
-    return $req;
+    return $req; */
+
+
+
+$db = $this->dbConnect();
+$page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+$limite = 3;
+$debut = ($page - 1) * $limite;
+$req = $db->prepare('SELECT SQL_CALC_FOUND_ROWS * FROM todo LIMIT :limite OFFSET :debut');
+$req->bindValue('limite', $limite, PDO::PARAM_INT);
+$req->bindValue('debut', $debut, PDO::PARAM_INT);
+$req->execute();
+
+/* $resultFoundRows = $req->query('SELECT found_rows()');
+$nombredElementsTotal = $resultFoundRows->fetchColumn();
+$nombreDePages = ceil($nombredElementsTotal / $limite); */
+
+
+return $req;
+
+/* while ($element = $query->fetch()) {
+
+}
+
+*/
+
+
+
+
 }
 
 

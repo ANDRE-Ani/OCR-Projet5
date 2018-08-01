@@ -48,7 +48,7 @@ public function uploadF() {
 }
 
 // list all files
-public function listFile($twig) {
+public function listFile() {
 
     $dir_path = UPLOAD_DIR;
     $filesAll = array();
@@ -72,9 +72,9 @@ public function listFile($twig) {
             array_push($filesAll, $list);
         }
     }
-    echo $twig->render('homeView.html.twig', array(
-        'fileL' => $filesAll,
-      ));
+    //echo $twig->render('homeView.html.twig', array(
+    //    'fileL' => $filesAll,
+    //  ));
            
 
 }

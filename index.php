@@ -63,8 +63,6 @@ try {
             session_start();
             $infos = new Controller();
             $infos->legalM($twig);
-
-        
         }
 
 
@@ -73,8 +71,6 @@ try {
             session_start();
             $infos = new Controller();
             $infos->aboutP($twig);
-
-
         } 
 
 
@@ -108,11 +104,11 @@ try {
             $infos = new Controller();
             $infos = new UserController();
             $infos = new TodoController();
-            $infos = new FileController();
+            // $infos = new FileController();
             //$infos->rss($twig);
             // $infos->bitcoin($twig);
-            //$infos->allTodo($twig);
-            $infos->listFile($twig);
+            $infos->allTodo($twig);
+            // $infos->listFile($twig);
 
         /* }
         else {
@@ -122,6 +118,34 @@ try {
         } */
 
     }
+
+
+
+
+// test
+
+// main page/informations
+/*elseif ($_GET['action'] == 'infos&amp;page=$page') {
+    session_start();
+
+    $infos = new Controller();
+    $infos = new UserController();
+    $infos = new TodoController();
+    $infos->allTodo($twig);
+
+}*/
+
+
+
+// fin test
+
+
+
+
+
+
+
+
 
         // admin connection
         elseif ($_GET['action'] == 'logAdminB') {

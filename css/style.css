@@ -27,7 +27,7 @@
 
 .header {
     width: 100%;
-    height: 130px;
+    height: 75px;
     text-align: center;
     background-color: #7594ff;
     padding-top: 10px;
@@ -106,7 +106,7 @@ tr:hover {
 }
 
 .formulaireLogin {
-    width: 75%;
+    width: 40%;
     height: 280px;
     padding: 20px;
     margin-left: auto;
@@ -165,13 +165,13 @@ td {
 /* title effect */
 
 .title {
-    margin-top: 25px;
+    margin-top: 5px;
 }
 
 .title h1 {
     font-family: 'Audiowide';
-    font-size: 3.5em;
-    height: 50px;
+    font-size: 2.7em;
+    height: 25px;
     -webkit-animation: floating-text 2s ease alternate infinite;
     -moz-animation: floating-text 2s ease alternate infinite;
     -ms-animation: floating-text 2s ease alternate infinite;
@@ -183,7 +183,7 @@ td {
     color: rgba(255, 255, 255, .5);
     width: 100%;
     bottom: 10em;
-    font-weight: 300;
+    font-weight: 200;
 }
 
 @-webkit-keyframes floating-text {
