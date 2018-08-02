@@ -11,6 +11,11 @@
    integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
    crossorigin=""></script>
 
+   <script
+			  src="https://code.jquery.com/jquery-3.3.1.min.js"
+			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			  crossorigin="anonymous"></script>
+
   {% endblock %}
 
 {% block title %}5Project - Votre portail web personnel{% endblock %}
@@ -23,9 +28,18 @@
   <div class="row">
 
 
+
+
+<div class="col-sm p-3">
+{% include 'wiki.inc.html.twig' %}
+
+
   <div class="col-sm p-3">
 <!-- weather fonct -->
     {% include 'weather.inc.html.twig' %}
+
+
+  <div class="w-100"></div>
 
 
   <div class="col-sm p-3">
@@ -33,11 +47,14 @@
 {% include 'bitcoin.inc.html.twig' %}
 
 
-  <div class="w-100"></div>
 
   <div class="col-sm p-3">
     <!-- rss fonct -->
     {% include 'rss.inc.html.twig' %}
+
+
+  <div class="w-100"></div>
+
 
 
   <div class="col-sm p-3">
@@ -45,16 +62,20 @@
     {% include 'todo.inc.html.twig' %}
 
 
+  <div class="col-sm p-3">
+    <!-- files fonct -->
+    {% include 'files.inc.html.twig' %}
+
+
   <div class="w-100"></div>
+  
 
   <div class="col-sm p-3">
     <!-- map fonct -->
     {% include 'map.inc.html.twig' %}
 
 
-  <div class="col-sm p-3">
-    <!-- files fonct -->
-    {% include 'files.inc.html.twig' %}
+
 
    </div>
    </div>
@@ -64,6 +85,7 @@
     <script src="js/date.js"></script>
     <script src="js/map.js"></script>
     <script src="js/weather.js"></script>
+    <script src="js/wiki.js"></script>
 {% endblock %}
 
   </div>

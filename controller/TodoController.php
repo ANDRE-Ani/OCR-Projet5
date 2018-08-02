@@ -43,8 +43,8 @@ function allTodo($twig) {
       $task['dateT'] = $data['datetodo'] = "$day/$month/$year" . " - " . "$time";
       
       array_push($todo, $task);
-    }
 
+    }
        echo $twig->render('homeView.html.twig', array(
         'todoL' => $todo,
       ));
