@@ -8,11 +8,10 @@
 {% block content %}
 
 <main role="main" class="container-fluid">
-   <div id="admin">
-
+  <div class=".container-fluid">
 <div class="row">
  
-      <div class="col-sm-4 p-3">
+      <div class="col-sm-4 p-4">
       <div id="side">
       <h2>Administration</h2>
       <p><h4>Utilisateurs</h4></p>
@@ -27,6 +26,10 @@ Connecté : {{ session.login }}
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
     </div>
 </div>
+
+
+   <div class="col-sm-8 p-4">
+      <div id="cont">
 
 <div class="envoie">
     <h2>Editer un utilisateur</h2>

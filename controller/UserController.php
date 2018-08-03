@@ -13,12 +13,11 @@ class UserController extends Controller
 {
 
 
-    /* public function getGlobals() {
+    public function getGlobals() {
         return array(
             'session' => $_SESSION,
-            'cook' => $_COOKIE,
         ) ;
-    } */
+    }
 
 
 // admin connection
@@ -156,6 +155,8 @@ class UserController extends Controller
         echo $twig->render('editUserView.html.twig', array(
             'userEd' => $userE,
             'userL' => $user,
+            'session'   => $_SESSION,
+            'usersAll' => $user,
         ));
     }
     

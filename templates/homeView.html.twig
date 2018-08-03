@@ -24,62 +24,45 @@
 
 <main role="main" class="container-fluid">
 
-<div class=".container-fluid">
   <div class="row">
 
+    
 
+ <div class="w-100"></div>
+  <div class="col-sm-6 bloc-column">
+  {% include 'wiki.inc.html.twig' %}
+  </div>
 
-
-<div class="col-sm p-3">
-{% include 'wiki.inc.html.twig' %}
-
-
-  <div class="col-sm p-3">
-<!-- weather fonct -->
-    {% include 'weather.inc.html.twig' %}
-
-
-  <div class="w-100"></div>
-
-
-  <div class="col-sm p-3">
-<!-- bitcoin fonct -->
-{% include 'bitcoin.inc.html.twig' %}
-
-
-
-  <div class="col-sm p-3">
-    <!-- rss fonct -->
-    {% include 'rss.inc.html.twig' %}
-
+  <div class="col-sm-6 bloc-column">
+  {% include 'weather.inc.html.twig' %}
+  </div>
 
   <div class="w-100"></div>
+  <div class="col-sm-6 bloc-column">
+  {% include 'todo.inc.html.twig' %}
+  </div>
+
+  <div class="col-sm-6 bloc-column">
+  {% include 'rss.inc.html.twig' %}
+  </div>
 
 
-
-  <div class="col-sm p-3">
-    <!-- todo fonct -->
-    {% include 'todo.inc.html.twig' %}
-
-
-  <div class="col-sm p-3">
-    <!-- files fonct -->
-    {% include 'files.inc.html.twig' %}
-
-
-  <div class="w-100"></div>
+<div class="w-100"></div>
+  <div class="col-sm-6 bloc-column">
+  {% include 'files.inc.html.twig' %}
+  </div>
   
-
-  <div class="col-sm p-3">
-    <!-- map fonct -->
-    {% include 'map.inc.html.twig' %}
-
+  <div class="col-sm-6 bloc-column">
+  {% include 'bitcoin.inc.html.twig' %}
+  </div>
 
 
+<div class="w-100"></div>
+  <div class="col-sm-12 bloc-column">
+  {% include 'map.inc.html.twig' %}
+  </div>
 
-   </div>
-   </div>
-
+</div>
 
 {% block js %}
     <script src="js/date.js"></script>
@@ -88,7 +71,8 @@
     <script src="js/wiki.js"></script>
 {% endblock %}
 
-  </div>
+
+
   </div>
 
   </main>

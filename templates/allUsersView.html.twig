@@ -3,70 +3,67 @@
 {% block importJS %}
 {% endblock %}
 
-{% block title %}5Project - Edition d'un utilisateur{% endblock %}
+{% block title %}5Project - Liste des utilisateurs{% endblock %}
 
 {% block content %}
 
 <main role="main" class="container-fluid">
-
-</div>
-</div>
-</div>
-
   <div class=".container-fluid">
   <div class="row">
-    <div class="col-3">
-      <div class="p-3 bg-info text-white"><h2>Administration</h2></div>
-        <p><h4>Utilisateurs</h4></p>
+
+<div class="col-sm-4 p-4">
+      <div id="side">
+      <h2>Administration</h2>
+      <p><h4>Utilisateurs</h4></p>
 <p>
 {% if session.login is defined and session.login is not null%}
 Connecté : {{ session.login }}
 {% endif %}
 </p>
+
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
     </div>
+</div>
 
-    <div class="col-9">
-      <div class="p-3 mb-2 bg-info text-white"><h2>Informations</h2></div>
 
-<div class="formulaireCreation">
-        <h2>Liste des utilisateurs</h2>
+   <div class="col-sm-8 p-4">
+      <div id="cont">
+<h2>Liste des utilisateurs</h2>
+<div class="formulaireEdit">
+        
 
         <!-- Récupération des informations des utilisateurs -->
 
 <table>
+<thead>
       <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Mail</th>
-        <th>Date de création de compte</th>
-        <th>Editer</th>
-        <th>Supprimer</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Mail</th>
+        <th scope="col">Date de création de compte</th>
+        <th scope="col">Editer</th>
+        <th scope="col">Supprimer</th>
 </tr>
+</thead>
 
 {% for userList in usersAll %}
-<tr>
 
-        <td>{{ userList.idU }}</td>
-        <td>{{ userList.loginU }}</td>
-        <td>{{ userList.mailU }}</td>
-        <td>{{ userList.creationU }}</td>
-        <td><a href="../index.php?action=viewEditUser&amp;id={{ userList.idU }}">Editer</a></td>
-        <td><a href="../index.php?action=deleteUser&amp;id={{ userList.idU }}">Supprimer</a></td>
-   </tr>     
+<tbody>
+<tr>
+        <td scope="row" data-label="ID">{{ userList.idU }}</td>
+        <td scope="row" data-label="Nom">{{ userList.loginU }}</td>
+        <td scope="row" data-label="Mail">{{ userList.mailU }}</td>
+        <td scope="row" data-label="Date de créaation">{{ userList.creationU }}</td>
+        <td scope="row" data-label="Editer"><a href="../index.php?action=viewEditUser&amp;id={{ userList.idU }}">Editer</a></td>
+        <td scope="row" data-label="Supprimer"><a href="../index.php?action=deleteUser&amp;id={{ userList.idU }}">Supprimer</a></td>
+   </tr>
+</tbody>  
 {% endfor %}
     </table>
 
-      </div>
-</div>
-  </div>
-  
-  <div class=".container-fluid">
-  <div class="row">
-    
-</div>
+
 </div>
     
 </main>

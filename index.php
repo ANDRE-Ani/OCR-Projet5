@@ -5,13 +5,13 @@ require_once __DIR__ . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader, array(
     'debug' => true,
-    //'globals' => array(
-    //    'session' => 'mon_user'),
+    'globals' => array(
+        'session' => 'mon_user'),
 
 ));
 $twig->addExtension(new Twig_Extension_Debug());
 $twig->addExtension(new Twig_Extensions_Extension_I18n());
-//$twig->addGlobal("session", $_SESSION);
+$twig->addGlobal("session", $_SESSION);
 $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
@@ -32,8 +32,6 @@ require_once "model/Manager.php";
 require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
- 
-// $controller = new controller();
 
 // routing for actions
 
@@ -122,29 +120,6 @@ try {
 
 
 
-// test
-
-// main page/informations
-/*elseif ($_GET['action'] == 'infos&amp;page=$page') {
-    session_start();
-
-    $infos = new Controller();
-    $infos = new UserController();
-    $infos = new TodoController();
-    $infos->allTodo($twig);
-
-}*/
-
-
-
-// fin test
-
-
-
-
-
-
-
 
 
         // admin connection
@@ -177,7 +152,7 @@ try {
             session_start();
             if (!empty(htmlspecialchars($_POST['todo']))) {
                 $infos = new TodoController();
-                $infos->creationTodo($_POST['todo']);
+                $infos->creationTodo(htmlspecialchars($_POST['todo']));
             } else {
                 throw new Exception('Erreur, ajoutez une tâche');
             }

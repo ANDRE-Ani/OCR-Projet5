@@ -32,7 +32,7 @@ public function getTasks() {
 $db = $this->dbConnect();
 $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 $limite = 3;
-$debut = ($page + 1) * $limite;
+$debut = ($page - 1) * $limite;
 $req = 'SELECT SQL_CALC_FOUND_ROWS * FROM todo LIMIT :limite OFFSET :debut';
 $req = $db->prepare($req);
 $req->bindValue('limite', $limite, PDO::PARAM_INT);

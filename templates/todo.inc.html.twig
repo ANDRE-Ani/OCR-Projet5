@@ -1,9 +1,10 @@
 <div class="p-3 bg-info text-white"><h5>ToDo List</h5></div>
-<div class="fonct">
+<div id="fonct">
 
-<form action="index.php?action=createTodo" method="post">
+<form name="tacheAdd" action="index.php?action=createTodo" method="post">
       <div class="form-group">
-          <p>Tâche : <input type="text" name="todo" placeholder="tâche à faire" required /></p>
+        <label for="identifiant">Tâche</label>
+          <p><input type="text" name="todo" id="tacheN" placeholder="Tâche à faire" maxlength="70" title="Maximum 70 caractères" onblur="verifTodo(this) required /></p>
           </div>
           <div class="form-check">
           <p><input type="submit" value="Valider" /></p>
@@ -11,14 +12,17 @@
       </form>
 
 {% for task in todoL %}
-<div class="task">
+
+
+{% block task %}
 <p><strong>Id :</strong> {{ task.idT }} - <strong>Date :</strong> {{ task.dateT }}</p>
 <p><strong>Tâche :</strong>  {{ task.todoT }}</p>
 <p><a href="index.php?action=viewEditTask&amp;id={{ task.idT }}">Editer</a> - <a href="index.php?action=deleteTodo&amp;id={{ task.idT }}">Supprimer</a></p>
-</div>
+{% endblock %}
+
 {% endfor %}
 
-<div class="page">
+{% block page %}
 <p><a href="index.php?action=infos&amp;page={{ page - 1 }}"> Précédent </a>
 -
 
@@ -29,7 +33,6 @@
 -
 <a href="index.php?action=infos&amp;page={{ page + 1 }}"> Suivant </a></p>
 
-</div>
+{% endblock %}
 
-</div>
 </div>

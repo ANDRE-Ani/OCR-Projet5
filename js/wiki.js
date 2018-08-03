@@ -1,3 +1,4 @@
+// ajax req for Wiki API
 $.ajax({
     type: "GET",
     url: "https://simple.wikipedia.org/w/api.php?action=query&generator=random&grnnamespace=0&prop=extracts&exsentences=10&format=json&callback=?",

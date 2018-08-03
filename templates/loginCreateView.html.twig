@@ -9,28 +9,29 @@
 
 <main role="main" class="container-fluid">
 
-</div>
-</div>
-</div>
-
   <div class=".container-fluid">
   <div class="row">
-    <div class="col-3">
-      <div class="p-3 bg-info text-white"><h2>Administration</h2></div>
-        <p><h4>Utilisateurs</h4></p>
+
+<div class="col-sm-4 p-4">
+      <div id="side">
+      <h2>Administration</h2>
+      <p><h4>Utilisateurs</h4></p>
 <p>
 {% if session.login is defined and session.login is not null%}
 Connecté : {{ session.login }}
 {% endif %}
 </p>
+
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
     </div>
+</div>
 
-    <div class="col-9">
-      <div class="p-3 mb-2 bg-info text-white"><h2>Informations</h2></div>
 
+   <div class="col-sm-8 p-4">
+      <div id="cont">
+      <h2>Utilisateurs</h2>
 <div class="formulaireCreation">
 
 <!-- Formulaire de création de compte -->
@@ -43,7 +44,7 @@ Connecté : {{ session.login }}
         </div>    
         <div class="form-group">
         <label for="id">Mail</label>   
-            <input type="email" class="form-control" name="mail" placeholder="Votre email" required maxlenght="50" title="Donner un mail valide" /></p>
+            <input type="email" class="form-control" name="mail" placeholder="Votre email" required maxlenght="50" title="Donner un mail valide" required/></p>
         </div>
         <div class="form-group">
         <label for="id">Mot de passe</label>    
