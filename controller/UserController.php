@@ -16,6 +16,8 @@ class UserController extends Controller
     public function getGlobals() {
         return array(
             'session' => $_SESSION,
+            'cook' => $_SESSION,
+            'cook' => $_COOKIE,
         ) ;
     }
 
@@ -28,16 +30,15 @@ class UserController extends Controller
             $result = $UserManager->admin($_POST['login'], $_POST['pass']);
             $correctPassword = password_verify($_POST['pass'], $result['pass']);
             $login = ($_POST['login']);
+            $_SESSION['cook'] = $login;
 
             if ($correctPassword != false) {
-                session_start();
+                session_start();             
                 $_SESSION['login'] = $_POST['login'];
                 $cookie_name = "cook";
-                $cook = session_id().microtime().rand(0,9999999999);
-                $cook = hash('sha512', $cook);
-                setcookie($cookie_name, $cook, time() + (60 * 20), "/", "p5ocr.andre-ani.fr", true, true);
-                $_SESSION['cook'] = $cook;
-                
+                $cook = $_POST['login'];
+                setcookie($cookie_name, $cook, time() + (2*24*3600), "/", "p5ocr.andre-ani.fr", true, true);
+
                 echo $twig->render('homeView.html.twig', array(
                     'session' => $_SESSION,
                     'cook' => $_COOKIE,
@@ -84,12 +85,9 @@ class UserController extends Controller
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
         if ($affectedLines === false) {
-            throw new Exception('Impossible de créer le compte');
+            throw new Exception('Impossible de crÃ©er le compte');
         } else {
-            // header('Location: index.php?action=administration');
 
-        // session_start();
-        // $_SESSION['login'];
 
         echo $twig->render('administrationView.html.twig', array(
             'sys' => $system,
@@ -150,7 +148,6 @@ class UserController extends Controller
     {
         $UserManager = new UserManager();
         $userE = $UserManager->getUser($userId);
-        // require('view/editUserView.php');
 
         echo $twig->render('editUserView.html.twig', array(
             'userEd' => $userE,
@@ -167,7 +164,7 @@ class UserController extends Controller
         $UserManager = new UserManager();
         $affectedLines = $UserManager->editUserL($login, $mail, $id);
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'éditer l\'utilisateur');
+            throw new Exception('Impossible d\'Ã©diter l\'utilisateur');
         } else {
             header('Location: index.php?action=administration');
         }
@@ -178,9 +175,6 @@ class UserController extends Controller
     public function createUserView($twig)
     {
         $UserManager = new UserManager();
-
-        // session_start();
-        // $_SESSION['login'];
 
         echo $twig->render('loginCreateView.html.twig', array(
             'session' => $_SESSION,
@@ -203,9 +197,6 @@ class UserController extends Controller
         $servHost = $_SERVER['HTTP_HOST'];
         $visitorLang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 
-        // session_start();
-        // $_SESSION['login'];
-
         echo $twig->render('administrationView.html.twig', array(
             'sys' => $system,
             'host' => $host,
@@ -219,6 +210,4 @@ class UserController extends Controller
         ));
 
     }
-  
-
 }

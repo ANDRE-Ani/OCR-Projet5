@@ -58,17 +58,35 @@ try {
 
         // go to legal mentions
         elseif ($_GET['action'] == 'legal') {
+            
             session_start();
+            if (!empty($_SESSION['cook'])) {
+
             $infos = new Controller();
             $infos->legalM($twig);
+
+        }
+        else {
+            header('Location: index.php?action=connection');
+        }
+
         }
 
 
         // go to about
         elseif ($_GET['action'] == 'about') {
+            
             session_start();
+            if (!empty($_SESSION['cook'])) {
+
             $infos = new Controller();
             $infos->aboutP($twig);
+
+        }
+        else {
+            header('Location: index.php?action=connection');
+        }
+
         } 
 
 
@@ -91,13 +109,9 @@ try {
 
         // main page/informations
         elseif ($_GET['action'] == 'infos') {
+            
             session_start();
-            /* session_start();
-            if ($_COOKIE['cook'] == $_SESSION['cook']) {
-            $cook = session_id().microtime().rand(0,9999999999);
-            $cook = hash('sha512', $cook);
-            $_COOKIE['cook'] = $cook;
-            $_SESSION['cook'] = $cook; */
+            if (!empty($_SESSION['cook'])) {
 
             $infos = new Controller();
             $infos = new UserController();
@@ -108,19 +122,12 @@ try {
             $infos->allTodo($twig);
             // $infos->listFile($twig);
 
-        /* }
+        }
         else {
-            $_SESSION = array();
-            session_destroy();
             header('Location: index.php?action=connection');
-        } */
+        }
 
     }
-
-
-
-
-
 
         // admin connection
         elseif ($_GET['action'] == 'logAdminB') {
@@ -198,27 +205,21 @@ try {
         
         // envoie vers la page d'administration
         elseif ($_GET['action'] == 'administration') {
+            
             session_start();
-            /* session_start();
-            if ($_COOKIE['cook'] == $_SESSION['cook']) {
-
-            $cook = session_id().microtime().rand(0,9999999999);
-            $cook = hash('sha512', $cook);
-            $_COOKIE['cook'] = $cook;
-            $_SESSION['cook'] = $cook; */
+            if (!empty($_SESSION['cook'])) {
 
                 $infos = new Controller();
                 $infos = new UserController();
                 $infos->administration($twig);
 
-            /* }
+            }
             else {
-                $_SESSION = array();
-                session_destroy();
                 header('Location: index.php?action=connection');
-            } */
+            }
         }
         
+
         // envoie vers la page de connection
         elseif ($_GET['action'] == 'connection') {
             $infos = new UserController();
@@ -228,12 +229,15 @@ try {
         
         // deconnection
         elseif ($_GET['action'] == 'logout') {
+
+            session_start();
+            $_SESSION = array();
+            session_destroy();
+            session_unset();
+
             $infos = new UserController();
             $infos->connectionAdmin($twig);
-            session_start();
-            session_unset();
-            session_destroy();
-            setcookie('cook', '', time()-42000);
+
         }
         
         

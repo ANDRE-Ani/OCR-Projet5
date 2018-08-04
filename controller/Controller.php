@@ -23,13 +23,23 @@ class Controller
     // mentions legales
     public function legalM($twig)
     {
-        echo $twig->render('legalView.html.twig');
+        // echo $twig->render('legalView.html.twig');
+        echo $twig->render('legalView.html.twig', array(
+            'session' => $_SESSION,
+            'cook' => $_SESSION,
+            'cook' => $_COOKIE,
+        ));
     }
 
     // about
     public function aboutP($twig)
     {
-        echo $twig->render('aboutView.html.twig');
+        // echo $twig->render('aboutView.html.twig');
+        echo $twig->render('aboutView.html.twig', array(
+            'session' => $_SESSION,
+            'cook' => $_SESSION,
+            'cook' => $_COOKIE,
+        ));
     }
 
     // page d'erreur
