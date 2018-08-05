@@ -85,7 +85,7 @@ class UserController extends Controller
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
         if ($affectedLines === false) {
-            throw new Exception('Impossible de crÃ©er le compte');
+            throw new Exception('Impossible de créer le compte');
         } else {
 
 

@@ -1,10 +1,10 @@
 <div class="p-3 bg-info text-white"><h5>Flux RSS</h5></div>
-<!-- <div class="fonct"> -->
+
 <div id="fonct">
 
 <ul>
-{% for feed in rss %}
 
+{% for feed in rss %}
 <li>Titre : <a href="{{ feed.link }}">{{ feed.title }}</a></li>
     Date : {{ feed.date }}<br>
     Description : {{ feed.description|raw }}
@@ -14,4 +14,5 @@
 <br>
 
 </div>
-<!-- </div> -->
+
+

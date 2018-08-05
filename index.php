@@ -60,15 +60,15 @@ try {
         elseif ($_GET['action'] == 'legal') {
             
             session_start();
-            if (!empty($_SESSION['cook'])) {
+            // if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
             $infos = new Controller();
             $infos->legalM($twig);
 
-        }
+        /* }
         else {
             header('Location: index.php?action=connection');
-        }
+        } */
 
         }
 
@@ -77,15 +77,15 @@ try {
         elseif ($_GET['action'] == 'about') {
             
             session_start();
-            if (!empty($_SESSION['cook'])) {
+            //if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
             $infos = new Controller();
             $infos->aboutP($twig);
 
-        }
+        /*}
         else {
             header('Location: index.php?action=connection');
-        }
+        } */
 
         } 
 
@@ -111,13 +111,13 @@ try {
         elseif ($_GET['action'] == 'infos') {
             
             session_start();
-            if (!empty($_SESSION['cook'])) {
+            if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
             $infos = new Controller();
             $infos = new UserController();
             $infos = new TodoController();
             // $infos = new FileController();
-            //$infos->rss($twig);
+            // $infos->rss($twig);
             // $infos->bitcoin($twig);
             $infos->allTodo($twig);
             // $infos->listFile($twig);
@@ -207,7 +207,7 @@ try {
         elseif ($_GET['action'] == 'administration') {
             
             session_start();
-            if (!empty($_SESSION['cook'])) {
+            if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
                 $infos = new Controller();
                 $infos = new UserController();
