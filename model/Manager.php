@@ -1,6 +1,6 @@
 <?php
 
-// manager principal gérant la connexion à la BDD
+// manager principal gÃ©rant la connexion Ã  la BDD
 
 namespace model;
 
@@ -15,7 +15,7 @@ class Manager
             $bdd->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_WARNING);
             return $bdd;
         } catch (PDOException $e) {
-            echo 'Ã‰chec lors de la connexion : ' . $e->getCode() . $e->getMessage();
+            echo 'Echec lors de la connexion : ' . $e->getCode() . $e->getMessage();
 
         }
     }

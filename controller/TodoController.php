@@ -71,7 +71,7 @@ public function editTodoBack($todo, $id)
     $TodoManager = new TodoManager();
     $affectedLines = $TodoManager->editTodoL($todo, $id);
     if ($affectedLines === false) {
-        throw new Exception('Impossible d\'Ã©diter la tache');
+        throw new Exception('Impossible d\'ÃƒÂ©diter la tache');
     } else {
         header('Location: index.php?action=infos');
     }

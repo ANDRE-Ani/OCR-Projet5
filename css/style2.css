@@ -1,4 +1,4 @@
-/* Green stylesheet for 5Project */
+/* Blue/principal stylesheet for 5Project */
 
 * {
     font-family: 'Ubuntu', sans-serif;
@@ -15,7 +15,11 @@
 }
 
 .navbar-my {
-    background-color: #7594ff;
+    background-color: #1BA60C;
+}
+
+.p-3 .bg-info .text-white {
+    background-color: #1BA60C;
 }
 
 #menu {
@@ -29,7 +33,7 @@
 .footer {
     width: 100%;
     text-align: center;
-    background-color: #7594ff;
+    background-color: #1BA60C;
     padding: 20px;
     margin-top: 10px;
 }
@@ -38,7 +42,7 @@
     width: 100%;
     height: 95px;
     text-align: center;
-    background-color: #7594ff;
+    background-color: #1BA60C;
     padding-top: 10px;
     padding-bottom: 10px;
     margin-bottom: 30px;
@@ -51,89 +55,89 @@
 
 #fonct {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #rss {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #wiki {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #weather {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #map {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: 300px;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #bitcoin {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #files {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
 #todo {
     width: 100%;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     border-radius: 0px 0px 10px 10px;
     padding: 5px;
     margin-bottom: 15px;
     height: auto;
-    border: 2px solid #17a2b8;
+    border: 2px solid #4CD63D;
     box-shadow: black 0.5em 0.5em 0.3em;
 }
 
@@ -188,7 +192,7 @@ tr:hover {
     margin-right: auto;
     border-radius: 10px;
     padding: 20px;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
 }
 
 .page {
@@ -208,7 +212,7 @@ tr:hover {
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -216,14 +220,14 @@ tr:hover {
 .formulaireCreation {
     width: 75%;
     border-radius: 10px;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     padding: 20px;
 }
 
 .formulaireEdit {
     width: 95%;
     border-radius: 10px;
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
     padding: 20px;
 }
 
@@ -257,19 +261,19 @@ td {
 }
 
 .about h2 {
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
 }
 
 #side h2 {
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
 }
 
 .legal h2 {
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
 }
 
 #cont h2 {
-    background-color: #b4c5ff;
+    background-color: #B5FFAD;
 }
 
 

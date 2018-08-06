@@ -12,13 +12,13 @@ use model\TodoManager;
 class UserController extends Controller
 {
 
-
     public function getGlobals() {
         return array(
             'session' => $_SESSION,
             'cook' => $_SESSION,
             'cook' => $_COOKIE,
-        ) ;
+            'styleB' => $styleB,
+        );
     }
 
 
@@ -85,7 +85,7 @@ class UserController extends Controller
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
         if ($affectedLines === false) {
-            throw new Exception('Impossible de créer le compte');
+            throw new Exception('Impossible de crÃ©er le compte');
         } else {
 
 
@@ -164,7 +164,7 @@ class UserController extends Controller
         $UserManager = new UserManager();
         $affectedLines = $UserManager->editUserL($login, $mail, $id);
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'Ã©diter l\'utilisateur');
+            throw new Exception('Impossible d\'ÃƒÂ©diter l\'utilisateur');
         } else {
             header('Location: index.php?action=administration');
         }

@@ -11,7 +11,8 @@
 
   <div class=".container-fluid">
   <div class="row">
- 
+
+
       <div class="col-sm-4 p-4">
       <div id="side">
       <h2>Administration</h2>
@@ -25,9 +26,27 @@ Connecté : {{ session.login }}
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
-    </div>
+    
+
+
+<div class="styleC">
+<h3>Thème</h3>
+<form action="index.php?action=styleT" method="post">
+<div class="form-group">
+<label>Couleur du thème</label>
+<select id="style" name="style">
+  <option value="blue" name="blue" >Bleu</option>
+  <option value="green" name="green">Vert</option>
+</select>
+<div class="form-check">
+    <button type="submit" class="btn btn-primary">Valider</button>
+</div>
+</div>
+</form>
 </div>
 
+</div>
+</div>
 
       <div class="col-sm-8 p-4">
       <div id="cont">

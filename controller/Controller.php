@@ -20,10 +20,9 @@ class Controller
         echo $twig->render('loginView.html.twig');
     }
     
-    // mentions legales
+    // legales
     public function legalM($twig)
     {
-        // echo $twig->render('legalView.html.twig');
         echo $twig->render('legalView.html.twig', array(
             'session' => $_SESSION,
             'cook' => $_SESSION,
@@ -34,7 +33,6 @@ class Controller
     // about
     public function aboutP($twig)
     {
-        // echo $twig->render('aboutView.html.twig');
         echo $twig->render('aboutView.html.twig', array(
             'session' => $_SESSION,
             'cook' => $_SESSION,
@@ -42,7 +40,7 @@ class Controller
         ));
     }
 
-    // page d'erreur
+    // error
     public function error404()
     {
         require '../view/errorView.php';
@@ -52,7 +50,6 @@ class Controller
 // RSS function
 function rss($twig)
 {
-// https://www.toolinux.com/spip.php?page=backend
  $rss_feed = simplexml_load_file(FLUX_RSS);
  if (!empty($rss_feed)) {
     $feed = array();

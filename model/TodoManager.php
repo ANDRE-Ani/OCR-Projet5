@@ -21,14 +21,6 @@ public function writeTask($todo) {
 
 // read all tasks
 public function getTasks() {  
-    /* $db = $this->dbConnect();
-    $req = $db->prepare('SELECT * FROM todo ORDER BY datetodo DESC');
-    $affectedLines = $req->execute(array());
-    return $req; */
-
-
-
-
 $db = $this->dbConnect();
 $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 $limite = 3;

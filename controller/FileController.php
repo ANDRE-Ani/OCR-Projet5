@@ -72,7 +72,7 @@ public function listFile() {
             array_push($filesAll, $list);
         }
     }
-    //echo $twig->render('homeView.html.twig', array(
+    // echo $twig->render('homeView.html.twig', array(
     //    'fileL' => $filesAll,
     //  ));
            
@@ -91,11 +91,6 @@ public function deleteFile($fichier) {
 
     
 }
-
-
-
-
-
 
 
 }
