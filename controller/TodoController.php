@@ -30,8 +30,11 @@ function creationTodo($todo) {
 function allTodo($twig) {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
+    $numberPages = $TodoManager->getNumberPages();
 
+    $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
     $todo = array();
+    
     while ($data = $tasks->fetch()) {
         $task = array();
         list($date, $time) = explode(" ", $data['datetodo']);
@@ -45,8 +48,11 @@ function allTodo($twig) {
       array_push($todo, $task);
     }
 
+
        echo $twig->render('homeView.html.twig', array(
         'todoL' => $todo,
+        'nbrPages' => $numberPages,
+        'page' => $page,
       ));
 
      // return $data;

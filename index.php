@@ -255,7 +255,8 @@ try {
             // $infos = new FileController();
             // $infos->rss($twig);
             // $infos->bitcoin($twig);
-            $infos->allTodo($twig);
+            // $infos->allTodo($twig);
+            $infos->renderHome($twig);
             // $infos->listFile($twig);
 
         }

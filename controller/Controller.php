@@ -14,6 +14,18 @@ require_once 'config.php';
 class Controller
 {
 
+// get var for display infos page
+public function renderHome($twig) {
+
+$rssT = $this->rss($feed);
+$bitcoinT = $this->bitcoin($crypto);
+    echo $twig->render('homeView.html.twig', array(
+     'rss' => $rssT,
+     'bitcoin' => $bitcoinT,
+    ));
+}
+
+
 // home/connection
     public function home($twig)
     {
@@ -48,7 +60,7 @@ class Controller
 
 
 // RSS function
-function rss($twig)
+function rss()
 {
  $rss_feed = simplexml_load_file(FLUX_RSS);
  if (!empty($rss_feed)) {
@@ -68,10 +80,8 @@ function rss($twig)
         array_push($feed, $item);
     }
 }
-     //echo $twig->render('homeView.html.twig', array(
-     // 'rss' => $feed
-    // ));
 
+return $feed;
 
 }
 
@@ -88,9 +98,7 @@ function bitcoin() {
         $value['priceEUR'] = (float) $cryptocurrency->$key->USD;
         array_push($crypto, $value);
     }
-    // echo $twig->render('homeView.html.twig', array(
-    //     'bitcoin' => $crypto
-    // ));
+    return $crypto;
 }
 
 }

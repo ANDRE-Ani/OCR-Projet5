@@ -31,12 +31,26 @@ $req->bindValue('limite', $limite, PDO::PARAM_INT);
 $req->bindValue('debut', $debut, PDO::PARAM_INT);
 $req->execute();
 
-$resultFoundRows = $db->query('SELECT found_rows()');
-$nombredElementsTotal = $resultFoundRows->fetchColumn();
-$nombreDePages = ceil($nombredElementsTotal / $limite);
-
 return $req;
 }
+
+
+public function getNumberPages() {
+    $db = $this->dbConnect();
+    $limite = 3;
+    $resultFoundRows = $db->query('SELECT count(*) from todo');
+    //$resultFoundRows = $db->execute();
+
+    //$nombredElementsTotal = $resultFoundRows->fetchColumn();
+    //$nombreDePages = ceil($nombredElementsTotal / $limite);
+    $nombreDeTasks = $resultFoundRows->fetchColumn();
+    $nombreDePages = ceil($nombreDeTasks / $limite);
+    var_dump($nombreDePages);
+    //die();
+    return $nombreDePages;
+}
+
+
 
 
 // get a todo
