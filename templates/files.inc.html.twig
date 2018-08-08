@@ -1,4 +1,4 @@
-<div class="p-3 bg-info text-white"><h5>Fichiers</h5></div>
+<div class="p-3 bg-info text-white"><h5>Envoie de fichiers</h5></div>
 <div id="fonct">
 
 <div class="fileUp">
@@ -17,13 +17,13 @@
     <th>Date d'ajout</th>
     <th>Supprimer</th>
     </tr>
-{% for list in fileL %}
+{% for filesAll in listFile %}
     
     <tr>
-        <td>{{ list.name }}</td>
-        <td>{{ list.sizeF }}</td>
-        <td>{{ list.time }}</td>
-        <td><a href="index.php?action=deleteF&amp;file={{ list.path }}">Supprimer</a></td>
+        <td>{{ filesAll.name }}</td>
+        <td>{{ filesAll.sizeF }}</td>
+        <td>{{ filesAll.time }}</td>
+        <td><a href="index.php?action=deleteF&amp;file={{ filesAll.path }}">Supprimer</a></td>
     </tr>
 {% endfor %}
 </table>  

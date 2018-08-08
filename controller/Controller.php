@@ -13,15 +13,22 @@ require_once 'config.php';
 
 class Controller
 {
-
 // get var for display infos page
 public function renderHome($twig) {
 
-$rssT = $this->rss($feed);
-$bitcoinT = $this->bitcoin($crypto);
+    $rssT = $this->rss($feed);
+    $bitcoinT = $this->bitcoin($crypto);
+    $listFileT = $this->listFile($filesAll);
+    $allTodoT = TodoController::allTodo($todo);
+    
+    
     echo $twig->render('homeView.html.twig', array(
-     'rss' => $rssT,
-     'bitcoin' => $bitcoinT,
+    'rss' => $rssT,
+    'bitcoin' => $bitcoinT,
+    'allTodo' => $allTodoT,
+    'nbrPages' => $nbrPages,
+    'page' => $page,
+    'listFile' => $listFileT,
     ));
 }
 
@@ -80,9 +87,7 @@ function rss()
         array_push($feed, $item);
     }
 }
-
 return $feed;
-
 }
 
 

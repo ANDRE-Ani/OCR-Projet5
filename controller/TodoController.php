@@ -27,12 +27,12 @@ function creationTodo($todo) {
 }
 
 // todo list
-function allTodo($twig) {
+function allTodo() {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
     $numberPages = $TodoManager->getNumberPages();
-
     $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+
     $todo = array();
     
     while ($data = $tasks->fetch()) {
@@ -44,19 +44,10 @@ function allTodo($twig) {
       $task['idT'] = nl2br(htmlspecialchars($data['id']));
       $task['todoT'] = htmlspecialchars($data['todo']);
       $task['dateT'] = $data['datetodo'] = "$day/$month/$year" . " - " . "$time";
-      
+
       array_push($todo, $task);
     }
-
-
-       echo $twig->render('homeView.html.twig', array(
-        'todoL' => $todo,
-        'nbrPages' => $numberPages,
-        'page' => $page,
-      ));
-
-     // return $data;
-    //require('view/homeView.php');
+    return $todo;
 }
 
 // page for editing a task

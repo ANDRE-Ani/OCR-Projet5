@@ -20,6 +20,7 @@ $twig->addGlobal("site_author", 'Patrice Andreani');
 // autoloader
 require_once("autoloader.php");
 
+
 // Use of needed controller
 use controller\Controller;
 use controller\FileController;
@@ -252,7 +253,7 @@ try {
             $infos = new Controller();
             $infos = new UserController();
             $infos = new TodoController();
-            // $infos = new FileController();
+            $infos = new FileController();
             // $infos->rss($twig);
             // $infos->bitcoin($twig);
             // $infos->allTodo($twig);

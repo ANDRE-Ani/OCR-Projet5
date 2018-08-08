@@ -19,7 +19,7 @@
       <p><h4>Utilisateurs</h4></p>
 <p>
 {% if session.login is defined and session.login is not null%}
-Connecté : {{ session.login }}
+<i class="fas fa-address-card"></i> : {{ session.login }}
 {% endif %}
 </p>
 

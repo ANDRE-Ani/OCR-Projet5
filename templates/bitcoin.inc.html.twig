@@ -1,11 +1,11 @@
-<div class="p-3 bg-info text-white"><h5>Bitcoin</h5></div>
+<div class="p-3 bg-info text-white"><h5>Cours du Bitcoin</h5></div>
 <div id="bitcoin">
 
 <ul>
 {% for crypto in bitcoin %}
 
-    <li>Un euro vaut : {{ crypto.priceEUR }}</li><br>
-    <li>Un dollar vaut : {{ crypto.priceUSD }}</li><br>
+    <li>Un bitcoin vaut : <strong> {{ crypto.priceEUR }} euros</strong></li><br>
+    <li>Un bitcoin vaut : <strong> {{ crypto.priceUSD }} dollars</strong></li><br>
 
 {% endfor %}
 </ul>

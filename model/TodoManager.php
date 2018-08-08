@@ -39,14 +39,9 @@ public function getNumberPages() {
     $db = $this->dbConnect();
     $limite = 3;
     $resultFoundRows = $db->query('SELECT count(*) from todo');
-    //$resultFoundRows = $db->execute();
-
-    //$nombredElementsTotal = $resultFoundRows->fetchColumn();
-    //$nombreDePages = ceil($nombredElementsTotal / $limite);
     $nombreDeTasks = $resultFoundRows->fetchColumn();
     $nombreDePages = ceil($nombreDeTasks / $limite);
-    var_dump($nombreDePages);
-    //die();
+
     return $nombreDePages;
 }
 

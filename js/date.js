@@ -11,7 +11,7 @@ var laDate = {
     // Récupère date et heure
     runClock: function() {
 
-        jours = new Array("dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi");
+        jours = new Array("Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi");
         mois = new Array("janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre");
         date = new Date();
         laDate.heure = date.getHours();
