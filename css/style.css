@@ -49,6 +49,15 @@
     min-width: 350px;
 }
 
+.admin {
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 5%;
+    background-color: #b4c5ff;
+    padding: 10px;
+    margin-top: 15px;
+}
+
 #fonct {
     width: 100%;
     background-color: #b4c5ff;
@@ -57,7 +66,6 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #17a2b8;
-    /* box-shadow: black 0.5em 0.5em 0.3em; */
     -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
     box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
@@ -222,7 +230,7 @@ tr:hover {
 
 .formulaireLogin {
     width: 40%;
-    height: 280px;
+    height: auto;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
@@ -307,13 +315,6 @@ td {
     -ms-animation: floating-text 2s ease alternate infinite;
     -o-animation: floating-text 2s ease alternate infinite;
     animation: floating-text 2s ease alternate infinite;
-}
-
-.title p {
-    color: rgba(0, 0, 0, 0);
-    width: 100%;
-    bottom: 10em;
-    font-weight: 200;
 }
 
 @-webkit-keyframes floating-text {

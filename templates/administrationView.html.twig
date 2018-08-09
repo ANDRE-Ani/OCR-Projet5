@@ -1,14 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block importJS %}
-{% endblock %}
 
 {% block title %}5Project - Administration{% endblock %}
 
 {% block content %}
 
 <main role="main" class="container-fluid">
-
   <div class=".container-fluid">
   <div class="row">
 
@@ -17,11 +14,11 @@
       <div id="side">
       <h2>Administration</h2>
       <p><h4>Utilisateurs</h4></p>
-<p>
-{% if session.login is defined and session.login is not null%}
-<i class="fas fa-address-card"></i> : {{ session.login }}
-{% endif %}
-</p>
+        <p>
+            {% if session.login is defined and session.login is not null%}
+            <i class="fas fa-address-card"></i> : {{ session.login }}
+            {% endif %}
+        </p>
 
     <p><a href="index.php?action=logout">Se déconnecter</a></p>
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
@@ -38,9 +35,9 @@
   <option value="blue" name="blue" >Bleu</option>
   <option value="green" name="green">Vert</option>
 </select>
+</div>
 <div class="form-check">
     <button type="submit" class="btn btn-primary">Valider</button>
-</div>
 </div>
 </form>
 </div>
@@ -48,10 +45,11 @@
 </div>
 </div>
 
-      <div class="col-sm-8 p-4">
-      <div id="cont">
-      <h2>Informations</h2>
+    <div class="col-sm-8 p-4">
+    <div id="cont">
+    <h2>Informations</h2>
 
+<div class="admin">
 <p><h4>Serveur</h4></p>
 <ul>
 <li>Système : {{ sys }}</li>
@@ -62,7 +60,9 @@
 <li>I.P. du serveur : {{ servAdd }}</li>
 <li>Domaine : {{ servHost }}</li>
 </ul>
+</div>
 
+<div class="admin">
 <p><h4>Visiteur</h4></p>
     <ul>
     <li><div id="browser">
@@ -73,8 +73,9 @@
     <span id="myPosition">
       </span>
     </li>
-    
 </ul>
+</div>
+
     </div>
     </div>
 

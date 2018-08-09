@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block importJS %}
-{% endblock %}
 
 {% block title %}5Project - Liste des utilisateurs{% endblock %}
 
@@ -30,8 +28,8 @@
 
    <div class="col-sm-8 p-4">
       <div id="cont">
-<h2>Liste des utilisateurs</h2>
-<div class="formulaireEdit">
+        <h2>Liste des utilisateurs</h2>
+    <div class="formulaireEdit">
         
 
         <!-- Récupération des informations des utilisateurs -->
@@ -63,10 +61,10 @@
 {% endfor %}
     </table>
 
-
 </div>
-    
-</main>
+</div>
+</div>
+
 
 {% block js %}
     <script src="js/date.js"></script>
@@ -75,5 +73,6 @@
 
   </div>
   </div>
-    
+</main>
+
 {% endblock %}

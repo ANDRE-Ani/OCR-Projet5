@@ -39,10 +39,11 @@ class UserController extends Controller
                 $cook = $_POST['login'];
                 setcookie($cookie_name, $cook, time() + (2*24*3600), "/", "p5ocr.andre-ani.fr", true, true);
 
-                echo $twig->render('homeView.html.twig', array(
-                    'session' => $_SESSION,
-                    'cook' => $_COOKIE,
-                ));
+                header('Location: index.php?action=infos');
+                // echo $twig->render('homeView.html.twig', array(
+                //    'session' => $_SESSION,
+                //    'cook' => $_COOKIE,
+                // ));
 
             } else {
                 echo 'Login ou mot de passe incorrect';
@@ -53,6 +54,7 @@ class UserController extends Controller
             echo 'Il manque un champ';
         }
     }
+
 
     // go to admin connection
     public function connectionAdmin($twig)
@@ -88,7 +90,6 @@ class UserController extends Controller
             throw new Exception('Impossible de crÃ©er le compte');
         } else {
 
-
         echo $twig->render('administrationView.html.twig', array(
             'sys' => $system,
             'host' => $host,
@@ -119,13 +120,10 @@ class UserController extends Controller
             $userList['creationU'] = $usersL['creation'];
 
             array_push($user, $userList);
-
         }
-
         echo $twig->render('allUsersView.html.twig', array(
             'session'   => $_SESSION,
             'usersAll' => $user,
-
         ));
     }
     
