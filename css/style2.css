@@ -14,6 +14,11 @@
     flex-direction: column;
 }
 
+#dateJ {
+    padding-top: 25px;
+    text-align: center;
+}
+
 .navbar-my {
     background-color: #1BA60C;
 }
@@ -53,6 +58,15 @@
     min-width: 350px;
 }
 
+.admin {
+    width: 85%;
+    margin-left: 10%;
+    margin-right: 5%;
+    background-color: #b5ffad;
+    padding: 10px;
+    margin-top: 15px;
+}
+
 #fonct {
     width: 100%;
     background-color: #B5FFAD;
@@ -61,7 +75,9 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #rss {
@@ -72,7 +88,9 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #wiki {
@@ -83,7 +101,9 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #weather {
@@ -94,7 +114,9 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #map {
@@ -105,7 +127,9 @@
     margin-bottom: 15px;
     height: 300px;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #bitcoin {
@@ -116,7 +140,9 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #files {
@@ -127,7 +153,9 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 #todo {
@@ -138,12 +166,16 @@
     margin-bottom: 15px;
     height: auto;
     border: 2px solid #4CD63D;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 .p-3 {
     border-radius: 10px 10px 0px 0px;
-    box-shadow: black 0.5em 0.5em 0.3em;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
 .fileUp {

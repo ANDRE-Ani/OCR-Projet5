@@ -15,8 +15,9 @@
 
     define('UPLOAD_DIR', '/home/boutique/public_html/dev/p5ocr/uploads/');
 
-#    
+
+    #    
 # RSS configuration
 #
 
-    define('FLUX_RSS' , 'https://www.toolinux.com/spip.php?page=backend');
+define('FLUX_RSS' , 'https://www.toolinux.com/spip.php?page=backend');

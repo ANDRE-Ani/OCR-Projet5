@@ -13,6 +13,19 @@ require_once 'config.php';
 
 class Controller
 {
+
+    public function getGlobals() {
+        return array(
+            'session' => $_SESSION,
+            'cook' => $_SESSION,
+            'cook' => $_COOKIE,
+            'styleB' => $styleB,
+        );
+    }
+
+
+
+
 // get var for display infos page
 public function renderHome($twig) {
 
@@ -20,7 +33,6 @@ public function renderHome($twig) {
     $bitcoinT = $this->bitcoin($crypto);
     $listFileT = $this->listFile($filesAll);
     $allTodoT = TodoController::allTodo($todo);
-    
     
     echo $twig->render('homeView.html.twig', array(
     'rss' => $rssT,
@@ -70,6 +82,7 @@ public function renderHome($twig) {
 function rss()
 {
  $rss_feed = simplexml_load_file(FLUX_RSS);
+
  if (!empty($rss_feed)) {
     $feed = array();
     foreach ($rss_feed->channel->item as $feed_item) {
@@ -86,7 +99,8 @@ function rss()
         }
         array_push($feed, $item);
     }
-}
+
+    }
 return $feed;
 }
 

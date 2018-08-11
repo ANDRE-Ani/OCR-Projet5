@@ -16,7 +16,6 @@ $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
 
-
 // autoloader
 require_once("autoloader.php");
 
@@ -151,7 +150,6 @@ try {
         }
     }
 
-
         //
         // go to legal mentions
         //
@@ -234,6 +232,7 @@ try {
             session_start();
             if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
+            // chose style
             if(isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
@@ -249,6 +248,7 @@ try {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
         }
+
 
             $infos = new Controller();
             $infos = new UserController();

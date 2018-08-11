@@ -12,16 +12,6 @@ use model\TodoManager;
 class UserController extends Controller
 {
 
-    public function getGlobals() {
-        return array(
-            'session' => $_SESSION,
-            'cook' => $_SESSION,
-            'cook' => $_COOKIE,
-            'styleB' => $styleB,
-        );
-    }
-
-
 // admin connection
     public function logAdmin($twig)
     {
