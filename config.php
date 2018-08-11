@@ -16,7 +16,7 @@
     define('UPLOAD_DIR', '/home/boutique/public_html/dev/p5ocr/uploads/');
 
 
-    #    
+#    
 # RSS configuration
 #
 

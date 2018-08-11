@@ -24,13 +24,24 @@
   <div class="row">
 
 
+<div class="w-100"></div>
+  <div class="col-sm-6 bloc-column">
+  {% include 'weather.inc.html.twig' %}
+  </div>
+
+  <div class="col-sm-6 bloc-column">
+  {% include 'date.inc.html.twig' %}
+  </div>
+
+
+
  <div class="w-100"></div>
   <div class="col-sm-6 bloc-column">
   {% include 'wiki.inc.html.twig' %}
   </div>
 
   <div class="col-sm-6 bloc-column">
-  {% include 'weather.inc.html.twig' %}
+  {% include 'map.inc.html.twig' %}
   </div>
 
   <div class="w-100"></div>
@@ -52,11 +63,6 @@
   {% include 'bitcoin.inc.html.twig' %}
   </div>
 </div>
-
-<div class="w-100"></div>
-  <div class="col-sm-12 bloc-column">
-  {% include 'map.inc.html.twig' %}
-  </div>
 
 
 {% block js %}

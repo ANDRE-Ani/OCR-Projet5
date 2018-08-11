@@ -27,11 +27,9 @@ function creationTodo($todo) {
 }
 
 // todo list
-function allTodo() {
+public function allTodo() {
     $TodoManager = new TodoManager();
     $tasks = $TodoManager->getTasks();
-    $numberPages = $TodoManager->getNumberPages();
-    $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
 
     $todo = array();
     
@@ -48,6 +46,20 @@ function allTodo() {
       array_push($todo, $task);
     }
     return $todo;
+}
+
+// pagination
+public function page() {
+    $TodoManager = new TodoManager();
+    $numberPages = $TodoManager->getNumberPages();
+    $page = (!empty($_GET['page']) ? $_GET['page'] : 1);
+
+    $paginate = array(
+        "nbr" => $numberPages,
+        "page" => $page,
+    );
+
+    return $paginate;
 }
 
 // page for editing a task

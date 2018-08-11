@@ -1,6 +1,6 @@
 // weather with geoloc from openweathermap
 
-openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
+/* openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
 if (window.navigator && window.navigator.geolocation) {
     window.navigator.geolocation.getCurrentPosition(function(position) {
         $.getJSON(openWeatherMap, {
@@ -19,42 +19,46 @@ if (window.navigator && window.navigator.geolocation) {
             document.getElementById("weather").innerHTML = "<strong>" + town + "</strong>" + "<br>" + "<strong>" + " Conditions actuelles : " + "</strong>" + desc + "<br>" + "<strong>" + "Température : " + "</strong>" + tempL + "°" + "<strong>" + " Humidité : " + "</strong>" + humL + "%" + "<br>" + "<strong>" + "Pression : " + "</strong>" + pressL + "°" + "<strong>" + " Vent : " + "</strong>" + speedL;
         })
     })
-}
+} */
 
 
-
-/* var weatherL = {
-    openWeatherMap: "",
+var weatherL = {
+    /*openWeatherMap: "",
     town: "",
     tempL: "",
     humL: "",
     pressL: "",
     speedL: "",
-    desc: "", 
+    desc: "",*/
 
     weatherLoc: function() {
-
-        weatherL.openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
+        this.town = town;
+        this.tempL = tempL;
+        this.humL = humL;
+        this.pressL = pressL;
+        this.speedL = speedL;
+        this.openWeatherMap = openWeatherMap;
+        this.openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
         if (window.navigator && window.navigator.geolocation) {
             window.navigator.geolocation.getCurrentPosition(function(position) {
-                $.getJSON(weatherL.openWeatherMap, {
+                $.getJSON(this.openWeatherMap, {
                     lat: position.coords.latitude,
                     lon: position.coords.longitude,
                     units: 'metric',
                     lang: 'fr',
                     APPID: '8af0f894920fd7fcf2e0dc3b48605453'
                 }).done(function(weather) {
-                    // console.log(weather)
-                    weatherL.town = weather.name;
-                    weatherL.tempL = weather.main.temp;
-                    weatherL.humL = weather.main.humidity;
-                    weatherL.pressL = weather.main.pressure;
-                    weatherL.speedL = weather.wind.speed;
-                    weatherL.desc = weather.weather[0].description;
+                    console.log(weather)
+                    this.town = weather.name;
+                    this.tempL = weather.main.temp;
+                    this.humL = weather.main.humidity;
+                    this.pressL = weather.main.pressure;
+                    this.speedL = weather.wind.speed;
+                    this.desc = weather.weather[0].description;
                     document.getElementById("weather").innerHTML = "Ville : " + weatherL.town + "<br>" + " Conditions actuelles : " + desc + "<br>" + "Température : " + tempL + "°" + " Humidité : " + humL + "%" + "<br>" + "Pression : " + pressL + "°" + " Vent : " + speedL;
 
                 })
             })
         }
     }
-} */
+}

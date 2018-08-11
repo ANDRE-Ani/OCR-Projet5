@@ -34,7 +34,7 @@ var laDate = {
         laDate.message += mois[date.getMonth()] + " ";
         laDate.message += date.getFullYear();
 
-        document.getElementById("dateJ").innerHTML = laDate.message + ' / ' + laDate.heure + ':' + laDate.minute + ':' + laDate.seconde;
+        document.getElementById("dateJ").innerHTML = "Nous sommes le " + laDate.message + "<br>" + "Il est " + laDate.heure + ':' + laDate.minute + ':' + laDate.seconde;
 
     }
 

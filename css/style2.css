@@ -1,4 +1,4 @@
-/* Blue/principal stylesheet for 5Project */
+/* Green stylesheet for 5Project */
 
 * {
     font-family: 'Ubuntu', sans-serif;
@@ -29,6 +29,7 @@
 
 #menu {
     width: 100%;
+    margin-bottom: 75px;
 }
 
 .col {

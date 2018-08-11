@@ -33,13 +33,14 @@ public function renderHome($twig) {
     $bitcoinT = $this->bitcoin($crypto);
     $listFileT = $this->listFile($filesAll);
     $allTodoT = TodoController::allTodo($todo);
+    $pageT = TodoController::page($paginate);
     
     echo $twig->render('homeView.html.twig', array(
     'rss' => $rssT,
     'bitcoin' => $bitcoinT,
     'allTodo' => $allTodoT,
-    'nbrPages' => $nbrPages,
-    'page' => $page,
+    'nbrPages' => $pageT['nbr'],
+    'page' => $pageT['page'],
     'listFile' => $listFileT,
     ));
 }
