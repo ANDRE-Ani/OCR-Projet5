@@ -11,6 +11,7 @@ require_once 'config.php';
 
 // Controler principal
 
+
 class Controller
 {
 
@@ -22,7 +23,6 @@ class Controller
             'styleB' => $styleB,
         );
     }
-
 
 
 
@@ -82,27 +82,13 @@ public function renderHome($twig) {
 // RSS function
 function rss()
 {
- $rss_feed = simplexml_load_file(FLUX_RSS);
-
- if (!empty($rss_feed)) {
-    $feed = array();
-    foreach ($rss_feed->channel->item as $feed_item) {
-        $item = array();
-        $item['datetime'] = date_create($item->pubDate);
-        $item['date'] = date_format($item['datetime'], 'd M Y, H\hi');
-        $item['title'] = $feed_item->title;
-        $item['link'] = $feed_item->link;
-        $item['description'] = $feed_item->description;
-
-        if (strlen($item['description']) > 150) {
-            $stringCut = substr($item['description'], 0, 150);
-            $item['description'] = substr($stringCut, 0, strrpos($stringCut, ' ')).'...'; 
-        }
-        array_push($feed, $item);
-    }
-
-    }
+    $flux = FLUX_RSS;
+    $feedIo = \FeedIo\Factory::create()->getFeedIo();
+    $result = $feedIo->readSince($flux, new \DateTime('-1 days'));
+    $result = $feedIo->read($flux);
+    $feed = $result->getFeed();
 return $feed;
+
 }
 
 

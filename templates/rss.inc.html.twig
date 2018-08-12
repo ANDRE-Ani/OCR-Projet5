@@ -1,10 +1,9 @@
-<div class="p-3 bg-info text-white"><h5>Flux RSS : Toolinux</h5></div>
+<div class="p-3 bg-info text-white"><h5>Flux RSS : France Info</h5></div>
 <div id="fonct">
-<ul>
 
+<ul>
 {% for feed in rss %}
 <li><strong>Titre :</strong> <a href="{{ feed.link }}">{{ feed.title }}</a></li>
-    <strong><i class="far fa-calendar-alt"></i> :</strong> {{ feed.date }}<br>
     <strong>Description :</strong> {{ feed.description|raw }}
     <br><br>
 {% endfor %}

@@ -146,6 +146,19 @@
     box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
 }
 
+#search {
+    width: 100%;
+    background-color: #b4c5ff;
+    border-radius: 0px 0px 10px 10px;
+    padding: 5px;
+    margin-bottom: 15px;
+    height: auto;
+    border: 2px solid #17a2b8;
+    -webkit-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 20px -3px rgba(0, 0, 0, 0.75);
+}
+
 #files {
     width: 100%;
     background-color: #B5FFAD;
@@ -272,6 +285,14 @@ table,
 th,
 td {
     border: 1px solid #7594ff;
+}
+
+table,
+th,
+td,
+qwant {
+    width: 100%;
+    border: none;
 }
 
 th,

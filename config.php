@@ -20,4 +20,4 @@
 # RSS configuration
 #
 
-define('FLUX_RSS' , 'https://www.toolinux.com/spip.php?page=backend');
+define('FLUX_RSS', 'https://www.franceinter.fr/rss/a-la-une.xml');

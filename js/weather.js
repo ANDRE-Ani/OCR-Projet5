@@ -1,6 +1,6 @@
 // weather with geoloc from openweathermap
 
-/* openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
+openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
 if (window.navigator && window.navigator.geolocation) {
     window.navigator.geolocation.getCurrentPosition(function(position) {
         $.getJSON(openWeatherMap, {
@@ -19,17 +19,10 @@ if (window.navigator && window.navigator.geolocation) {
             document.getElementById("weather").innerHTML = "<strong>" + town + "</strong>" + "<br>" + "<strong>" + " Conditions actuelles : " + "</strong>" + desc + "<br>" + "<strong>" + "Température : " + "</strong>" + tempL + "°" + "<strong>" + " Humidité : " + "</strong>" + humL + "%" + "<br>" + "<strong>" + "Pression : " + "</strong>" + pressL + "°" + "<strong>" + " Vent : " + "</strong>" + speedL;
         })
     })
-} */
+}
 
 
-var weatherL = {
-    /*openWeatherMap: "",
-    town: "",
-    tempL: "",
-    humL: "",
-    pressL: "",
-    speedL: "",
-    desc: "",*/
+/* var weatherL = {
 
     weatherLoc: function() {
         this.town = town;
@@ -61,4 +54,4 @@ var weatherL = {
             })
         }
     }
-}
+} */
