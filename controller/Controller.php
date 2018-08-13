@@ -72,6 +72,32 @@ public function renderHome($twig) {
         ));
     }
 
+
+    // send mail
+    public function sendM($sujet, $destinataire, $message)
+    {
+        $expediteur = 'contact@andre-ani.fr';
+        $headers  = 'MIME-Version: 1.0' . "\n";
+        $headers .= "Content-type: text/plain; charset=utf-8\n";
+        $headers .= 'Reply-To: '.$expediteur."\n";
+        $headers .= 'From: "Patrice Andreani"<'.$expediteur.'>'."\n";
+        $headers .= "Cc : contact@andre-ani.fr\n";
+        $headers .= 'Delivered-to: '.$destinataire."\n";
+        $headers .= "X-Priority : 3\n";
+
+        if (mail($destinataire, $sujet, $message, $headers))
+            {
+            header('Location: index.php?action=infos');
+            }
+        else
+            {
+            throw new Exception('Le message n\a pas été envoyé...');
+            header('Location: index.php?action=infos');
+        }
+    }
+
+
+
     // error
     public function error404()
     {

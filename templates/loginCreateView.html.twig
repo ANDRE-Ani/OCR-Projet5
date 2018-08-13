@@ -53,20 +53,20 @@ Connecté : {{ session.login }}
 
         <form action="index.php?action=createUser" method="post">
         <div class="form-group">
-            <label for="id">Identifiant</label>
-            <input type="text" class="form-control" name="login" placeholder="Identifiant" pattern="[A-Za-z]{1,10}" title="Uniquement des lettres" required /></p>
+            <label for="identifiant">Identifiant</label>
+            <input id="identifiant" type="text" class="form-control" name="login" placeholder="Identifiant" pattern="[A-Za-z]{1,10}" title="Uniquement des lettres" required /></p>
         </div>    
         <div class="form-group">
-        <label for="id">Mail</label>   
-            <input type="email" class="form-control" name="mail" placeholder="Votre email" required maxlenght="50" title="Donner un mail valide" required/></p>
+        <label for="mail">Mail</label>   
+            <input id="mail" type="email" class="form-control" name="mail" placeholder="Votre email" required maxlenght="50" title="Donner un mail valide" required/></p>
         </div>
         <div class="form-group">
-        <label for="id">Mot de passe</label>    
-            <input type="password" title="mot de passe" class="form-control" name="pass" placeholder="Mot de passe" pattern="[a-zA-Z0-9-]+" title="Minimum 8 charactères" required /></p>
+        <label for="mdp">Mot de passe</label>    
+            <input id="mdp" type="password" title="mot de passe" class="form-control" name="pass" placeholder="Mot de passe" pattern="[a-zA-Z0-9-]+" title="Minimum 8 charactères" required /></p>
         </div>
         <div class="form-group">
-        <label for="id">Retapper le mot de passe</label>   
-            <input type="password" title="mot de passe" class="form-control" name="pass2" placeholder="Mot de passe" required /></p>
+        <label for="mdp2">Retapper le mot de passe</label>   
+            <input id="mdp2" type="password" title="mot de passe" class="form-control" name="pass2" placeholder="Mot de passe" required /></p>
         </div>
             <div class="form-check">
             <button type="submit" class="btn btn-primary">Valider</button>

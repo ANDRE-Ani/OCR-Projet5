@@ -206,6 +206,38 @@ try {
 
 
         //
+        // send mail
+        //
+        elseif ($_GET['action'] == 'mail') {
+
+            if (isset($_POST['sujet'])) {
+                $sujet = $_POST['sujet'];
+            }
+            else {
+                throw new Exception('Le champ \'sujet\' n\'est pas remplis');
+            }
+
+            if (isset($_POST['destinataire'])) {
+                $destinataire = $_POST['destinataire'];
+            }
+            else {
+                throw new Exception('Le champ \'destinataire\' n\'est pas remplis');
+            }
+            
+            if (isset($_POST['message'])) {
+                $message = $_POST['message'];
+            }
+            else {
+                throw new Exception('Le champ \'message\' n\'est pas remplis');
+            }
+
+            session_start();
+            $infos = new Controller();
+            $infos->sendM($sujet, $destinataire, $message);
+        }
+
+
+        //
         // upload file
         //
         elseif ($_GET['action'] == 'upload') {
@@ -255,11 +287,7 @@ try {
             $infos = new UserController();
             $infos = new TodoController();
             $infos = new FileController();
-            // $infos->rss($twig);
-            // $infos->bitcoin($twig);
-            // $infos->allTodo($twig);
             $infos->renderHome($twig);
-            // $infos->listFile($twig);
 
         }
         else {
