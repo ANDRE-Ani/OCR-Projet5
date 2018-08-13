@@ -34,7 +34,7 @@ $req->execute();
 return $req;
 }
 
-
+// get the number of pages
 public function getNumberPages() {
     $db = $this->dbConnect();
     $limite = 3;

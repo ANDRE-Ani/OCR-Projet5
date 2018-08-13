@@ -20,4 +20,6 @@
 # RSS configuration
 #
 
-define('FLUX_RSS', 'https://www.franceinter.fr/rss/a-la-une.xml');
+define('FLUX_RSS', 'https://www.francetvinfo.fr/titres.rss');
+
+// https://www.franceinter.fr/rss/a-la-une.xml

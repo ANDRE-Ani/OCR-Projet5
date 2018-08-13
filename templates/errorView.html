@@ -10,7 +10,15 @@
     <meta name="keywords" content="application libre de portail web personnel">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <!-- bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" type="text/css" href="../css/style.css" />
     <link rel="icon" type="image/png" href="../images/favicon.ico" />
 
@@ -27,28 +35,34 @@
 </head>
 
 <div id="menu">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #7594ff;">
+    <nav class="navbar navbar-expand-md navbar-dark navbar-my fixed-top">
 
-        <a class="navbar-brand" href="index.php?action=infos">5Project</a>
+        <a class="navbar-brand" href="index.php?action=infos">
+            <img src="images/brand.png" width="30" height="30" class="d-inline-block align-top" alt="logo 5Project"> 5Project
+        </a>
+
+        <span class="navbar-text">
+          Votre Portail Web Personnel
+        </span>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php?action=infos">Accueil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php?action=infos"><i class="fas fa-home"></i> Accueil <span class="sr-only">(current)</span></a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=administration">Administration</a>
+                    <a class="nav-link" href="index.php?action=administration"><i class="fas fa-cogs"></i> Administration</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=legal">Mentions légales</a>
+                    <a class="nav-link" href="index.php?action=legal"><i class="fas fa-file-contract"></i> Mentions légales</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?action=about">A propos</a>
+                    <a class="nav-link" href="index.php?action=about"><i class="fas fa-info-circle"></i> A propos</a>
                 </li>
             </ul>
         </div>
@@ -57,29 +71,7 @@
 
 
 
-<div class="header">
-    <div class=".container-fluid">
-        <div class="row">
 
-            <div class="col-6">
-
-                <div class="title">
-                    <h1>5Project</h1>
-                    <p>Votre portail web personnel</p>
-                </div>
-
-            </div>
-
-            <div class="col-6">
-                <p>
-                    <div id="dateJ">
-                    </div>
-                </p>
-            </div>
-
-        </div>
-    </div>
-</div>
 
 <body>
 

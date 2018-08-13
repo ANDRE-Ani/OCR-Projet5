@@ -1,10 +1,22 @@
-<div class="p-3 bg-secondary text-white"><h5>Recherche Qwant</h5></div>
+<div class="p-3 bg-secondary text-white"><h5><i class="fas fa-search"></i> Recherche Qwant</h5></div>
 
-<div id="search">
+<div class="search">
 
+<div class="qwant">
 <form method="GET" action="https://www.qwant.com" target="_blank" id="formQ">
 
-<table id="qwant" bgcolor="#b4c5ff">
+<div class="form-group">
+<a href="https://www.qwant.com"> <img src="https://www.qwant.com/img/logo/q-48.png" border="0" alt="Qwant" align="absmiddle"></a>
+</div>
+<div class="form-group">
+<input type="text" name="q" id="query" size="31" maxlength="255" title="Tappez votre recherche" placeholder="Recherche">
+</div>
+<div class="form-group">
+<input type="hidden" name="l" value="fr">
+<input type="submit" name="btnG" value="Chercher">
+</div>
+
+<!-- <table id="qwant" bgcolor="#b4c5ff">
 <tbody>
 <tr>
 <td>
@@ -15,8 +27,9 @@
 </td>
 </tr>
 </tbody>
-</table>
+</table> -->
 
 </form>
+</div>
 
 </div>

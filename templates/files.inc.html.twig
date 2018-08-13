@@ -1,4 +1,4 @@
-<div class="p-3 bg-success text-white"><h5>Envoie de fichiers</h5></div>
+<div class="p-3 bg-success text-white"><h5><i class="fas fa-file-upload"></i> Envoie de fichiers</h5></div>
 <div id="fonct">
 
 <div class="fileUp">
@@ -8,17 +8,17 @@
     <input type="submit" />
   </form>
 </div>
-  
+
 <div class ="fileList">
+
 <table>
 <tr>
     <th>Nom du fichier</th>
-    <th>Taille (kilo-octets)</th>
+    <th>Taille en kilos</th>
     <th>Date d'ajout</th>
     <th>Supprimer</th>
     </tr>
 {% for filesAll in listFile %}
-    
     <tr>
         <td>{{ filesAll.name }}</td>
         <td>{{ filesAll.sizeF }}</td>

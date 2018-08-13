@@ -6,6 +6,11 @@
 
 <main role="main" class="container-fluid">
 
+<div class="logo">
+    <p><img src="images/logo.png" alt="logo 5Project"></p>
+
+</div>
+
 <div class="formulaireLogin">
 
 <!-- Formulaire de connexion à l'administration -->
@@ -14,11 +19,11 @@
         <form action="index.php?action=logAdminB" method="post">
         <div class="form-group">
         <label for="identifiant">Identifiant</label>
-            <input id="identifiant" type="text" name="login" class="form-control" placeholder="Identifiant" pattern="[A-Za-z]{1,10}" title="Uniquement des lettres" required /></p>
+            <input id="identifiant" type="text" name="login" class="form-control" placeholder="Identifiant" pattern="[A-Za-z]{1,10}" title="Votre identifiant" required /></p>
             </div>
             <div class="form-group">
             <label for="mdp">Mot de passe</label>
-            <input type="password" id="mdp" title="mot de passe" class="form-control" name="pass" placeholder="Mot de passe" required /></p>
+            <input type="password" id="mdp" title="Votre mot de passe" class="form-control" name="pass" placeholder="Mot de passe" required /></p>
             </div>
             <div class="form-check">
             <button type="submit" class="btn btn-primary">Valider</button>

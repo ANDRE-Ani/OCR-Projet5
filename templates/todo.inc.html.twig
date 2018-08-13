@@ -1,4 +1,4 @@
-<div class="p-3 bg-danger text-white"><h5>ToDo List</h5></div>
+<div class="p-3 bg-danger text-white"><h5><i class="fas fa-clipboard-list"></i> ToDo List</h5></div>
 <div id="fonct">
 
 <form name="tacheAdd" action="index.php?action=createTodo" method="post">
@@ -17,20 +17,22 @@
 <p><strong>Id :</strong> {{ todo.idT }} - <strong><i class="far fa-calendar-alt"></i> :</strong> {{ todo.dateT }}</p>
 <p><strong>Tâche :</strong>  {{ todo.todoT }}</p>
 <p><a href="index.php?action=viewEditTask&amp;id={{ todo.idT }}">Editer</a> - <a href="index.php?action=deleteTodo&amp;id={{ todo.idT }}">Supprimer</a></p>
+<hr>
 {% endblock %}
 
 {% endfor %}
 
 {% block page %}
-<p><a href="index.php?action=infos&amp;page={{ page - 1 }}"> Précédent </a>
--
+
+<div class="paginate">
+<p><a class="pages" href="index.php?action=infos&amp;page={{ page - 1 }}"> < </a>
 
 {% for i in 1..nbrPages %}
-   <a href="index.php?action=infos&amp;page={{ loop.index }}"> {{ loop.index }}</a>
+<a class="pages" href="index.php?action=infos&amp;page={{ loop.index }}"> {{ loop.index }} </a>
 {% endfor %}
 
--
-<a href="index.php?action=infos&amp;page={{ page + 1 }}"> Suivant </a></p>
+<a class="pages" href="index.php?action=infos&amp;page={{ page + 1 }}"> > </a></p>
+</div>
 
 {% endblock %}
 

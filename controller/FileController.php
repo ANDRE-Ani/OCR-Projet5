@@ -52,6 +52,7 @@ public function listFile() {
 
     $dir_path = UPLOAD_DIR;
     $filesAll = array();
+
     foreach (new \DirectoryIterator($dir_path) as $file) {
         if (preg_match('#\.(txt|pdf|jpg|jpeg|png|gif)$#i', $file->getFilename())) {
             $list = array();
@@ -68,7 +69,7 @@ public function listFile() {
             //date convertion from timestamp
             $dateA = date('m/d/Y H:i:s', $list['timeT']);
             $list['time'] = $dateA;
-
+            
             array_push($filesAll, $list);
         }
     }
