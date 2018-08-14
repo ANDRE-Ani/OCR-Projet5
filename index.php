@@ -1,9 +1,5 @@
 <?php
 
-// autoloader
-require_once("autoloader.php");
-
-
 // Twig init
 require_once __DIR__ . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
@@ -19,13 +15,15 @@ $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
 
+// autoloader
+require_once("autoloader.php");
 
 
-// Use of needed controller
-// use controller\Controller;
-// use controller\FileController;
-// use controller\UserController;
-// use controller\TodoController;
+// namespace
+use controller\Controller;
+use controller\FileController;
+use controller\UserController;
+use controller\TodoController;
 
 
 // call to models
