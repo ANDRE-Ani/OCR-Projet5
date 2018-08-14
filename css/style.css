@@ -265,6 +265,11 @@ tr:hover {
     border-radius: 10px;
 }
 
+.card {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
 .error {
     width: 70%;
     margin-left: auto;

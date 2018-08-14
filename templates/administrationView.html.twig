@@ -10,13 +10,16 @@
   <div class="row">
 
 
-    <div class="col-sm-4 p-4"> 
-    <div id="side">
+    <div class="col-sm-4 p-4">
+    
 
 
-      <h2>Administration</h2>
-      <p><h5><i class="far fa-id-card"></i> Utilisateurs</h5></p>
-        <p>
+<div class="card bg-light mb-3">
+  <h5 class="card-header">Administration</h5>
+  <div class="card-body">
+    <h5 class="card-title"><i class="far fa-id-card"></i> Utilisateurs</h5>
+    <p class="card-text">
+            <p>
             {% if session.login is defined and session.login is not null%}
             Connecté : {{ session.login }}
             {% endif %}
@@ -26,10 +29,12 @@
     <p><a href="index.php?action=gestionU">Gérer les utilisateurs</a></p>
     <p><a href="index.php?action=creationUser">Créer un utilisateur</a></p>
     
-<hr>
+    </p>
+  </div>
 
-<div class="styleC">
-<h5><i class="fas fa-pencil-alt"></i> Thème</h5>
+<div class="card-body">
+    <h5 class="card-title"><i class="fas fa-pencil-alt"></i> Thème</h5>
+    <p class="card-text">
 <form action="index.php?action=styleT" method="post">
 <div class="form-group">
 <label>Couleur du thème</label>
@@ -42,19 +47,23 @@
     <button type="submit" class="btn btn-primary">Valider</button>
 </div>
 </form>
+  </div>
+
+
+</div>
 </div>
 
-</div>
-</div>
 
 
-    <div class="col-sm-8 p-4">
-    <div id="cont">
-    <h2>Informations</h2>
 
-<div class="admin">
-<p><h5><i class="fas fa-server"></i> Serveur</h5></p>
-<ul>
+<div class="col-sm-8 p-4">
+
+<div class="card text-white bg-info mb-3">
+  <h5 class="card-header">Informations</h5>
+  <div class="card-body">
+    <h5 class="card-title"><i class="fas fa-server"></i> Serveur</h5>
+    <p class="card-text">
+    <ul>
 <li>Système : {{ sys }}</li>
 <li>Serveur : {{ host }}</li>
 <li>Architecture : {{ arch }}</li>
@@ -63,10 +72,17 @@
 <li>I.P. du serveur : {{ servAdd }}</li>
 <li>Domaine : {{ servHost }}</li>
 </ul>
+    </p>
+  </div>
 </div>
 
-<div class="admin">
-<p><h5><i class="fas fa-user-cog"></i> Visiteur</h5></p>
+
+
+<div class="card text-white bg-info mb-3">
+  <h5 class="card-header">Informations</h5>
+  <div class="card-body">
+    <h5 class="card-title"><i class="fas fa-user-cog"></i> Visiteur</h5>
+    <p class="card-text">
     <ul>
     <li><div id="browser">
     </div>
@@ -77,10 +93,12 @@
       </span>
     </li>
 </ul>
+    </p>
+  </div>
 </div>
 
-    </div>
-    </div>
+
+</div>
 
 
 {% block js %}

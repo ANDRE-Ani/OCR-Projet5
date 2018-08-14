@@ -2,10 +2,13 @@
 <div id="fonct">
 
 <ul>
-{% for feed in rss %}
+
+{% for feed in rss|slice(0, 5) %}
+
 <li><strong>Titre :</strong> <a href="{{ feed.link }}">{{ feed.title }}</a></li>
     <strong>Description :</strong> {{ feed.description|raw }}
     <br><br>
+
 {% endfor %}
 </ul>
 <br>
