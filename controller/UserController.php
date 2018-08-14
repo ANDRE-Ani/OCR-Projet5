@@ -30,10 +30,6 @@ class UserController extends Controller
                 setcookie($cookie_name, $cook, time() + (2*24*3600), "/", "p5ocr.andre-ani.fr", true, true);
 
                 header('Location: index.php?action=infos');
-                // echo $twig->render('homeView.html.twig', array(
-                //    'session' => $_SESSION,
-                //    'cook' => $_COOKIE,
-                // ));
 
             } else {
                 echo 'Login ou mot de passe incorrect';
@@ -77,7 +73,7 @@ class UserController extends Controller
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
         if ($affectedLines === false) {
-            throw new Exception('Impossible de crÃ©er le compte');
+            throw new Exception('Impossible de créer le compte');
         } else {
 
         echo $twig->render('administrationView.html.twig', array(
@@ -152,7 +148,7 @@ class UserController extends Controller
         $UserManager = new UserManager();
         $affectedLines = $UserManager->editUserL($login, $mail, $id);
         if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ÃƒÂ©diter l\'utilisateur');
+            throw new Exception('Impossible d\'éditer l\'utilisateur');
         } else {
             header('Location: index.php?action=administration');
         }

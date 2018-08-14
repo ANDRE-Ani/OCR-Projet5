@@ -19,7 +19,7 @@ function creationTodo($todo) {
     $TodoManager = new TodoManager();
     $affectedLines = $TodoManager->writeTask($todo);
     if ($affectedLines === false) {
-        throw new Exception('Error adding a task');
+        throw new Exception('Erreur en ajoutant une tâche');
     }
     else {
         header('Location: index.php?action=infos');
@@ -80,7 +80,7 @@ public function editTodoBack($todo, $id)
     $TodoManager = new TodoManager();
     $affectedLines = $TodoManager->editTodoL($todo, $id);
     if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ÃƒÂ©diter la tache');
+        throw new Exception('Impossible d\'éditer la tâche');
     } else {
         header('Location: index.php?action=infos');
     }
@@ -92,7 +92,7 @@ public function suprTodo($id)
     $TodoManager = new TodoManager();
     $affectedLines = $TodoManager->deleteTodo($id);
     if ($affectedLines === false) {
-        throw new Exception('Impossible de supprimer la tache');
+        throw new Exception('Impossible de supprimer la tâche');
     } else {
         header('Location: index.php?action=infos');
     }

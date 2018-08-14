@@ -46,8 +46,6 @@ public function getNumberPages() {
 }
 
 
-
-
 // get a todo
 public function getTodo($todoId) {
     $db = $this->dbConnect();

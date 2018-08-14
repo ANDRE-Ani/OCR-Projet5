@@ -44,7 +44,6 @@ public function uploadF() {
     else {
         throw new Exception('Erreur d\'envoie du fichier');
     }
-
 }
 
 // list all files
@@ -85,9 +84,6 @@ public function deleteFile($fichier) {
       } else {
         echo 'Could not delete '.$fichier.', file does not exist';
       }
-
-    
 }
-
 
 }

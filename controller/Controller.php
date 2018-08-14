@@ -25,9 +25,11 @@ class Controller
     }
 
 
-
+//
 // get var for display infos page
+//
 public function renderHome($twig) {
+
 
     $rssT = $this->rss($feed);
     $bitcoinT = $this->bitcoin($crypto);
@@ -46,24 +48,32 @@ public function renderHome($twig) {
 }
 
 
+//
 // home/connection
-    public function home($twig)
+//
+public function home($twig)
     {
         echo $twig->render('loginView.html.twig');
     }
     
-    // legales
-    public function legalM($twig)
-    {
-        echo $twig->render('legalView.html.twig', array(
-            'session' => $_SESSION,
-            'cook' => $_SESSION,
-            'cook' => $_COOKIE,
-        ));
-    }
 
-    // about
-    public function aboutP($twig)
+//
+// legales
+//
+public function legalM($twig)
+{
+    echo $twig->render('legalView.html.twig', array(
+        'session' => $_SESSION,
+        'cook' => $_SESSION,
+        'cook' => $_COOKIE,
+    ));
+}
+
+
+//
+// about
+//
+public function aboutP($twig)
     {
         echo $twig->render('aboutView.html.twig', array(
             'session' => $_SESSION,
@@ -73,8 +83,10 @@ public function renderHome($twig) {
     }
 
 
-    // send mail
-    public function sendM($sujet, $destinataire, $message)
+//
+// send mail
+//
+public function sendM($sujet, $destinataire, $message)
     {
         $expediteur = 'contact@andre-ani.fr';
         $headers  = 'MIME-Version: 1.0' . "\n";
@@ -84,6 +96,7 @@ public function renderHome($twig) {
         $headers .= "Cc : contact@andre-ani.fr\n";
         $headers .= 'Delivered-to: '.$destinataire."\n";
         $headers .= "X-Priority : 3\n";
+        $headers .= "Content-Transfer-Encoding: 8bit\n";
 
         if (mail($destinataire, $sujet, $message, $headers))
             {
@@ -97,15 +110,9 @@ public function renderHome($twig) {
     }
 
 
-
-    // error
-    public function error404()
-    {
-        require '../view/errorView.php';
-    }
-
-
+// 
 // RSS function
+//
 function rss()
 {
     $flux = FLUX_RSS;
@@ -117,8 +124,9 @@ return $feed;
 
 }
 
-
+//
 // get bitcoin informations
+//
 function bitcoin() {
     $api_url='https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC&tsyms=EUR,USD';
     $cryptocurrency = json_decode(file_get_contents($api_url));

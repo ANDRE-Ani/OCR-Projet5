@@ -1,5 +1,9 @@
 <?php
 
+// autoloader
+require_once("autoloader.php");
+
+
 // Twig init
 require_once __DIR__ . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
@@ -10,22 +14,18 @@ $twig = new Twig_Environment($loader, array(
 
 ));
 $twig->addExtension(new Twig_Extension_Debug());
-//$twig->addExtension(new Twig_Extensions_Extension_I18n());
 $twig->addGlobal("session", $_SESSION);
 $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
 
 
-// autoloader
-require_once("autoloader.php");
-
 
 // Use of needed controller
-use controller\Controller;
-use controller\FileController;
-use controller\UserController;
-use controller\TodoController;
+// use controller\Controller;
+// use controller\FileController;
+// use controller\UserController;
+// use controller\TodoController;
 
 
 // call to models
@@ -211,21 +211,21 @@ try {
         elseif ($_GET['action'] == 'mail') {
 
             if (isset($_POST['sujet'])) {
-                $sujet = $_POST['sujet'];
+                $sujet = htmlspecialchars($_POST['sujet']);
             }
             else {
                 throw new Exception('Le champ \'sujet\' n\'est pas remplis');
             }
 
             if (isset($_POST['destinataire'])) {
-                $destinataire = $_POST['destinataire'];
+                $destinataire = htmlspecialchars($_POST['destinataire']);
             }
             else {
                 throw new Exception('Le champ \'destinataire\' n\'est pas remplis');
             }
             
             if (isset($_POST['message'])) {
-                $message = $_POST['message'];
+                $message = htmlspecialchars($_POST['message']);
             }
             else {
                 throw new Exception('Le champ \'message\' n\'est pas remplis');

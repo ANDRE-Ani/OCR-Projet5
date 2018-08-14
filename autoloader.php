@@ -1,8 +1,9 @@
 <?php
 
-// autoloader for load all the different classes
+// autoloader for load all the differents classes
 
 namespace controller;
+use Exception;
 
 spl_autoload_register(function($class) {
     $filecl = __DIR__ . '/' . str_replace('\\', '/', $class) . '.php';
@@ -13,3 +14,5 @@ spl_autoload_register(function($class) {
       return;
     }
 });
+
+
