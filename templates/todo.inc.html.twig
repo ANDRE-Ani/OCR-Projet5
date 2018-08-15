@@ -7,14 +7,14 @@
           <p><input type="text" name="todo" id="tacheN" placeholder="Tâche à faire" maxlength="70" title="Maximum 70 caractères" required /></p>
           </div>
           <div class="form-check">
-          <p><input type="submit" value="Ajouter"/></p>
+          <p><input type="submit" class="btn btn-primary" value="Ajouter"/></p>
           </div>
       </form>
 
 <p><h6>Tâches en cours :</h6></p>
 {% for todo in allTodo %}
 {% block task %}
-<p><strong>Id :</strong> {{ todo.idT }} - <strong><i class="far fa-calendar-alt"></i> :</strong> {{ todo.dateT }}</p>
+<p><strong>Id :</strong> <span class="badge badge-secondary">{{ todo.idT }}</span> - <strong><i class="far fa-calendar-alt"></i> :</strong> {{ todo.dateT }}</p>
 <p><strong>Tâche :</strong>  {{ todo.todoT }}</p>
 <p><a href="index.php?action=viewEditTask&amp;id={{ todo.idT }}">Editer</a> - <a href="index.php?action=deleteTodo&amp;id={{ todo.idT }}">Supprimer</a></p>
 <hr>

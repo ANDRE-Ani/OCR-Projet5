@@ -1,6 +1,6 @@
 <?php
 
-// manager principal gérant la connexion à la BDD
+// main manager for BDD
 
 namespace model;
 

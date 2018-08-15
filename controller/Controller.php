@@ -1,5 +1,7 @@
 <?php
 
+// main controller, with namespace
+
 namespace controller;
 
 use model\FrontManager;
@@ -7,9 +9,8 @@ use model\UserManager;
 use model\TodoManager;
 use model\Manager;
 
-require_once 'config.php';
 
-// Controler principal
+require_once 'config.php';
 
 
 class Controller
@@ -29,7 +30,6 @@ class Controller
 // get var for display infos page
 //
 public function renderHome($twig) {
-
 
     $rssT = $this->rss($feed);
     $bitcoinT = $this->bitcoin($crypto);

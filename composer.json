@@ -2,6 +2,7 @@
     "name": "projet5",
     "description": "dernier projet",
     "require": {
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "debril/feed-io": "^4.3"
     }
 }

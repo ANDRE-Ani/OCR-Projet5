@@ -1,18 +1,18 @@
 <?php
 
+// user controller
+
 namespace controller;
 
 use Exception;
 use model\UserManager;
-use model\TodoManager;
-
-
-// Controler user
 
 class UserController extends Controller
 {
 
-// admin connection
+    //
+    // admin connection
+    //
     public function logAdmin($twig)
     {
         if (isset($_POST["login"]) && isset($_POST["pass"])) {
@@ -23,11 +23,11 @@ class UserController extends Controller
             $_SESSION['cook'] = $login;
 
             if ($correctPassword != false) {
-                session_start();             
+                session_start();
                 $_SESSION['login'] = $_POST['login'];
                 $cookie_name = "cook";
                 $cook = $_POST['login'];
-                setcookie($cookie_name, $cook, time() + (2*24*3600), "/", "p5ocr.andre-ani.fr", true, true);
+                setcookie($cookie_name, $cook, time() + (2 * 24 * 3600), "/", "p5ocr.andre-ani.fr", true, true);
 
                 header('Location: index.php?action=infos');
 
@@ -41,15 +41,17 @@ class UserController extends Controller
         }
     }
 
-
+    //
     // go to admin connection
+    //
     public function connectionAdmin($twig)
     {
         echo $twig->render('loginView.html.twig');
     }
-    
 
+    //
     // user creation
+    //
     public function creationUser($twig, $login, $mail, $pass)
     {
         $mail = $_POST['mail'];
@@ -59,16 +61,16 @@ class UserController extends Controller
         // lenght pass verification
         if (strlen($pass) < 8) {
             throw new Exception('Mot de passe trop court');
-          }
-          // mail verification
-          $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
-          if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+        }
+        // mail verification
+        $mail = filter_var($mail, FILTER_SANITIZE_EMAIL);
+        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Mail invalide');
-          }
-          // login with only letters
-          if (!preg_match("/^[a-zA-Z ]*$/",$login)) {
+        }
+        // login with only letters
+        if (!preg_match("/^[a-zA-Z ]*$/", $login)) {
             throw new Exception('Identifiant invalide');
-            }
+        }
         $UserManager = new UserManager();
         $pass_hash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
         $affectedLines = $UserManager->createUser($login, $mail, $pass_hash);
@@ -76,27 +78,28 @@ class UserController extends Controller
             throw new Exception('Impossible de créer le compte');
         } else {
 
-        echo $twig->render('administrationView.html.twig', array(
-            'sys' => $system,
-            'host' => $host,
-            'arch' => $arch,
-            'php' => $phpversion,
-            'mail' => $mailAdmin,
-            'servAdd' => $servAdd,
-            'servHost' => $servHost,
-            'visitorLang' => $visitorLang,
-            'session'   => $_SESSION,
-        ));
+            echo $twig->render('administrationView.html.twig', array(
+                'sys' => $system,
+                'host' => $host,
+                'arch' => $arch,
+                'php' => $phpversion,
+                'mail' => $mailAdmin,
+                'servAdd' => $servAdd,
+                'servHost' => $servHost,
+                'visitorLang' => $visitorLang,
+                'session' => $_SESSION,
+            ));
         }
     }
-    
 
+    //
     // list the users
+    //
     public function allUsers($twig)
     {
         $UserManager = new UserManager();
         $users = $UserManager->getUsers();
-        
+
         $user = array();
         while ($usersL = $users->fetch()) {
             $userList = array();
@@ -106,15 +109,17 @@ class UserController extends Controller
             $userList['creationU'] = $usersL['creation'];
 
             array_push($user, $userList);
+
         }
         echo $twig->render('allUsersView.html.twig', array(
-            'session'   => $_SESSION,
+            'session' => $_SESSION,
             'usersAll' => $user,
         ));
     }
-    
 
+    //
     // delete a user
+    //
     public function suprUser()
     {
         $UserManager = new UserManager();
@@ -125,9 +130,10 @@ class UserController extends Controller
             header('Location: index.php?action=administration');
         }
     }
-    
 
+    //
     // go to edition user view
+    //
     public function viewEditUserB($userId, $twig)
     {
         $UserManager = new UserManager();
@@ -136,13 +142,14 @@ class UserController extends Controller
         echo $twig->render('editUserView.html.twig', array(
             'userEd' => $userE,
             'userL' => $user,
-            'session'   => $_SESSION,
+            'session' => $_SESSION,
             'usersAll' => $user,
         ));
     }
-    
 
-    // edition user
+    //
+    // edit user
+    //
     public function editUserBack($login, $mail, $id)
     {
         $UserManager = new UserManager();
@@ -153,9 +160,10 @@ class UserController extends Controller
             header('Location: index.php?action=administration');
         }
     }
-    
-    
+
+    //
     // go to creation user
+    //
     public function createUserView($twig)
     {
         $UserManager = new UserManager();
@@ -165,17 +173,18 @@ class UserController extends Controller
             'cook' => $_COOKIE,
         ));
     }
-    
 
+    //
     // go to admin
+    //
     public function administration($twig)
-    {                
+    {
         $UserManager = new UserManager();
 
         $system = php_uname(s);
         $host = php_uname(n);
         $arch = php_uname(m);
-        $phpversion  = phpversion();
+        $phpversion = phpversion();
         $mailAdmin = $_SERVER['SERVER_ADMIN'];
         $servAdd = $_SERVER['SERVER_ADDR'];
         $servHost = $_SERVER['HTTP_HOST'];
@@ -190,8 +199,7 @@ class UserController extends Controller
             'servAdd' => $servAdd,
             'servHost' => $servHost,
             'visitorLang' => $visitorLang,
-            'session'   => $_SESSION,
+            'session' => $_SESSION,
         ));
-
     }
 }

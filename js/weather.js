@@ -16,7 +16,8 @@ if (window.navigator && window.navigator.geolocation) {
             pressL = weather.main.pressure;
             speedL = weather.wind.speed;
             desc = weather.weather[0].description;
-            document.getElementById("weather").innerHTML = "<strong>" + town + "</strong>" + "<br>" + "<strong>" + " Conditions actuelles : " + "</strong>" + desc + "<br>" + "<strong>" + "Température : " + "</strong>" + tempL + "°" + "<strong>" + " Humidité : " + "</strong>" + humL + "%" + "<br>" + "<strong>" + "Pression : " + "</strong>" + pressL + "°" + "<strong>" + " Vent : " + "</strong>" + speedL;
+
+            document.getElementById("weather").innerHTML = "<strong>" + town + "</strong>" + " : " + "</strong>" + desc + "<br>" + "<strong>" + "Température : " + "</strong>" + tempL + "°" + "<br>" + "<strong>" + " Humidité : " + "</strong>" + humL + "%" + "<br>" + "<strong>" + "Pression : " + "</strong>" + pressL + "°" + "<br>" + "<strong>" + " Vent : " + "</strong>" + speedL;
         })
     })
 }

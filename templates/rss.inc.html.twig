@@ -5,7 +5,7 @@
 
 {% for feed in rss|slice(0, 5) %}
 
-<li><strong>Titre :</strong> <a href="{{ feed.link }}">{{ feed.title }}</a></li>
+<li><h5><span class='badge badge-secondary'>Titre :</span></h5> <a href="{{ feed.link }}">{{ feed.title }}</a></li>
     <strong>Description :</strong> {{ feed.description|raw }}
     <br><br>
 

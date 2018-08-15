@@ -23,13 +23,17 @@
     background-color: #1BA60C;
 }
 
+.w-100 {
+    margin-top: 30px;
+}
+
 .p-3 .bg-info .text-white {
     background-color: #1BA60C;
 }
 
 #menu {
     width: 100%;
-    margin-bottom: 75px;
+    margin-bottom: 45px;
 }
 
 .col {
@@ -299,6 +303,14 @@ tr:hover {
     border-radius: 10px;
     background-color: #B5FFAD;
     padding: 20px;
+}
+
+.edit {
+    margin-top: 90px;
+    margin-bottom: 30px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .formulaireEdit {
