@@ -295,6 +295,10 @@ tr:hover {
     text-decoration: underline;
 }
 
+.login {
+    margin-top: 75px;
+}
+
 .formulaireLogin {
     width: 40%;
     height: auto;

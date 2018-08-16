@@ -23,16 +23,19 @@ if (window.navigator && window.navigator.geolocation) {
 }
 
 
-/* var weatherL = {
 
-    weatherLoc: function() {
-        this.town = town;
-        this.tempL = tempL;
-        this.humL = humL;
-        this.pressL = pressL;
-        this.speedL = speedL;
-        this.openWeatherMap = openWeatherMap;
-        this.openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather'
+
+
+/* function weatherL(town, tempL, humL, pressL, speedL, openWeatherMap) {
+    this.town = town;
+    this.tempL = tempL;
+    this.humL = humL;
+    this.pressL = pressL;
+    this.speedL = speedL;
+    this.openWeatherMap = 'https://api.openweathermap.org/data/2.5/weather';
+
+    this.weatherLoc = function(town, tempL, humL, pressL, speedL, openWeatherMap) {
+
         if (window.navigator && window.navigator.geolocation) {
             window.navigator.geolocation.getCurrentPosition(function(position) {
                 $.getJSON(this.openWeatherMap, {
@@ -43,16 +46,19 @@ if (window.navigator && window.navigator.geolocation) {
                     APPID: '8af0f894920fd7fcf2e0dc3b48605453'
                 }).done(function(weather) {
                     console.log(weather)
+
                     this.town = weather.name;
                     this.tempL = weather.main.temp;
                     this.humL = weather.main.humidity;
                     this.pressL = weather.main.pressure;
                     this.speedL = weather.wind.speed;
                     this.desc = weather.weather[0].description;
-                    document.getElementById("weather").innerHTML = "Ville : " + weatherL.town + "<br>" + " Conditions actuelles : " + desc + "<br>" + "Température : " + tempL + "°" + " Humidité : " + humL + "%" + "<br>" + "Pression : " + pressL + "°" + " Vent : " + speedL;
+                    document.getElementById("weather").innerHTML = "Ville : " + this.town + "<br>" + " Conditions actuelles : " + this.desc + "<br>" + "Température : " + this.tempL + "°" + " Humidité : " + this.humL + "%" + "<br>" + "Pression : " + this.pressL + "°" + " Vent : " + this.speedL;
 
                 })
             })
-        }
+        };
     }
-} */
+}
+
+*/
