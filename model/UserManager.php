@@ -1,6 +1,8 @@
 <?php
 
-// manager for users
+/**
+ * manager for users
+ */
 
 namespace model;
 
@@ -9,9 +11,9 @@ use model\Manager;
 class UserManager extends Manager
 {
 
-//
-// login control
-//
+/**
+ * login control
+ */
     public function admin($login)
     {
         $bdd = $this->dbConnect();
@@ -23,9 +25,9 @@ class UserManager extends Manager
         return $result;
     }
 
-//
-// user creation
-//
+/**
+ * user creation
+ */
     public function createUser($login, $mail, $pass_hash)
     {
         $bdd = $this->dbConnect();
@@ -34,9 +36,9 @@ class UserManager extends Manager
         return $affectedLines;
     }
 
-//
-// get all users
-//
+/**
+ * get all users
+ */
     public function getUsers()
     {
         $db = $this->dbConnect();
@@ -44,9 +46,9 @@ class UserManager extends Manager
         return $req;
     }
 
-//
-// get one user
-//
+/**
+ * get one user
+ */
     public function getUser($idUser)
     {
         $db = $this->dbConnect();
@@ -56,9 +58,9 @@ class UserManager extends Manager
         return $userE;
     }
 
-//
-// edit a user
-//
+/**
+ * edit a user
+ */
     public function editUserL($login, $mail, $id)
     {
         $db = $this->dbConnect();
@@ -67,9 +69,9 @@ class UserManager extends Manager
         return $userLog;
     }
 
-//
-// delete a user
-//
+/**
+ * delete a user
+ */
     public function deleteUser()
     {
         $bdd = $this->dbConnect();

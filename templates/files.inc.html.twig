@@ -20,7 +20,7 @@
     </tr>
 {% for filesAll in listFile %}
     <tr>
-        <td>{{ filesAll.name }}</td>
+        <td><a href="/uploads/{{ filesAll.name }}" target="_blank">{{ filesAll.name }}</a></td>
         <td>{{ filesAll.sizeF }}</td>
         <td>{{ filesAll.time }}</td>
         <td><a href="index.php?action=deleteF&amp;file={{ filesAll.path }}">Supprimer</a></td>

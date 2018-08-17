@@ -38,7 +38,7 @@
     <nav class="navbar navbar-expand-md navbar-dark navbar-my fixed-top">
 
         <a class="navbar-brand" href="index.php?action=infos">
-            <img src="images/brand.png" width="30" height="30" class="d-inline-block align-top" alt="logo 5Project"> 5Project
+            <img src="https://p5ocr.andre-ani.fr/images/brand.png" width="30" height="30" class="d-inline-block align-top" alt="logo 5Project"> 5Project
         </a>
 
         <span class="navbar-text">

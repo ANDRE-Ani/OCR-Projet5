@@ -1,18 +1,20 @@
 <?php
 
+/**
+ * Controler todolist
+ */
+
 namespace controller;
 
 use Exception;
 use model\TodoManager;
 
-// Controler todolist
-
 class TodoController extends Controller
 {
 
-//
-// create a new task
-//
+/**
+ * create a new task
+ */
     public function creationTodo($todo)
     {
         $TodoManager = new TodoManager();
@@ -24,9 +26,10 @@ class TodoController extends Controller
         }
     }
 
-//
-// list all todo
-//
+/**
+ * list all todo
+ */
+
     public function allTodo()
     {
         $TodoManager = new TodoManager();
@@ -49,9 +52,10 @@ class TodoController extends Controller
         return $todo;
     }
 
-//
-// pagination
-//
+/**
+ * pagination
+ */
+
     public function page()
     {
         $TodoManager = new TodoManager();
@@ -66,9 +70,10 @@ class TodoController extends Controller
         return $paginate;
     }
 
-//
-// page for edit a task
-//
+/**
+ * page for edit a task
+ */
+
     public function viewEditTodo($todoId, $twig)
     {
         $TodoManager = new TodoManager();
@@ -80,9 +85,10 @@ class TodoController extends Controller
         ));
     }
 
-//
-// edit a task
-//
+/**
+ * edit a task
+ */
+
     public function editTodoBack($todo, $id)
     {
         $TodoManager = new TodoManager();
@@ -94,9 +100,10 @@ class TodoController extends Controller
         }
     }
 
-//
-// delete a task
-//
+/**
+ * delete a task
+ */
+
     public function suprTodo($id)
     {
         $TodoManager = new TodoManager();

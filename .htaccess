@@ -1,7 +1,7 @@
 Options -Indexes
 
-ErrorDocument 404 /templates/errorView.html
-ErrorDocument 403 /templates/forbiddenView.html
+ErrorDocument 404 /templates/errorView.php
+ErrorDocument 403 /templates/forbiddenView.php
 
 <files config.php>
 order allow,deny

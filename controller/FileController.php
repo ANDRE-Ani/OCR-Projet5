@@ -1,6 +1,8 @@
 <?php
 
-// file controller
+/**
+ * file controller
+ */
 
 namespace controller;
 
@@ -10,9 +12,10 @@ use Exception;
 class FileController extends Controller
 {
 
-    //
-    // upload file
-    //
+    /**
+     * upload file
+     */
+
     public function uploadF()
     {
 
@@ -43,9 +46,10 @@ class FileController extends Controller
         }
     }
 
-    //
-    // list all files
-    //
+    /**
+     * list all files
+     */
+
     public function listFile()
     {
 
@@ -75,9 +79,10 @@ class FileController extends Controller
         return $filesAll;
     }
 
-    //
-    // delete a file
-    //
+    /**
+     * delete a file
+     */
+
     public function deleteFile($fichier)
     {
 

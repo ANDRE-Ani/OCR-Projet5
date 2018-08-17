@@ -1,6 +1,8 @@
 <?php
 
-// Twig init
+/**
+ * twig init
+ */
 require_once __DIR__ . '/vendor/autoload.php';
 $loader = new Twig_Loader_Filesystem('templates');
 $twig = new Twig_Environment($loader, array(
@@ -14,218 +16,200 @@ $twig->addGlobal("session", $_SESSION);
 $twig->addGlobal("site_name", '5Project');
 $twig->addGlobal("site_author", 'Patrice Andreani');
 
+/**
+ * autoloader
+ */
+require_once "autoloader.php";
 
-// autoloader
-require_once("autoloader.php");
-
-
-// namespace
+/**
+ * namespace
+ */
 use controller\Controller;
 use controller\FileController;
-use controller\UserController;
 use controller\TodoController;
+use controller\UserController;
 
-
-// call to models
+/**
+ * call to models
+ */
 require_once "model/Manager.php";
 require_once "model/UserManager.php";
 require_once "model/TodoManager.php";
 
-
-// routing for actions
+/**
+ * routing for actions
+ */
 
 try {
-    //
-    // home/login page
-    //
+    /**
+     * home/login page
+     */
     if (isset($_GET['action'])) {
         if ($_GET['action'] == '') {
 
             session_start();
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             $infos = new Controller();
             $infos->home($twig);
         }
 
-        //
-        // home/login page
-        //
+        /**
+         * home/login page
+         */
         elseif ($_GET['action'] == '/') {
 
             session_start();
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             $infos = new Controller();
             $infos->home($twig);
-        } 
-        
+        }
 
-        //
-        // home/login page
-        //
+        /**
+         * home/login page
+         */
         elseif ($_GET['action'] == 'homePage') {
 
             session_start();
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             $infos = new Controller();
             $infos->home($twig);
         }
 
-
-        //
-        // theme switcher
-        //
+        /**
+         * theme switcher
+         */
         elseif ($_GET['action'] == 'styleT') {
             session_start();
             if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
-            
+
                 if (isset($_POST['style'])) {
-                $choix = $_POST['style'];
-                setcookie('chose_style', $choix, time() + (2*24*3600), "/", "p5ocr.andre-ani.fr", true, true);
+                    $choix = $_POST['style'];
+                    setcookie('chose_style', $choix, time() + (2 * 24 * 3600), "/", "p5ocr.andre-ani.fr", true, true);
 
-                if ($choix=="blue") {
-                    $styleB = "css/style.css";
-                    $twig->addGlobal("styleB", $styleB);
+                    if ($choix == "blue") {
+                        $styleB = "css/style.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    } elseif ($choix == "green") {
+                        $styleB = "css/style2.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    } else {
+                        $styleB = "css/style.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    }
                 }
 
-                elseif ($choix=="green") {
-                    $styleB = "css/style2.css";
-                    $twig->addGlobal("styleB", $styleB);
-                }
-
-                else {
-                    $styleB = "css/style.css";
-                    $twig->addGlobal("styleB", $styleB);
-                }
+                $infos = new Controller();
+                $infos = new UserController();
+                $infos->administration($twig);
             }
-                        
-            $infos = new Controller();
-            $infos = new UserController();
-            $infos->administration($twig);
         }
-    }
 
-
-        //
-        // go to legal mentions
-        //
+        /**
+         * go to legal
+         */
         elseif ($_GET['action'] == 'legal') {
-            
+
             session_start();
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
             $infos = new Controller();
             $infos->legalM($twig);
         }
 
-
-        //
-        // go to about
-        //
+        /**
+         * go to about
+         */
         elseif ($_GET['action'] == 'about') {
-            
+
             session_start();
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
-            
+            }
+
             $infos = new Controller();
             $infos->aboutP($twig);
-        } 
+        }
 
-
-        //
-        // send mail
-        //
+        /**
+         * send email
+         */
         elseif ($_GET['action'] == 'mail') {
 
             if (isset($_POST['sujet'])) {
                 $sujet = htmlspecialchars($_POST['sujet']);
-            }
-            else {
+            } else {
                 throw new Exception('Le champ \'sujet\' n\'est pas remplis');
             }
 
             if (isset($_POST['destinataire'])) {
                 $destinataire = htmlspecialchars($_POST['destinataire']);
-            }
-            else {
+            } else {
                 throw new Exception('Le champ \'destinataire\' n\'est pas remplis');
             }
-            
+
             if (isset($_POST['message'])) {
                 $message = htmlspecialchars($_POST['message']);
-            }
-            else {
+            } else {
                 throw new Exception('Le champ \'message\' n\'est pas remplis');
             }
 
@@ -234,87 +218,79 @@ try {
             $infos->sendM($sujet, $destinataire, $message);
         }
 
-
-        //
-        // upload file
-        //
+        /**
+         * upload file
+         */
         elseif ($_GET['action'] == 'upload') {
             session_start();
             $infos = new FileController();
             $infos->uploadF();
-        } 
-               
-        
-        //
-        // delete file
-        //
+        }
+
+        /**
+         * delete file
+         */
         elseif ($_GET['action'] == 'deleteF') {
             session_start();
             $fichier = $_GET['file'];
             $infos = new FileController();
             $infos->deleteFile($fichier);
-            }
-        
+        }
 
-        //    
-        // main page/informations
-        //
+        /**
+         * main page/informations
+         */
         elseif ($_GET['action'] == 'infos') {
-            
+
             session_start();
             if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
-            // chose style
-            if(isset($_COOKIE['chose_style'])) {
-                $styleB = $_COOKIE['chose_style'];
-                if ($styleB == 'green') {
-                    $styleB = "css/style2.css";
-                    $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                // chose style
+                if (isset($_COOKIE['chose_style'])) {
+                    $styleB = $_COOKIE['chose_style'];
+                    if ($styleB == 'green') {
+                        $styleB = "css/style2.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    } else if ($styleB == "blue") {
+                        $styleB = "css/style.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    }
+                } else {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
+
+                $infos = new Controller();
+                $infos = new UserController();
+                $infos = new TodoController();
+                $infos = new FileController();
+                $infos->renderHome($twig);
+
+            } else {
+                header('Location: index.php?action=connection');
             }
-            else {
-                $styleB = "css/style.css";
-                $twig->addGlobal("styleB", $styleB);
-        }
-
-            $infos = new Controller();
-            $infos = new UserController();
-            $infos = new TodoController();
-            $infos = new FileController();
-            $infos->renderHome($twig);
 
         }
-        else {
-            header('Location: index.php?action=connection');
-        }
 
-    }
-
-        //
-        // admin connection
-        //
+        /**
+         * admin connection
+         */
         elseif ($_GET['action'] == 'logAdminB') {
             session_start();
 
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))) {
                 $infos = new UserController();
@@ -323,27 +299,24 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
-        
 
-        //
-        // user creation
-        //
+        /**
+         * user creation
+         */
         elseif ($_GET['action'] == 'createUser') {
             session_start();
             if (!empty($_POST['login']) && !empty($_POST['mail']) && !empty($_POST['pass']) && !empty($_POST['pass2']) && ($_POST['pass']) == ($_POST['pass2'])) {
-            $infos = new UserController();
-            $infos->creationUser($twig, htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
-                    
-        } 
-            else {
+                $infos = new UserController();
+                $infos->creationUser($twig, htmlspecialchars($_POST['login']), htmlspecialchars($_POST['mail']), htmlspecialchars($_POST['pass']));
+
+            } else {
                 throw new Exception('Tous les champs ne sont pas remplis ou les mots de passe ne correspondent pas');
             }
         }
-    
 
-        //
-        // add todo
-        //
+        /**
+         * add todo
+         */
         elseif ($_GET['action'] == 'createTodo') {
             session_start();
             if (!empty(htmlspecialchars($_POST['todo']))) {
@@ -352,30 +325,27 @@ try {
             } else {
                 throw new Exception('Erreur, ajoutez une tâche');
             }
-         }
+        }
 
-
-        // 
-        // page for task edition
-        //
+        /**
+         * page for task edition
+         */
         elseif ($_GET['action'] == 'viewEditTask') {
             session_start();
 
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new TodoController();
@@ -385,10 +355,9 @@ try {
             }
         }
 
-
-        //
-        // editing a task
-        //
+        /**
+         * edit a task
+         */
         elseif ($_GET['action'] == 'editTodo') {
             session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -403,10 +372,9 @@ try {
             }
         }
 
-
-        //
-        // delete a todo
-        //
+        /**
+         * delete a task
+         */
         elseif ($_GET['action'] == 'deleteTodo') {
             session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -417,90 +385,81 @@ try {
             }
         }
 
-        //
-        // go to administration
-        //
+        /**
+         * go to admin
+         */
         elseif ($_GET['action'] == 'administration') {
-            
+
             session_start();
             if ((!empty($_SESSION['cook'])) && (!empty($_COOKIE['cook']))) {
 
-            if(isset($_COOKIE['chose_style'])) {
-                $styleB = $_COOKIE['chose_style'];
-                if ($styleB == 'green') {
-                    $styleB = "css/style2.css";
-                    $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                if (isset($_COOKIE['chose_style'])) {
+                    $styleB = $_COOKIE['chose_style'];
+                    if ($styleB == 'green') {
+                        $styleB = "css/style2.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    } else if ($styleB == "blue") {
+                        $styleB = "css/style.css";
+                        $twig->addGlobal("styleB", $styleB);
+                    }
+                } else {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
-                $styleB = "css/style.css";
-                $twig->addGlobal("styleB", $styleB);
-        }
 
                 $infos = new Controller();
                 $infos = new UserController();
                 $infos->administration($twig);
 
-            }
-            else {
+            } else {
                 header('Location: index.php?action=connection');
             }
         }
-        
 
-        //
-        // go to connection
-        //
+        /**
+         * go to connection
+         */
         elseif ($_GET['action'] == 'connection') {
 
             session_start();
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
-        
+            }
+
             $infos = new UserController();
             $infos->connectionAdmin($twig);
         }
-        
-        
-        //
-        // deconnection
-        //
+
+        /**
+         * deconnection
+         */
         elseif ($_GET['action'] == 'logout') {
 
             session_start();
 
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             $_SESSION = array();
             session_destroy();
@@ -510,64 +469,58 @@ try {
             $infos->connectionAdmin($twig);
 
         }
-        
-        
-        //
-        // go to user creation
-        //
+
+        /**
+         * go to user creation
+         */
         elseif ($_GET['action'] == 'creationUser') {
             session_start();
 
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             $infos = new UserController();
             $infos->createUserView($twig);
         }
-        
 
-        //
-        // go to user gestion
-        //
+        /**
+         * go to user list
+         */
         elseif ($_GET['action'] == 'gestionU') {
             session_start();
 
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             $infos = new UserController();
             $infos->allUsers($twig);
         }
-        
-        //
-        // delete a user
-        //
+
+        /**
+         * delete a user
+         */
         elseif ($_GET['action'] == 'deleteUser') {
             session_start();
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -577,29 +530,26 @@ try {
                 throw new Exception('Aucun identifiant d\'utilisateur envoyé');
             }
         }
-        
 
-        //
-        // go to user edition
-        //
+        /**
+         * go to user edition
+         */
         elseif ($_GET['action'] == 'viewEditUser') {
             session_start();
 
-            if(isset($_COOKIE['chose_style'])) {
+            if (isset($_COOKIE['chose_style'])) {
                 $styleB = $_COOKIE['chose_style'];
                 if ($styleB == 'green') {
                     $styleB = "css/style2.css";
                     $twig->addGlobal("styleB", $styleB);
-                }
-                else if ($styleB == "blue") {
+                } else if ($styleB == "blue") {
                     $styleB = "css/style.css";
                     $twig->addGlobal("styleB", $styleB);
                 }
-            }
-            else {
+            } else {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
-        }
+            }
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 $infos = new UserController();
@@ -608,10 +558,10 @@ try {
                 throw new Exception('Aucun identifiant d\'utilisateur envoyé');
             }
         }
-        
-        //
-        // user edition
-        //
+
+        /**
+         * user edition
+         */
         elseif ($_GET['action'] == 'editUserL') {
             session_start();
 
@@ -627,27 +577,25 @@ try {
             }
         }
 
-    //
-    // login default
-    //
+        /**
+         * login/default page
+         */
     } else {
 
         session_start();
-        if(isset($_COOKIE['chose_style'])) {
+        if (isset($_COOKIE['chose_style'])) {
             $styleB = $_COOKIE['chose_style'];
             if ($styleB == 'green') {
                 $styleB = "css/style2.css";
                 $twig->addGlobal("styleB", $styleB);
-            }
-            else if ($styleB == "blue") {
+            } else if ($styleB == "blue") {
                 $styleB = "css/style.css";
                 $twig->addGlobal("styleB", $styleB);
             }
-        }
-        else {
+        } else {
             $styleB = "css/style.css";
             $twig->addGlobal("styleB", $styleB);
-    }
+        }
 
         $infos = new Controller();
         $infos->home($twig);

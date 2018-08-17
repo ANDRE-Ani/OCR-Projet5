@@ -1,6 +1,8 @@
 <?php
 
-// manager for todo tasks
+/**
+ * manager for todo tasks
+ */
 
 namespace model;
 
@@ -10,9 +12,9 @@ use PDO;
 class TodoManager extends Manager
 {
 
-    //
-    // write new task in BDD
-    //
+    /**
+     * write new task in BDD
+     */
     public function writeTask($todo)
     {
         $bdd = $this->dbConnect();
@@ -21,9 +23,9 @@ class TodoManager extends Manager
         return $affectedLines;
     }
 
-//
-// read all tasks
-//
+/**
+ * read all tasks
+ */
     public function getTasks()
     {
         $db = $this->dbConnect();
@@ -39,9 +41,9 @@ class TodoManager extends Manager
         return $req;
     }
 
-//
-// get the number of pages
-//
+/**
+ * get number of pages
+ */
     public function getNumberPages()
     {
         $db = $this->dbConnect();
@@ -53,9 +55,9 @@ class TodoManager extends Manager
         return $nombreDePages;
     }
 
-//
-// get a todo
-//
+/**
+ * get a todo
+ */
     public function getTodo($todoId)
     {
         $db = $this->dbConnect();
@@ -65,9 +67,9 @@ class TodoManager extends Manager
         return $todoE;
     }
 
-//
-// Edit a task
-//
+/**
+ * edit a task
+ */
     public function editTodoL($todo, $id)
     {
         $db = $this->dbConnect();
@@ -76,9 +78,9 @@ class TodoManager extends Manager
         return $taskE;
     }
 
-//
-// delete a task
-//
+/**
+ * delete a task
+ */
     public function deleteTodo($id)
     {
         $bdd = $this->dbConnect();

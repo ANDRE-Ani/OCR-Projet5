@@ -1,6 +1,8 @@
 <?php
 
-// user controller
+/**
+ *  user controller
+ */
 
 namespace controller;
 
@@ -10,9 +12,9 @@ use model\UserManager;
 class UserController extends Controller
 {
 
-    //
-    // admin connection
-    //
+    /**
+     * admin connection
+     */
     public function logAdmin($twig)
     {
         if (isset($_POST["login"]) && isset($_POST["pass"])) {
@@ -41,17 +43,17 @@ class UserController extends Controller
         }
     }
 
-    //
-    // go to admin connection
-    //
+    /**
+     * go to admin connection
+     */
     public function connectionAdmin($twig)
     {
         echo $twig->render('loginView.html.twig');
     }
 
-    //
-    // user creation
-    //
+    /**
+     * user creation
+     */
     public function creationUser($twig, $login, $mail, $pass)
     {
         $mail = $_POST['mail'];
@@ -92,9 +94,9 @@ class UserController extends Controller
         }
     }
 
-    //
-    // list the users
-    //
+    /**
+     * list the users
+     */
     public function allUsers($twig)
     {
         $UserManager = new UserManager();
@@ -117,9 +119,9 @@ class UserController extends Controller
         ));
     }
 
-    //
-    // delete a user
-    //
+    /**
+     * delete a user
+     */
     public function suprUser()
     {
         $UserManager = new UserManager();
@@ -131,9 +133,9 @@ class UserController extends Controller
         }
     }
 
-    //
-    // go to edition user view
-    //
+    /**
+     * go to edition user view
+     */
     public function viewEditUserB($userId, $twig)
     {
         $UserManager = new UserManager();
@@ -147,9 +149,9 @@ class UserController extends Controller
         ));
     }
 
-    //
-    // edit user
-    //
+    /**
+     * edit a user
+     */
     public function editUserBack($login, $mail, $id)
     {
         $UserManager = new UserManager();
@@ -161,9 +163,9 @@ class UserController extends Controller
         }
     }
 
-    //
-    // go to creation user
-    //
+    /**
+     * go to creation user
+     */
     public function createUserView($twig)
     {
         $UserManager = new UserManager();
@@ -174,9 +176,9 @@ class UserController extends Controller
         ));
     }
 
-    //
-    // go to admin
-    //
+    /**
+     * go to admin
+     */
     public function administration($twig)
     {
         $UserManager = new UserManager();
